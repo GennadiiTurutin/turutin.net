@@ -1,0 +1,1 @@
+administrator = frozenset(["gennadii.turutin@gmail.com"])

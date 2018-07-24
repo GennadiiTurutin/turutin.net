@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <!-- Navigation -->
+    {% include "navbar.html" %}
+    {% block navbar %}
+    {% endblock %}
+
+    <!-- Page Header -->
+    {% include "header.html" %}
+    {% block header %}
+    {% endblock %}
+
+ <main role="main" class="inner cover">
+    <div class="inner">
+        <p class="lead"> 
+        <br> Your email is {{obj.email}}
+        <br> To change password click here
+        <br> To change email click here </p>
+    </div>
+ </main>
+
+{% include "footer.html" %}
+{% block footer %}
+{% endblock %}
+
+{% endblock %}
