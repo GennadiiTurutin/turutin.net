@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <body>
+
+    <!-- Navigation -->
+    {% include "navbar.html" %}
+    {% block navbar %}
+    {% endblock %}
+
+    <!-- Page Header -->
+    {% include "header.html" %}
+    {% block header %}
+    {% endblock %}
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <form name="addForm" id="addForm" method="POST" action="{{ url_for('login_user') }}" novalidate>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" placeholder="Email" name="email" id="email" required data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="subtitle" id="password" required data-validation-required-message="Please enter your password.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-secondary" id="sendMessageButton">Log in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    {% include "footer.html" %}
+    {% block footer %}
+    {% endblock %}
+
+{% endblock %}
+

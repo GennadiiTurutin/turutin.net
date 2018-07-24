@@ -1,0 +1,60 @@
+<style>  
+#dropdown {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    color: #fff;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+</style>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('homepage') }}">PyBlog</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('homepage') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about') }}">About</a>
+            </li>
+            {% if session['name'] == 'gennadii.turutin@gmail.com' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('add') }}">Add</a>
+            </li>
+            {% endif %}
+    
+            {% if session['logged_in'] == True %}
+            <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >{{session['name']}}</a></li>
+            
+            <div class="dropdown-menu" aria-labelledby="dropdown">
+            <a class="dropdown-item" href="/profile">Profile</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+            {% if session['name'] == 'gennadii.turutin@gmail.com' %}
+            <a class="dropdown-item" href="/dashboard">Dashboard</a>
+            {% endif %}
+            </div>
+            </div>
+            {% else %}  
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+       
+
+

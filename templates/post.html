@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <body>
+
+    <!-- Navigation -->
+    {% include "navbar.html" %}
+    {% block navbar %}
+    {% endblock %}
+
+    <!-- Page Header -->
+    {% include "header.html" %}
+    {% block header %}
+    {% endblock %}
+
+
+        <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ post.subtitle }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by {{ post.author }} on </p>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            {{ post.content|safe }}
+            {{ post.content}}
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+   {% include "footer.html" %}
+   {% block footer %}
+   {% endblock %}
+
+{% endblock %}
+
