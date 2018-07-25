@@ -1,12 +1,33 @@
 from flask import Flask, render_template, request, session, make_response, jsonify, redirect, url_for, flash
+import flask_admin as admin
+from flask_admin.contrib.pymongo import ModelView
 from slugify import slugify
 from database import Database
 from user import User
 from blog import Blog
+from wtforms import form, fields
 import decorators
+from forms import LoginForm, RegisterForm
 
+# Create application
 app = Flask(__name__)
 app.secret_key = 'Gennadii'
+
+#db = Database.DATABASE
+#admin = admin.Admin(app)
+
+#class UserForm(form.Form):
+    #email = "gennadii.turutin@gmail.com"
+    #password = session['password']
+#    email = StringField('email')
+    #password = StringField('password')
+
+#class UserView(ModelView):
+#    column_list = ('email') #, 'password')
+#    form = UserForm
+
+# Add views
+#admin.add_view(UserView(db['users'], 'User'))
 
 
 @app.before_first_request
@@ -23,10 +44,43 @@ def homepage():
 def about():
     return render_template('about.html')
 
-
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    form = LoginForm()
+    if request.method == 'POST':
+        if User.login_valid(request.form['email'], request.form['password']):
+            session['logged_in'] = True
+            session['name'] = request.form['email']
+            flash("You've been logged in", category='success')   
+            return redirect(url_for('homepage'))
+        else:
+            flash("Wrong password or email!", category='warning')
+            return render_template('login.html', title='Login', form=form)
+    else:
+        return render_template('login.html', title='Login', form=form)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegisterForm()
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        confirmation = request.form['confirmation']
+        if password == confirmation:
+            if User.register(email, password):
+                session['logged_in'] = True
+                session['name'] = email
+                flash("You've got registered", category='success' )
+                return redirect(url_for('homepage'))
+            else:
+                flash("The user with this email already exists", category='warning' )
+                return render_template('register.html', title='Register', form=form)
+        else: 
+            flash("Please check password", category='warning')
+        return render_template('register.html', title='Register', form=form)
+
+    return render_template('register.html', title='Register', form=form)
 
 @app.route('/logout')
 @decorators.login_required
@@ -35,27 +89,6 @@ def logout():
     session['name'] = None
     flash("You have been logged out", category="success")
     return redirect(url_for('homepage'))
-
-
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
-
-@app.route('/auth/login', methods=['GET','POST'])
-def login_user():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        if User.login_valid(email, password):
-            User.login(email)
-            session['logged_in'] = True
-            session['name'] = email
-            flash("You've been logged in", category='success')   
-            return redirect(url_for('homepage'))
-        else:
-            flash("Wrong password or email!", category='warning')   
-            return redirect(url_for('login'))
 
 
 @app.route('/auth/register', methods=['POST'])
@@ -149,6 +182,3 @@ def error_500(e):
 
 if __name__== '__main__':
     app.run(port=5000, debug=True)
-
-
-
