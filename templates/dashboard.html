@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Navigation -->
-{% include "navbar.html" %}
-{% block navbar %}
-{% endblock %}
 
-<!-- Page Header -->
-{% include "header.html" %}
-{% block header %}
-{% endblock %}
+    <!-- Navigation -->
+    
+
+    <!-- Page Header -->
+   
+ 
+   {% include "navbar.html" %}
+   {% block navbar %}
+   {% endblock %}
 
 
-      <!-- Main Content -->
+    <!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -33,20 +34,13 @@
         </div>
       </div>
     </div>
-          <hr>
-          <!-- Pager -->
-          <div class="clearfix">
-            <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <hr>
 
     <!-- Footer -->
-    {% include "footer.html" %}
-    {% block footer %}
-    {% endblock %}
+   {% include "footer.html" %}
+   {% block footer %}
+   {% endblock %}
+
 
 {% endblock %}
