@@ -8,7 +8,7 @@ __author__ = 'Gennadii'
 
 class User(object):
     def __init__(self, email, password, _id=None):
-        self.email = email
+        self.name = email
         self.password = password
         self._id = random.randint(1,100) if _id is None else _id
 

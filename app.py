@@ -13,21 +13,15 @@ from forms import LoginForm, RegisterForm
 app = Flask(__name__)
 app.secret_key = 'Gennadii'
 
-#db = Database.DATABASE
-#admin = admin.Admin(app)
+db = Database.DATABASE
+admin = admin.Admin(app)
 
-#class UserForm(form.Form):
-    #email = "gennadii.turutin@gmail.com"
-    #password = session['password']
-#    email = StringField('email')
-    #password = StringField('password')
-
-#class UserView(ModelView):
-#    column_list = ('email') #, 'password')
-#    form = UserForm
+# User admin
+class UserView(ModelView):
+    column_list = ('email', 'password', '_id')
 
 # Add views
-#admin.add_view(UserView(db['users'], 'User'))
+admin.add_view(ModelView(User), db.session)
 
 
 @app.before_first_request
@@ -91,25 +85,6 @@ def logout():
     return redirect(url_for('homepage'))
 
 
-@app.route('/auth/register', methods=['POST'])
-def register_user():
-    email = request.form['email']
-    password = request.form['password']
-    confirmation = request.form['confirmation']
-    if password == confirmation:
-        if User.register(email, password):
-            session['logged_in'] = True
-            session['name'] = email
-            flash("You've got registered", category='success' )
-            return redirect(url_for('homepage'))
-        else:
-            flash("The user with this email already exists", category='warning' )
-            return redirect(url_for('register'))
-    else: 
-        flash("Please check password", category='warning')
-        return redirect(url_for('register'))
-
-
 @app.route('/profile')
 @decorators.login_required
 def profile():
@@ -121,6 +96,11 @@ def profile():
 def post(post_id, post_url):
     post = Blog.get_by_id(_id=post_id)
     return render_template('post.html', post=post)
+
+@app.route('/dashboard')
+@decorators.admin_required
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/add')
 @decorators.admin_required
@@ -182,3 +162,5 @@ def error_500(e):
 
 if __name__== '__main__':
     app.run(port=5000, debug=True)
+
+
