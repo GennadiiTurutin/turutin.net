@@ -1,0 +1,43 @@
+<style>
+
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 0px dotted #ccc;
+
+}
+
+.media:hover {
+    background-color: #f0f0f0;
+}
+</style>
+
+
+
+<div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="page-header">
+                    <h1> Comments </h1>
+                  </div> 
+                  {{ wtf.quick_form(form) }}
+
+                   <div class="comments-list">
+                    {% for comment in comments %}
+                       <div class="media">
+                           <p class="pull-right"><small></small></p>
+                            <a class="media-left">
+                              <img src="{{ comment.user.gravatar() }}">
+                            </a>
+                            <div class="media-body">
+                              <h4 class="media-heading user_name">{{ comment.user.username }} on {{ comment.date }}</h4>
+                              {{ comment.content }}
+                            </div>
+                          </div>
+                       {% endfor %}
+                   </div>  
+                </div>
+            </div>
+        </div>
