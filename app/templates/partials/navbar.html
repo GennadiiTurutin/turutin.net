@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{{ url_for('main.homepage') }}">PyBlog</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.homepage') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
+              {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.profile') }}">{{ current_user.username }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+            </li>
+             {% else %}
+
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+            </li>
+            {% endif %}
+            {% if current_user.email == 'gennadii.turutin@gmail.com' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('admin.index') }}">Admin</a>
+            </li>
+            {% endif %}
+            </ul>
+            <form class="form-inline mt-2 mt-md-0" style="size:400;">
+             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             </form>
+        </div>
+</nav>
+

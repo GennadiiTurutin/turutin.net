@@ -1,41 +1,46 @@
 import os
+from flask_mail import Mail
 from flask import Flask
-from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
+
+from config import config
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
-bootstrap = Bootstrap()
-
-# Set up Flask-Login
 login_manager = LoginManager()
-login_manager.session_protection = 'strong'
-login_manager.login_view = 'account.login'
-
+mail = Mail()
 
 def create_app(config_name):
     app = Flask(__name__)
-    app.config.from_object('config.settings')
-    app.config.from_pyfile('settings.py', silent=True)
+    app.config.from_object(config[config_name])
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # Set up extensions
+    config[config_name].init_app(app)
     db.init_app(app)
-    bootstrap.init_app(app)
     login_manager.init_app(app)
+    admin = Admin(app)
+    mail.init_app(app)
 
-
-    # Create app blueprints
+    
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
-
-    from .admin import admin as admin_blueprint
-    app.register_blueprint(admin_blueprint, url_prefix='/admin')
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
+    from app.models.user import User 
+    from app.models.post import Post 
+    from app.models.comment import Comment 
+    from app.models.tag import Tag 
+
+    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Tag, db.session))
+    admin.add_view(ModelView(Comment, db.session))
+
     return app
-
-
