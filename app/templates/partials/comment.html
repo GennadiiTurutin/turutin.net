@@ -12,8 +12,13 @@
 .media:hover {
     background-color: #f0f0f0;
 }
-</style>
 
+.form-control-lg {
+  font-size: 2rem;
+  height: 10rem;
+}
+
+</style>
 
 
 <div class="container">
@@ -21,10 +26,17 @@
                 <div class="col-md-8">
                   <div class="page-header">
                     <h1> Comments </h1>
-                  </div> 
-                  {{ wtf.quick_form(form) }}
-
-                   <div class="comments-list">
+                  </div>
+                  <form method="POST" action="">
+                  {{ form.hidden_tag() }}
+                  <div class="form-group">
+                    {{ form.content.label(class="form-control-label") }}
+                    {{ form.content(class="form-control form-control-lg", style="padding: 0 0 100px 0; cols='5'; wrap='soft'") }}
+                   </div>
+                   <div class="form-group">
+                   {{ form.submit(class="btn btn-outline-info") }}
+                   </div>
+                   </form>
                     {% for comment in comments %}
                        <div class="media">
                            <p class="pull-right"><small></small></p>
