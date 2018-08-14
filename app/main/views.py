@@ -31,4 +31,4 @@ def post(post_id, post_url):
         db.session.commit()
         flash('Your comment has been published.')
         return redirect(url_for('main.post', post_id=post_id, post_url=post_url))
-    return render_template('main/post.html', post=post, form=form, comments=comments, tags=tags)
+    return render_template('main/post.html', post=post, form=form, comments=comments, tags=tags, post_id=post_id, post_url=post_url )
