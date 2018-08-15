@@ -45,8 +45,8 @@
             </li>
             {% endif %}
             </ul>
-            <form class="form-inline mt-2 mt-md-0" style="size:400;">
-             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" style="width:250; font-size: 2rem; height: 40;">
+            <form class="form-inline mt-2 mt-md-0" method="GET" action="{{ url_for('main.search') }}" style="size:400;">
+             <input class="form-control mr-sm-2" name="query" id="query" type="text" placeholder="Search..."style="width:250; font-size: 2rem; height: 40;">
              <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
              </form>
         </div>

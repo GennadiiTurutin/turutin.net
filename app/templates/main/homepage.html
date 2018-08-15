@@ -34,8 +34,8 @@ body {
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        {% for post in posts %}
-          <div class="post-preview">
+           {% for post in posts.items %}
+            <div class="post-preview">
              <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
               <h2 class="post-title">
                 {{ post.title }}
@@ -46,7 +46,18 @@ body {
             </a>
             <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
           </div>
+        {% endfor %}
+        {% for page_num in posts.iter_pages() %}
+          {% if page_num %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
+        
+          {% else %}
+          ...
+          {% endif %}
+
+
           {% endfor %}
+
           <hr>
         </div>
       </div>

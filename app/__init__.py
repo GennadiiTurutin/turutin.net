@@ -7,6 +7,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
 
+
 from config import config
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -19,13 +20,13 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['DEBUG'] = True
 
     config[config_name].init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
     admin = Admin(app)
     mail.init_app(app)
-
     
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
