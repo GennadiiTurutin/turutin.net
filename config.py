@@ -22,6 +22,8 @@ class Config:
     FLASKY_COMMENTS_PER_PAGE = 30
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
 
+    WHOOSH_BASE = os.path.join(basedir, 'search.db')
+
     @staticmethod
     def init_app(app):
         pass

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash, redirect, url_for
+from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import current_user
 from app.models import User, Post, Comment, Tag
 from slugify import slugify
@@ -11,12 +11,19 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def homepage():
-    posts = Post.query.all()
+    #posts = Post.query.all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.paginate(page=page, per_page=2)
     return render_template('main/homepage.html', posts=posts, slugify=slugify)
 
 @main.route('/about')
 def about():
     return render_template('main/about.html')
+
+@main.route('/search')
+def search():
+    posts = Post.query.whoosh_search(request.args.get('query')).all()
+    return render_template('main/homepage.html', posts=posts, slugify=slugify)
 
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])
 def post(post_id, post_url):
