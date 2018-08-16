@@ -21,8 +21,10 @@ class Config:
     FLASKY_FOLLOWERS_PER_PAGE = 50
     FLASKY_COMMENTS_PER_PAGE = 30
     FLASKY_SLOW_DB_QUERY_TIME = 0.5
+    ELASTICSEARCH_URL='http://localhost:9200'
 
-    WHOOSH_BASE = os.path.join(basedir, 'search.db')
+    POSTS_PER_PAGE = 2
+
 
     @staticmethod
     def init_app(app):

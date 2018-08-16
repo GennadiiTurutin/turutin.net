@@ -15,39 +15,58 @@ body {
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 {% endblock %}
 
-{% block content %}
-
-
-{% include "partials/flash.html" %}
-{% block flash %}
+{% block scripts %}
+{{super()}}
+<script type="text/javascript">
+$( "#flash" ).ready(function() {
+$( "#flash" ).fadeOut(3000);
+});
+</script>
 {% endblock %}
+
+<!-- Introduction of content --> 
+{% block content %}
 
 <!-- Navigation --> 
 {% include "partials/navbar.html" %}
 {% block navbar %}
 {% endblock %}
 
+
+<!-- Flash messages --> 
+{% include "partials/flash.html" %}
+{% block flash %}
+{% endblock %}
+
+<!-- Main Content -->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        <p> 
-        Welcome {{ current_user.username }}!
-        <br> <br> 
-        <img src="{{ current_user.gravatar() }}">
-        <br> <br> 
-         Here is what we have on you!
-        <br> Your email is {{ current_user.email }}
-        <br> If you want to subscribe, please click here
-        <br> To change password, click here!
-        <br> Or if you want to change your email, please click here </p>
-        <br> If you have some concerns, please let me know! 
+           {% for post in posts %}
+            <div class="post-preview">
+             <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+              <h2 class="post-title">
+                {{ post.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ post.subtitle }}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
+          </div>
+        {% endfor %}
+
+          <hr>
         </div>
       </div>
     </div>
+
 
 <!-- Footer -->
 {% include "partials/footer.html" %}
 {% block footer %}
 {% endblock %}
+
+
 
 {% endblock %}

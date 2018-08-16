@@ -7,6 +7,7 @@
 }
 </style>
 
+
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
         <a class="navbar-brand" href="{{ url_for('main.homepage') }}">PyBlog</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +25,7 @@
               <a class="nav-link" href="{{ url_for('main.about') }}">About</a>
               {% if current_user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.profile') }}">{{ current_user.username }}</a>
+              <a class="nav-link" href="{{ url_for('main.profile') }}">{{ current_user.username }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
@@ -46,9 +47,8 @@
             {% endif %}
             </ul>
             <form class="form-inline mt-2 mt-md-0" method="GET" action="{{ url_for('main.search') }}" style="size:400;">
-             <input class="form-control mr-sm-2" name="query" id="query" type="text" placeholder="Search..."style="width:250; font-size: 2rem; height: 40;">
+             {{ g.search_form.query(size=20) }} 
              <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
              </form>
         </div>
 </nav>
-

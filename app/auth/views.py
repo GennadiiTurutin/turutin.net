@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request, url_for, flash, Blueprint
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, current_user
+from app import decorators
 from app import db, mail
 from app.models import User
 from app.auth.forms import LoginForm, RegistrationForm
@@ -16,31 +17,26 @@ def login():
         return redirect(url_for('main.homepage'))
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.verify_password(form.password.data):
+        if user is not None and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            next_page = request.args.get('next')
-            flash("You've been logged in")
-            return redirect(next_page) if next_page else redirect(url_for('main.homepage'))
+            flash("You've been logged in", 'success')
+            return redirect(url_for('main.homepage'))
         else:
-            flash('Login Unsuccessful. Please check email and password')
+            flash('Login Unsuccessful. Please check email and password', 'warning')
             return redirect(url_for('auth.login'))
     return render_template('auth/login.html', title='Login', form=form)
 
 
 @auth.route('/logout')
+@decorators.login_required
 def logout():
     if current_user.is_authenticated:
-        flash('You have been logged out.')
+        flash('You have been logged out.', 'success')
         logout_user()
         return redirect(url_for('main.homepage'))
-    flash("You cannot log out, as you are not logged in")
+    flash("You cannot log out, as you are not logged in", 'warning')
     return redirect(url_for('main.homepage'))
 
-
-@auth.route('/profile')
-@login_required
-def profile():
-    return render_template('auth/profile.html')
 
 
 @auth.route("/register", methods=['GET', 'POST'])
@@ -71,14 +67,17 @@ def forgot_password():
     return redirect(url_for('main.homepage'))
 
 @auth.route('/change_password', methods=['GET', 'POST'])
+@decorators.login_required
 def change_password():
     form = ChangePasswordForm()
     if form.validate_on_submit():
             current_user.password = form.password.data
             db.session.add(current_user)
             db.session.commit()
-            flash('Your password has been updated.')
+            flash('Your password has been updated.', 'warning')
             return redirect(url_for('main.index'))
     return render_template("auth/change_password.html", form=form)
+
+
 
 
