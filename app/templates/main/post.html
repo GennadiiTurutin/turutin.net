@@ -7,7 +7,7 @@ body {
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-
+<!-- Adding styles to bootstrap/base.html --> 
 {% block styles %}
 {{ super() }}
 <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -15,10 +15,20 @@ body {
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('static', filename='clean-blog.min.css')}}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
 {% endblock %}
 
+{% block scripts %}
+{{super()}}
+<script type="text/javascript">
+$( "#flash" ).ready(function() {
+$( "#flash" ).fadeOut(3000);
+});
+</script>
+{% endblock %}
+
+<!-- Introduction of content --> 
 {% block content %}
+
 
 <!-- Navigation --> 
 {% include "partials/navbar.html" %}
@@ -32,7 +42,7 @@ body {
 {% endblock %}
 
 
-        <!-- Main Content -->
+<!-- Content Description-->
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -51,11 +61,12 @@ body {
       </div>
     </div>
 
+<!-- Tags -->
 {% include "partials/tag.html" %}
 {% block tag %}
 {% endblock %}
 
-    <!-- Post Content -->
+<!-- Post Content -->
     <article>
       <div class="container">
         <div class="row">
@@ -66,19 +77,11 @@ body {
       </div>
     </article>
 
-<div class="container">
-   <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
-  Click here to get pdf of the article 
-  </div>
-</div>
-</div>
-
+<!-- Comments -->
 {% include "partials/comment.html" %}
 {% block comment %}
 {% endblock %}
 
-</body>
 
 <!-- Footer -->
 {% include "partials/footer.html" %}

@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User 
+from flask_admin import AdminIndexView, expose
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
@@ -28,7 +29,16 @@ class RegistrationForm(FlaskForm):
         if user is not None: 
             raise ValidationError('Please use a different email')
 
-class ChanegPasswordForm(FlaskForm):
+class ChangePasswordForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirmation = PasswordField('Confirmation', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Change password')
+
+
+class FlaskyAdminIndexView(AdminIndexView):
+
+    @expose('/')
+    def index(self):
+        if not login.current_user.is_authenticated:
+            return redirect(url_for('.login'))
+        return super(FlaskyAdminIndexView, self).index()
