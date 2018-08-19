@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField, TextAreaField
-from wtforms.validators import DataRequired, Email
+from wtforms.fields import StringField, SubmitField, TextAreaField, PasswordField
+from wtforms.validators import DataRequired, Email, EqualTo
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Enter your comment', validators=[DataRequired()])
@@ -16,4 +16,10 @@ class ProfileForm(FlaskForm):
     username = StringField(validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     change_password = SubmitField('Change password')
+    oldpassword = PasswordField('Old password' )
+    password = PasswordField('New password')
+    confirmation = PasswordField('Confirmation')
     submit = SubmitField('Update My Profile')
+   
+
+
