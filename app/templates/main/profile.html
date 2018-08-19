@@ -26,7 +26,8 @@
 
 
   <body class="text-center">
-    <div class="content-section">
+    <div class="content-section" >
+        <div id="parent_container">
         <form method="POST" action="{{ url_for('main.profile') }}">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
@@ -41,15 +42,15 @@
                     {{ form.email(class="form-control form-control-lg", value=current_user.email) }}
                 </div>
             </fieldset>
-
-            <div class="form-group">
-                {{ form.change_password(class="btn btn-outline-info")}}
+            <div class="form-group"  id="change_password">
+              {{ form.change_password(class="btn btn-outline-info") }}
             </div>
 
+        </div>
+        <br>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
-
         </form>
     </div>
     </div>
@@ -60,6 +61,16 @@
     $( "#flash" ).ready(function() {
     $( "#flash" ).fadeOut(3000);
     });
+
+
+    $("#change_password").click(function(){
+        var oldpassword = $('<div class="form-group" id="oldpassword">{{ form.oldpassword.label(class="form-control-label") }}{{ form.oldpassword(class="form-control form-control-lg" ) }}</div>')
+            newpassword = $('<div class="form-group" id="new_password">{{ form.password.label(class="form-control-label") }}{{ form.password(class="form-control form-control-lg") }}{{ form.confirmation.label(class="form-control-label") }}{{ form.confirmation(class="form-control form-control-lg") }}</div>')
+        $("#parent_container").append(oldpassword)
+        $("#parent_container").append(newpassword)
+        $("#change_password").remove();
+    });
+
     </script>
 
 </html>
