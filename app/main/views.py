@@ -63,19 +63,23 @@ def post(post_id, post_url):
 def profile():
     form = ProfileForm()
     if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
         if form.change_password.data:
             if current_user.check_password(form.oldpassword.data):
-                current_user.username = form.username.data
-                current_user.email = form.email.data
                 current_user.set_password(form.password.data)
                 db.session.commit()
-            flash('Wrong password!', 'warning')
-            return redirect(url_for('main.profile'))
-        else:
-            current_user.username = form.username.data
-            current_user.email = form.email.data
+                flash('Your account and password have been changed!', 'info')
+            else:
+                flash('Please check your password!', 'warning')
+        else: 
             db.session.commit()
-    flash('Your account has been changed!{{form.change_password.data}}', 'success')
+            flash('Your account has been changed!', 'info')
+    else: 
+        flash('Please check your data!', 'warning')
+        #return redirect(url_for('main.profile', form=form))
     return render_template('main/profile.html', form=form)
+
+
 
         

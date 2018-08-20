@@ -18,7 +18,7 @@ class ProfileForm(FlaskForm):
     change_password = SubmitField('Change password')
     oldpassword = PasswordField('Old password' )
     password = PasswordField('New password')
-    confirmation = PasswordField('Confirmation')
+    confirmation = PasswordField('Confirmation', validators=[EqualTo('password')])
     submit = SubmitField('Update My Profile')
    
 
