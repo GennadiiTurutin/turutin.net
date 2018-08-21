@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user
 from app import decorators
 from app import db, mail
 from app.models import User
-from app.auth.forms import LoginForm, RegistrationForm
+from app.auth.forms import LoginForm, RegistrationForm, ChangePasswordForm
 from flask_mail import Message
 from app import mail
 
@@ -71,12 +71,17 @@ def forgot_password():
 def change_password():
     form = ChangePasswordForm()
     if form.validate_on_submit():
-            current_user.password = form.password.data
-            db.session.add(current_user)
-            db.session.commit()
-            flash('Your password has been updated.', 'warning')
-            return redirect(url_for('main.index'))
+            if current_user.check_password(form.oldpassword.data):
+                current_user.set_password(form.newpassword.data)
+                db.session.commit()
+                flash('Your password has been updated.', 'success')
+                return redirect(url_for('main.homepage'))
+
+            else: 
+                flash('Please check your password', 'warning')
     return render_template("auth/change_password.html", form=form)
+
+
 
 
 

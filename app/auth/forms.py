@@ -29,6 +29,12 @@ class RegistrationForm(FlaskForm):
         if user is not None: 
             raise ValidationError('Please use a different email')
 
+class ChangePasswordForm(FlaskForm):
+    oldpassword = PasswordField('Current password', validators=[DataRequired()])
+    newpassword = PasswordField('New password', validators=[DataRequired()])
+    confirmation = PasswordField('Confirm new password', validators=[DataRequired()])
+    submit = SubmitField('Change password')  
+
 
 
 
