@@ -43,13 +43,6 @@
                     {{ form.email.label(class="form-control-label") }}
                     {{ form.email(class="form-control form-control-lg", value=current_user.email) }}
                 </div>
-<<<<<<< HEAD
-=======
-            </fieldset>
-    
-             <button class="btn btn-outline-info"  id="change_password">Change password</button>
-
->>>>>>> ef4647a282de99abae1536fa5af1d20b10e5991c
 
              
             </fieldset>
@@ -71,18 +64,8 @@
     <script type="text/javascript">
 
 
-<<<<<<< HEAD
     $( "#flash" ).ready(function() {
     $( "#flash" ).fadeOut(3000);
-=======
-
-    $("#change_password").click(function(){
-        event.preventDefault();
-        var oldpassword = $('<div class="form-group" id="oldpassword">{{ form.oldpassword.label(class="form-control-label") }}{{ form.oldpassword(class="form-control form-control-lg" ) }}</div>')
-            newpassword = $('<div class="form-group" id="new_password">{{ form.password.label(class="form-control-label") }}{{ form.password(class="form-control form-control-lg") }}{{ form.confirmation.label(class="form-control-label") }}{{ form.confirmation(class="form-control form-control-lg") }}</div>')
-        $("#parent_container").append(oldpassword)
-        $("#parent_container").append(newpassword);
->>>>>>> ef4647a282de99abae1536fa5af1d20b10e5991c
     });
 
     </script>

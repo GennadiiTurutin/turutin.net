@@ -60,7 +60,6 @@ def post(post_id, post_url):
 @decorators.login_required
 def profile():
     form = ProfileForm()
-<<<<<<< HEAD
     if request.method == 'POST':
         if form.validate_on_submit():
             current_user.username = form.username.data
@@ -77,22 +76,3 @@ def profile():
 
 
         
-=======
-    if form.validate_on_submit():
-        if form.change_password.data:
-            if current_user.check_password(form.oldpassword.data):
-                current_user.username = form.username.data
-                current_user.email = form.email.data
-                current_user.set_password(form.password.data)
-                db.session.commit()
-                flash('Successful!', 'info') 
-        else:
-            current_user.username = form.username.data
-            current_user.email = form.email.data
-            db.session.commit()
-            flash('Your account has been changed!', 'success')
-    else: 
-        flash('Please check your data!', 'warning')
-    return render_template('main/profile.html', form=form)
-    
->>>>>>> ef4647a282de99abae1536fa5af1d20b10e5991c
