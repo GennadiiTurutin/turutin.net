@@ -15,11 +15,12 @@ class SearchForm(FlaskForm):
 class ProfileForm(FlaskForm):
     username = StringField(validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    change_password = SubmitField('Change password')
     oldpassword = PasswordField('Old password' )
     password = PasswordField('New password')
     confirmation = PasswordField('Confirmation', validators=[EqualTo('password')])
+    change_password = SubmitField('Change password')
     submit = SubmitField('Update My Profile')
+
    
 
 
