@@ -51,7 +51,6 @@ def create_app(config_name):
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Tag, db.session))
     admin.add_view(ModelView(Comment, db.session))
-    #admin.add_view(MyAdminIndexView(endpoint='/'))
 
     return app
 

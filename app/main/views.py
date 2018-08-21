@@ -6,9 +6,7 @@ from slugify import slugify
 from app.main.forms import CommentForm, TagForm, SearchForm, ProfileForm
 from app import db
 
-
 main = Blueprint('main', __name__)
-
 
 @main.before_request
 def before_request():
@@ -62,23 +60,18 @@ def post(post_id, post_url):
 @decorators.login_required
 def profile():
     form = ProfileForm()
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        if form.change_password.data:
-            if current_user.check_password(form.oldpassword.data):
-                current_user.set_password(form.password.data)
-                db.session.commit()
-                flash('Your account and password have been changed!', 'info')
-            else:
-                flash('Please check your password!', 'warning')
-        else: 
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            current_user.username = form.username.data
+            current_user.email = form.email.data
             db.session.commit()
             flash('Your account has been changed!', 'info')
-    else: 
-        flash('Please check your data!', 'warning')
-        #return redirect(url_for('main.profile', form=form))
+            return redirect(url_for('main.homepage'))
+        else:
+            flash('Please check your data!', 'warning')
     return render_template('main/profile.html', form=form)
+
+    
 
 
 
