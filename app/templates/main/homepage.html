@@ -58,18 +58,14 @@ $( "#flash" ).fadeOut(3000);
             </a>
             <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
           </div>
-        {% endfor %}
-        {% for page_num in posts.iter_pages() %}
-          {% if page_num %}
-          <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
-        
-          {% else %}
-          ...
-          {% endif %}
-
-
-          {% endfor %}
-
+           {% endfor %}
+           {% for page_num in posts.iter_pages() %}
+           {% if page_num %}
+           <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
+           {% else %}
+           ...
+           {% endif %}
+           {% endfor %}
           <hr>
         </div>
       </div>
@@ -80,7 +76,5 @@ $( "#flash" ).fadeOut(3000);
 {% include "partials/footer.html" %}
 {% block footer %}
 {% endblock %}
-
-
 
 {% endblock %}

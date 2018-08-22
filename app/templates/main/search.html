@@ -51,11 +51,10 @@ $( "#flash" ).fadeOut(3000);
               <h3 class="post-subtitle">
                 {{ post.subtitle }}
               </h3>
-            </a>
-            <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
-          </div>
-        {% endfor %}
-
+             </a>
+             <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
+            </div>
+           {% endfor %}
           <hr>
         </div>
       </div>
@@ -66,7 +65,5 @@ $( "#flash" ).fadeOut(3000);
 {% include "partials/footer.html" %}
 {% block footer %}
 {% endblock %}
-
-
 
 {% endblock %}

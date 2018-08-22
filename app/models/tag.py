@@ -5,7 +5,6 @@ class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tag = db.Column(db.Text)
     
-
     def __init__(self, *args, **kwargs):
         super(Tag, self).__init__(*args, **kwargs)
 
