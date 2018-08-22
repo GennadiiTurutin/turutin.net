@@ -12,7 +12,6 @@ main = Blueprint('main', __name__)
 def before_request():
     g.search_form = SearchForm()
 
-
 @main.route('/')
 def homepage():
     page = request.args.get('page', 1, type=int)
@@ -22,7 +21,6 @@ def homepage():
 @main.route('/about')
 def about():
     return render_template('main/about.html')
-
 
 @main.route('/search')
 def search():
@@ -35,7 +33,6 @@ def search():
         if page > 1 else None
     return render_template('main/homepage.html', title=('Search'), posts=posts,
                            next_url=next_url, prev_url=prev_url)
-
 
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])
 def post(post_id, post_url):
@@ -54,7 +51,6 @@ def post(post_id, post_url):
         else: 
             flash('You need to get logged in to comment', 'info')
     return render_template('main/post.html', post=post, form=form, comments=comments, tags=tags, post_id=post_id, post_url=post_url )
-
 
 @main.route('/profile', methods=['GET', 'POST'])
 @decorators.login_required

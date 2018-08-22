@@ -45,7 +45,6 @@ db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
 
 
-
 class Post(SearchableMixin, db.Model):
     __tablename__ = 'posts'
     __searchable__ = ['title', 'subtitle', 'content']
@@ -62,8 +61,6 @@ class Post(SearchableMixin, db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
-
-
 
 from app.search import add_to_index, remove_from_index, query_index
 

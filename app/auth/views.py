@@ -9,7 +9,6 @@ from app import mail
 
 auth = Blueprint('auth', __name__)
 
-
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -38,7 +37,6 @@ def logout():
     return redirect(url_for('main.homepage'))
 
 
-
 @auth.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -58,13 +56,30 @@ def register():
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', title='Register', form=form)
 
+
 @auth.route('/forgot_password')
 def forgot_password():
     msg = Message("Please use this link to change this password",
                       sender="gennadii.turutin@gmail.com",
                       recipients=["gennadii.turutin@gmail.com"])
     mail.send(msg)
+    flash("We've sent you an email with the link to reset your password", 'info')
     return redirect(url_for('main.homepage'))
+
+
+@auth.route('/forgot_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    form = ForgotPasswordForm()
+    user = User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('main.index'))
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset.')
+        return redirect(url_for('auth.login'))
+    return render_template('auth/forgot_password.html', form=form)
+
 
 @auth.route('/change_password', methods=['GET', 'POST'])
 @decorators.login_required
@@ -80,9 +95,4 @@ def change_password():
             else: 
                 flash('Please check your password', 'warning')
     return render_template("auth/change_password.html", form=form)
-
-
-
-
-
 

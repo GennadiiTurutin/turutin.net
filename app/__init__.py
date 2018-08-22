@@ -15,7 +15,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 mail = Mail()
 
-
+# Admin View: available only for admin
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
         if not current_user.username == 'Gena':
@@ -26,7 +26,6 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     app.config['DEBUG'] = True
-
     config[config_name].init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
@@ -35,7 +34,6 @@ def create_app(config_name):
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
         
-    
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
