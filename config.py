@@ -15,6 +15,7 @@ class Config:
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     SSL_REDIRECT = False
+    POSTS_PER_PAGE = 2
     
     ELASTICSEARCH_URL='http://localhost:9200'
 

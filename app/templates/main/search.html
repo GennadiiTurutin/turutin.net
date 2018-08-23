@@ -42,7 +42,7 @@ $( "#flash" ).fadeOut(3000);
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-           {% for post in posts %}
+           {% for post in posts.items %}
             <div class="post-preview">
              <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
               <h2 class="post-title">

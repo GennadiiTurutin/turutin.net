@@ -25,14 +25,12 @@ def about():
 @main.route('/search')
 def search():
     page = request.args.get('page', 1, type=int)
-    posts, total = Post.search(g.search_form.query.data, page,
-                               current_app.config['POSTS_PER_PAGE'])
-    next_url = url_for('main.homepage', q=g.search_form.query.data, page=page + 1) \
-        if total > page * current_app.config['POSTS_PER_PAGE'] else None
-    prev_url = url_for('main.homepage', q=g.search_form.query.data, page=page - 1) \
-        if page > 1 else None
-    return render_template('main/homepage.html', title=('Search'), posts=posts,
-                           next_url=next_url, prev_url=prev_url)
+    posts = Post.search(g.search_form.q.data, page, current_app.config['POSTS_PER_PAGE'])
+   # next_url = url_for('main.homepage', q=g.search_form.q.data, page=page + 1) \
+   #     if total > page * current_app.config['POSTS_PER_PAGE'] else None
+    #prev_url = url_for('main.homepage', q=g.search_form.q.data, page=page - 1) \
+    #    if page > 1 else None
+    return render_template('main/search.html', posts=posts, slugify=slugify)
 
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])
 def post(post_id, post_url):
