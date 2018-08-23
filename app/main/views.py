@@ -1,16 +1,13 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, request, g, current_app
+from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
 from flask_login import current_user
 from app import decorators
 from app.models import User, Post, Comment, Tag
 from slugify import slugify
-from app.main.forms import CommentForm, TagForm, SearchForm, ProfileForm
+from app.main.forms import CommentForm, TagForm, ProfileForm
 from app import db
 
 main = Blueprint('main', __name__)
 
-@main.before_request
-def before_request():
-    g.search_form = SearchForm()
 
 @main.route('/')
 def homepage():
@@ -18,15 +15,11 @@ def homepage():
     posts = Post.query.paginate(page=page, per_page=2)
     return render_template('main/homepage.html', posts=posts, slugify=slugify)
 
+
 @main.route('/about')
 def about():
     return render_template('main/about.html')
 
-@main.route('/search')
-def search():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.search(g.search_form.q.data, page, current_app.config['POSTS_PER_PAGE'])
-    return render_template('main/search.html', posts=posts, slugify=slugify)
 
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])
 def post(post_id, post_url):
