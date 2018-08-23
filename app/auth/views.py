@@ -3,9 +3,10 @@ from flask_login import login_user, logout_user, current_user
 from app import decorators
 from app import db, mail
 from app.models import User
-from app.auth.forms import LoginForm, RegistrationForm, ChangePasswordForm
+from app.auth.forms import LoginForm, RegistrationForm, ChangePasswordForm, RequestForm, ForgotPasswordForm
 from flask_mail import Message
 from app import mail
+from app.models import User 
 
 auth = Blueprint('auth', __name__)
 
@@ -57,28 +58,42 @@ def register():
     return render_template('auth/register.html', title='Register', form=form)
 
 
-@auth.route('/forgot_password')
+@auth.route('/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
-    msg = Message("Please use this link to change this password",
-                      sender="gennadii.turutin@gmail.com",
-                      recipients=["gennadii.turutin@gmail.com"])
-    mail.send(msg)
-    flash("We've sent you an email with the link to reset your password", 'info')
-    return redirect(url_for('main.homepage'))
+    form = RequestForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None:
+            token = user.get_reset_password_token()
+            msg = Message("Please use this link to change this password",
+                          sender="gennadii.turutin@gmail.com",
+                          recipients=["gennadii.turutin@gmail.com"])
+            msg.html = render_template('email/reset_password.html', user=user, token=token)
+            mail.send(msg)
+            flash("We've sent you an email with the link to reset your password", 'info')
+            return redirect(url_for('main.homepage'))
+        else: 
+            flash("Please check your email", 'info')
+    return render_template('auth/request_password.html', form=form)
 
 
 @auth.route('/forgot_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     form = ForgotPasswordForm()
     user = User.verify_reset_password_token(token)
-    if not user:
-        return redirect(url_for('main.index'))
-    if form.validate_on_submit():
-        user.set_password(form.password.data)
-        db.session.commit()
-        flash('Your password has been reset.')
-        return redirect(url_for('auth.login'))
-    return render_template('auth/forgot_password.html', form=form)
+    if request.method == 'POST':
+        if not user:
+            flash('You are not authorized', 'info')
+            return redirect(url_for('main.homepage'))
+        else:
+            if form.validate_on_submit():
+                user.set_password(form.newpassword.data)
+                db.session.commit()
+                flash('Your password has been reset.', 'success')
+                return redirect(url_for('auth.login'))
+            else: 
+                flash('Check your data', 'info')
+    return render_template('auth/forgot_password.html', form=form, token=token)
 
 
 @auth.route('/change_password', methods=['GET', 'POST'])
@@ -91,7 +106,6 @@ def change_password():
                 db.session.commit()
                 flash('Your password has been updated.', 'success')
                 return redirect(url_for('main.homepage'))
-
             else: 
                 flash('Please check your password', 'warning')
     return render_template("auth/change_password.html", form=form)
