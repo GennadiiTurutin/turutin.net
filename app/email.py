@@ -18,3 +18,14 @@ def send_email(to, subject, template, **kwargs):
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
     return thr
+
+
+def send_password_reset_email(user):
+    token = user.get_reset_password_token()
+    send_email(_('[Microblog] Reset Your Password'),
+               sender="gennadii.turutin@gmail.com",
+               recipients=["gennadii.turutin@gmail.com"],
+               text_body=render_template('email/reset_password.txt',
+                                         user=user, token=token),
+               html_body=render_template('email/reset_password.html',
+                                         user=user, token=token))

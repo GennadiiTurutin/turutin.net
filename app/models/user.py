@@ -4,6 +4,10 @@ from app import db, login
 from datetime import datetime
 from flask_login import  UserMixin 
 import hashlib
+import jwt
+from time import time
+from flask import current_app, url_for
+
 
 
 @login.user_loader

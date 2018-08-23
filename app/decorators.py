@@ -15,9 +15,5 @@ def login_required(func):
 def admin_required(func):
     @wraps(func)
     def wrap(*args, **kwargs):
-        #if session['name'] == "gennadii.turutin@gmail.com":
         return func(*args, **kwargs)
-        #else:
-        #flash("Access restricted", category='warning')
-         #   return redirect(url_for('homepage'))
     return wrap

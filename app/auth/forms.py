@@ -40,6 +40,10 @@ class ForgotPasswordForm(FlaskForm):
     confirmation = PasswordField('Confirm new password', validators=[DataRequired()])
     submit = SubmitField('Change password')  
 
+class RequestForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    submit = SubmitField('Request link')
+
 
 
 
