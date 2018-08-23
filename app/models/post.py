@@ -1,6 +1,7 @@
-from app import db
+from app import db, login
 from datetime import datetime
-
+from app.search import add_to_index, remove_from_index, query_index
+from app.models import User
 
 class SearchableMixin(object):
     @classmethod
@@ -17,22 +18,19 @@ class SearchableMixin(object):
     @classmethod
     def before_commit(cls, session):
         session._changes = {
-            'add': list(session.new),
-            'update': list(session.dirty),
-            'delete': list(session.deleted)
+            'add': [obj for obj in session.new if isinstance(obj, cls)], 
+            'update': [obj for obj in session.dirty if isinstance(obj, cls)],
+            'delete': [obj for obj in session.deleted if isinstance(obj, cls)]
         }
 
     @classmethod
     def after_commit(cls, session):
         for obj in session._changes['add']:
-            if isinstance(obj, SearchableMixin):
-                add_to_index(obj.__tablename__, obj)
+            add_to_index(cls.__tablename__, obj)
         for obj in session._changes['update']:
-            if isinstance(obj, SearchableMixin):
-                add_to_index(obj.__tablename__, obj)
+            add_to_index(cls.__tablename__, obj)
         for obj in session._changes['delete']:
-            if isinstance(obj, SearchableMixin):
-                remove_from_index(obj.__tablename__, obj)
+            remove_from_index(cls.__tablename__, obj)
         session._changes = None
 
     @classmethod
@@ -41,8 +39,10 @@ class SearchableMixin(object):
             add_to_index(cls.__tablename__, obj)
 
 
-db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
-db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 class Post(SearchableMixin, db.Model):
@@ -62,7 +62,13 @@ class Post(SearchableMixin, db.Model):
     def __repr__(self):
         return '<Post %r>' % self.title
 
-from app.search import add_to_index, remove_from_index, query_index
+db.event.listen(db.session, 'before_commit', Post.before_commit)
+db.event.listen(db.session, 'after_commit', Post.after_commit)       
+
+
+
+
+
 
 
 

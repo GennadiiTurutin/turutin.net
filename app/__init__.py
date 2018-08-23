@@ -12,7 +12,7 @@ from config import config
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
-login_manager = LoginManager()
+login = LoginManager()
 mail = Mail()
 
 # Admin View: available only for admin
@@ -28,7 +28,7 @@ def create_app(config_name):
     app.config['DEBUG'] = True
     config[config_name].init_app(app)
     db.init_app(app)
-    login_manager.init_app(app)
+    login.init_app(app)
     admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
     mail.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
