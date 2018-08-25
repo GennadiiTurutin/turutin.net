@@ -9,7 +9,7 @@
 
 
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-        <a class="navbar-brand" href="{{ url_for('main.homepage') }}">PyBlog</a>
+        <div class="nav-item" href="{{ url_for('main.homepage') }}">Gennadii's Blog</div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -46,11 +46,6 @@
             </li>
             {% endif %}
             </ul>
-            <form class="form-inline mt-2 mt-md-0" method="GET" action="{{ url_for('main.search') }}" style="size:400;">
-
-             {{ g.search_form.q(size=20, placeholder=g.search_form.q.label.text) }} 
-             <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
-      
              </form>
         </div>
 </nav>

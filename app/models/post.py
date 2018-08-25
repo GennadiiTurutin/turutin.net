@@ -1,6 +1,5 @@
 from app import db, login
 from datetime import datetime
-from app.search import add_to_index, remove_from_index, query_index
 from app.models import User
 
 class SearchableMixin(object):
