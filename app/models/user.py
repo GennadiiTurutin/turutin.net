@@ -1,12 +1,14 @@
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
-from datetime import datetime
+from datetime import datetime, timedelta
 from flask_login import  UserMixin 
 import hashlib
 import jwt
 from time import time
 from flask import current_app, url_for
+import base64
+import os
 
 
 
@@ -35,9 +37,6 @@ class User(UserMixin, db.Model):
         super(User, self).__init__(*args, **kwargs)
         self.avatar_hash = hashlib.md5(self.email.lower().encode('utf-8')).hexdigest()
 
-    def verify_password(self, password):
-        return self.password == password
-
     def gravatar(self, size=60, default='identicon', rating='g'):
         url = 'https://secure.gravatar.com/avatar'
         return '{url}/{hash}?s={size}&d={default}&r={rating}'.format(
@@ -63,6 +62,7 @@ class User(UserMixin, db.Model):
         except:
             return
         return User.query.get(id)
+
     def get_token(self, expires_in=3600):
         now = datetime.utcnow()
         if self.token and self.token_expiration > now + timedelta(seconds=60):
