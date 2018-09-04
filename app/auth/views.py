@@ -5,8 +5,7 @@ from app import db, mail
 from app.models import User
 from app.auth.forms import LoginForm, RegistrationForm, ChangePasswordForm, RequestForm, ForgotPasswordForm
 from flask_mail import Message
-from app import mail
-from app.models import User 
+from app import mail 
 
 auth = Blueprint('auth', __name__)
 
@@ -49,9 +48,10 @@ def register():
         db.session.add(user)
         db.session.commit()
         login_user(user)
-        msg = Message("You've been successfully registered! Welcome!",
+        msg = Message("Registration G's blog",
                       sender="gennadii.turutin@gmail.com",
-                      recipients=["gennadii.turutin@gmail.com"])
+                      recipients=[user.email])
+        msg.html = render_template('email/greeting.html', user=user )
         mail.send(msg)
         flash('Your account has been created!', 'success')
         return redirect(url_for('auth.login'))
@@ -65,9 +65,9 @@ def forgot_password():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None:
             token = user.get_reset_password_token()
-            msg = Message("Please use this link to change this password",
+            msg = Message("Password request G's blog",
                           sender="gennadii.turutin@gmail.com",
-                          recipients=["gennadii.turutin@gmail.com"])
+                          recipients=[user.email])
             msg.html = render_template('email/reset_password.html', user=user, token=token)
             mail.send(msg)
             flash("We've sent you an email with the link to reset your password", 'info')

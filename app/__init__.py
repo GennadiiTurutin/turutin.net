@@ -5,7 +5,6 @@ from flask_login import LoginManager, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from elasticsearch import Elasticsearch
 from flask_admin import BaseView, AdminIndexView, expose
 from config import config
 
@@ -31,8 +30,6 @@ def create_app(config_name):
     login.init_app(app)
     admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
     mail.init_app(app)
-    app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
-        if app.config['ELASTICSEARCH_URL'] else None
         
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
