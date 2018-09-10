@@ -7,6 +7,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView
 from config import config
+from flask_bootstrap import Bootstrap
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -18,7 +19,7 @@ mail = Mail()
 # Admin View: available only for admin
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
-        if not current_user.username == 'Gena':
+        if not current_user.email == 'gennadii.turutin@gmail.com':
             return False
         return True
 
@@ -29,12 +30,13 @@ class MyPostView(ModelView):
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-    app.config['DEBUG'] = True
     config[config_name].init_app(app)
     db.init_app(app)
     login.init_app(app)
-    admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
     mail.init_app(app)
+    bootstrap = Bootstrap(app)
+    admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
+   
         
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
