@@ -20,6 +20,26 @@ body {
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('static', filename='clean-blog.min.css')}}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+<script language='javascript' type='text/javascript' src='http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js' />
+<script language='javascript'  type='text/javascript' src='http://google-code-prettify.googlecode.com/svn/trunk/src/lang-css.js'/>
+
+<script type='text/javascript'>
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+addLoadEvent(prettyPrint);
+</script>
 {% endblock %}
 
 {% block scripts %}
@@ -52,12 +72,12 @@ $( "#flash" ).fadeOut(3000);
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-preview">
-              <h2 class="post-title">
+              <h1 class="post-title">
                 {{ post.title }}
-              </h2>
-              <h3 class="post-subtitle">
+              </h1>
+              <h2 class="post-subtitle">
                 {{ post.subtitle }}
-              </h3>
+              </h2>
             </a>
             <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }} </p>
           </div>
