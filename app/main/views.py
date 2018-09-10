@@ -6,6 +6,7 @@ from slugify import slugify
 from app.main.forms import CommentForm, TagForm, ProfileForm
 from app import db
 
+
 main = Blueprint('main', __name__)
 
 
@@ -53,6 +54,9 @@ def profile():
         else:
             flash('Please check your data!', 'warning')
     return render_template('main/profile.html', form=form)
+
+
+
 
     
 
