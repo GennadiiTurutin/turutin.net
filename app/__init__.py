@@ -5,7 +5,7 @@ from flask_login import LoginManager, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_admin import BaseView, AdminIndexView, expose
+from flask_admin import AdminIndexView
 from config import config
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -14,12 +14,17 @@ db = SQLAlchemy()
 login = LoginManager()
 mail = Mail()
 
+
 # Admin View: available only for admin
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
         if not current_user.username == 'Gena':
             return False
         return True
+
+class MyPostView(ModelView): 
+    form_widget_args = {"content": {'style': 'height: 500px;'}}
+
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -42,7 +47,7 @@ def create_app(config_name):
     from app.models.comment import Comment 
     from app.models.tag import Tag 
 
-    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(MyPostView(Post, db.session))
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Tag, db.session))
     admin.add_view(ModelView(Comment, db.session))

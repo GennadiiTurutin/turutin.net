@@ -1,6 +1,9 @@
 from app import db, login
 from datetime import datetime
 from app.models import User
+from markdown import markdown
+import bleach
+
 
 
 @login.user_loader
@@ -14,7 +17,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, index=True)
     subtitle = db.Column(db.String, index=True)
-    content = db.Column(db.String, index=True)
+    content = db.Column(db.Text, index=True)
     date = db.Column(db.String, index=True, default=datetime.now().strftime('%Y-%m-%d'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
@@ -24,7 +27,6 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
-    
 
 
 
