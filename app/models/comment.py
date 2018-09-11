@@ -7,7 +7,7 @@ class Comment(db.Model):
     content = db.Column(db.Text)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    date = db.Column(db.String, index=True, default=datetime.now().strftime('%Y-%m-%d'))
+    date = db.Column(db.String, index=True, default=datetime.now().strftime('%B %d %Y'))
 
     def __init__(self, *args, **kwargs):
         super(Comment, self).__init__(*args, **kwargs)

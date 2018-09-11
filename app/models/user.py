@@ -25,7 +25,7 @@ class User(UserMixin, db.Model):
     avatar_hash = db.Column(db.String(32))
     token = db.Column(db.String(32), index=True, unique=True)
     token_expiration = db.Column(db.DateTime)
-    date = db.Column(db.String(20), index=True, default=datetime.now().strftime('%Y-%m-%d'))
+    date = db.Column(db.String(20), index=True, default=datetime.now().strftime('%B %d %Y'))
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
 
