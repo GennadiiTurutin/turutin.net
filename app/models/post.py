@@ -21,6 +21,7 @@ class Post(db.Model):
     date = db.Column(db.String, index=True, default=datetime.now().strftime('%B %d %Y'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
+    tags = db.relationship('Tag', backref='post', lazy='dynamic')
 
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)

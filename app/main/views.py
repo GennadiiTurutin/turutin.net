@@ -28,6 +28,7 @@ def post(post_id, post_url):
     tags = Tag.query.filter_by(id=post_id)
     form = CommentForm()
     comments = Comment.query.filter_by(post_id=post_id).order_by(Comment.date.desc())
+    tags = Tag.query.filter_by(post_id=post_id)
     if form.validate_on_submit():
         if current_user.is_authenticated:
             comment = Comment(content=form.content.data,

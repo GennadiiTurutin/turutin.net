@@ -82,14 +82,16 @@ $( "#flash" ).fadeOut(3000);
             <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }} </p>
           </div>
           <hr>
+           <!-- Tags -->
+           {% include "partials/tag.html" %}
+           {% block tag %}
+           {% endblock %}
+          <hr>
         </div>
       </div>
     </div>
 
-<!-- Tags -->
-{% include "partials/tag.html" %}
-{% block tag %}
-{% endblock %}
+
 
 <!-- Post Content -->
     <article>
