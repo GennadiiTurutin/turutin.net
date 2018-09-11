@@ -18,7 +18,7 @@ class Post(db.Model):
     title = db.Column(db.String, index=True)
     subtitle = db.Column(db.String, index=True)
     content = db.Column(db.Text, index=True)
-    date = db.Column(db.String, index=True, default=datetime.now().strftime('%Y-%m-%d'))
+    date = db.Column(db.String, index=True, default=datetime.now().strftime('%B %d %Y'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
 
