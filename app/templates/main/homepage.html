@@ -1,7 +1,13 @@
 <style>
+
 body {
     padding-top: 150px;
-}  
+}
+
+img {
+    max-width: 300%;
+    height: auto;
+}
 
 .navbar-collapse.collapse.in {
   display: block!important;
@@ -44,6 +50,10 @@ $( "#flash" ).fadeOut(3000);
 {% block navbar %}
 {% endblock %}
 
+<!-- Jumbotron --> 
+{% include "partials/jumbotron.html" %}
+{% block jumbotron %}
+{% endblock %}
 
 <!-- Flash messages --> 
 {% include "partials/flash.html" %}
@@ -51,44 +61,42 @@ $( "#flash" ).fadeOut(3000);
 {% endblock %}
 
 <!-- Main Content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-           {% for post in posts.items %}
-            <div class="post-preview">
-             <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-              <h2 class="post-title">
-                {{ post.title }}
-              </h2>
-              <h3 class="post-subtitle">
-                {{ post.subtitle }}
-              </h3>
-            </a>
-            <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
-          </div>
-           {% endfor %}
-           {% for page_num in posts.iter_pages() %}
-           {% if page_num %}
-           <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
-           {% else %}
-           ...
-           {% endif %}
-           {% endfor %}
-          <hr>
-        </div>
-        <div class="col-lg-4 col-md-4 mx-auto" >
-           <div style="margin-top: 0px; border:1px solid #cecece; border-radius: 25px;">
-      		<h3 style="margin: 10px;"> About me </h3>
-      		<p style="font-size: 1.75rem; margin: 10px;"> Hey! My name is Gennadii, and I love web development and data science! </p>
-      		<div style="margin: 10px; font-size: 40px;">
-      		<a href="#"><i class="fa fa-github"></i></a>
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            </div>
-      	   </div>
-      	</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      {% for post in posts.items %}
+      <div class="post-preview">
+          <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+          <h2 class="post-title">{{ post.title }}</h2>
+          <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+          </a>
+          <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
       </div>
+      {% endfor %}
+
+      {% for page_num in posts.iter_pages() %}
+      {% if page_num %}
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
+      {% else %}
+      ...
+      {% endif %}
+      {% endfor %}
+      <hr>
     </div>
+      
+    <div class="col-lg-4 col-md-4 mx-auto">
+      {% include "partials/about_me.html" %}
+      {% block about_me %}
+      {% endblock %}
+      <div class="container" style="margin: 100px;">
+      {% include "partials/donate.html" %}
+      {% block donate %}
+      {% endblock %}
+      </div>
+    </div>    
+   </div>
+  </div>
+</div>
 
  
 
