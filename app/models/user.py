@@ -82,4 +82,16 @@ class User(UserMixin, db.Model):
             return None
         return user
 
+    def to_json(self):
+        data = {
+            'id': self.id,
+            'username': self.username,
+            'posts': self.posts,
+            'comments': self.comments,
+            'date': self.date
+        }
+
+        return data
+
+
 

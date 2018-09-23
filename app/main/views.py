@@ -17,11 +17,6 @@ def homepage():
     return render_template('main/homepage.html', posts=posts, slugify=slugify)
 
 
-@main.route('/about')
-def about():
-    return render_template('main/about.html')
-
-
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])
 def post(post_id, post_url):
     post = Post.query.filter_by(id=post_id).first()
