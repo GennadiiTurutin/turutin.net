@@ -1,1 +1,1 @@
-from app.api.auth import api
+from app.api.views import api
