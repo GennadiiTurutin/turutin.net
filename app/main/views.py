@@ -1,20 +1,42 @@
-from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app
+from flask import Blueprint, render_template, flash, redirect, url_for, request, current_app, g
 from flask_login import current_user
 from app import decorators
 from app.models import User, Post, Comment, Tag
 from slugify import slugify
-from app.main.forms import CommentForm, TagForm, ProfileForm
+from app.main.forms import CommentForm, TagForm, ProfileForm, ContactForm
 from app import db
 
 
 main = Blueprint('main', __name__)
-
 
 @main.route('/')
 def homepage():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.paginate(page=page, per_page=5)
     return render_template('main/homepage.html', posts=posts, slugify=slugify)
+
+@main.route('/my_projects')
+def my_projects():
+    return render_template('main/my_projects.html')
+
+@main.route('/contact')
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        flash('Your message has been sent.', 'success')
+    return render_template('main/contact_me.html', form=form)
+
+@main.route('/terms')
+def terms():
+    return render_template('main/terms.html')
+
+@main.route('/privacy')
+def privacy():
+    return render_template('main/privacy.html')
+
+@main.route('/api')
+def api_view():
+    return render_template('main/api.html')
 
 
 @main.route('/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])

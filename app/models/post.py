@@ -14,10 +14,10 @@ class Post(db.Model):
     __tablename__ = 'posts'
     __searchable__ = ['title', 'subtitle', 'content']
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String, index=True)
-    subtitle = db.Column(db.String, index=True)
-    content = db.Column(db.Text, index=True)
-    date = db.Column(db.String, index=True, default=datetime.now().strftime('%B %d %Y'))
+    title = db.Column(db.String)
+    subtitle = db.Column(db.String)
+    content = db.Column(db.Text)
+    date = db.Column(db.String, default=datetime.now().strftime('%B %d %Y'))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     tags = db.relationship('Tag', backref='post', lazy='dynamic')
@@ -27,6 +27,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post %r>' % self.title
+
+
 
 
 

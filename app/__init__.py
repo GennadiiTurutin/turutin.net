@@ -9,12 +9,12 @@ from flask_admin import AdminIndexView
 from config import config
 from flask_bootstrap import Bootstrap
 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 db = SQLAlchemy()
 login = LoginManager()
 mail = Mail()
-
 
 # Admin View: available only for admin
 class MyAdminIndexView(AdminIndexView):
@@ -36,8 +36,8 @@ def create_app(config_name):
     mail.init_app(app)
     bootstrap = Bootstrap(app)
     admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
+    
    
-        
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
@@ -51,7 +51,7 @@ def create_app(config_name):
     from app.models.post import Post 
     from app.models.comment import Comment 
     from app.models.tag import Tag 
-
+    
     admin.add_view(MyPostView(Post, db.session))
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Tag, db.session))
