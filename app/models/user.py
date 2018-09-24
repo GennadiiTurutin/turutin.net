@@ -19,13 +19,13 @@ def load_user(user_id):
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), index=True)
-    email = db.Column(db.String(64), unique=True, index=True)
+    username = db.Column(db.String(64))
+    email = db.Column(db.String(64), unique=True)
     password_hash = db.Column(db.String(128))
     avatar_hash = db.Column(db.String(32))
-    token = db.Column(db.String(32), index=True, unique=True)
+    token = db.Column(db.String(32), unique=True)
     token_expiration = db.Column(db.DateTime)
-    date = db.Column(db.String(20), index=True, default=datetime.now().strftime('%B %d %Y'))
+    date = db.Column(db.String(20), default=datetime.now().strftime('%B %d %Y'))
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
 
@@ -81,17 +81,6 @@ class User(UserMixin, db.Model):
         if user is None or user.token_expiration < datetime.utcnow():
             return None
         return user
-
-    def to_json(self):
-        data = {
-            'id': self.id,
-            'username': self.username,
-            'posts': self.posts,
-            'comments': self.comments,
-            'date': self.date
-        }
-
-        return data
 
 
 

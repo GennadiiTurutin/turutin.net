@@ -11,3 +11,4 @@ class Tag(db.Model):
 
     def __repr__(self):
         return '<Tag %r>' % self.tag
+

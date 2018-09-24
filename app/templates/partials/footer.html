@@ -1,3 +1,11 @@
+<style>
+
+h5 a {
+  color: black;
+}
+
+</style>
+
 <!-- Footer -->
 <footer style="margin-bottom: 50px;">
     <!-- Footer Links -->
@@ -11,9 +19,17 @@
           <!-- Content -->
           <h3 class="text-uppercase font-weight-bold">Legal stuff</h4>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <h5 class="text-uppercase font-weight-bold">Terms and Condition</h5>
+          <h5 class="text-uppercase font-weight-bold">
+          <a href="{{ url_for('main.terms') }}">
+          Terms and Condition
+          </a>
+          </h5>
           <hr>
-          <h5 class="text-uppercase font-weight-bold">Privacy Policy</h5>
+          <h5 class="text-uppercase font-weight-bold">
+          <a href="{{ url_for('main.privacy') }}">
+          Privacy Policy
+          </a>
+          </h5>
         </div>
 
            <!-- Grid column -->
@@ -21,9 +37,13 @@
           <!-- Content -->
           <h3 class="text-uppercase font-weight-bold">Useful Links</h4>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <h5 class="text-uppercase font-weight-bold">My projects</h5>
+          <h5 class="text-uppercase font-weight-bold">
+          <a href="{{ url_for('main.my_projects') }}">My projects</a>
+          </h5>
           <hr>
-          <h5 class="text-uppercase font-weight-bold">WEBSITE API</h5>
+          <h5 class="text-uppercase font-weight-bold">
+            <a href="{{ url_for('main.api_view') }}">Website API</a>
+          </h5>
         </div>
 
         <!-- Grid column -->
@@ -34,7 +54,9 @@
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <h5 class="text-uppercase font-weight-bold"><i class="fa fa-home mr-3"></i> New York, NY, 10028</h5>
           <hr>
-          <h5 class="font-weight-bold"><i class="fa fa-envelope mr-3"></i> gennadii.turutin@gmail.com</h5>
+          <h5 class="font-weight-bold"><i class="fa fa-envelope mr-3"></i>
+          <a href="{{ url_for('main.contact') }}">gennadii.turutin@gmail.com</a>
+        </h5>
 
         </div>
         <!-- Grid column -->
