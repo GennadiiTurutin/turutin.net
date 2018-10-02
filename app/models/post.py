@@ -1,8 +1,6 @@
 from app import db, login
 from datetime import datetime
 from app.models import User
-from markdown import markdown
-import bleach
 
 
 @login.user_loader
