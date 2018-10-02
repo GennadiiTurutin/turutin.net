@@ -8,7 +8,6 @@ from app import db
 api = Blueprint('api', __name__)
 
 
-
 @api.route('/users/<string:username>/')
 def get_user(username):
     user = User.query.filter_by(username=username).first()
