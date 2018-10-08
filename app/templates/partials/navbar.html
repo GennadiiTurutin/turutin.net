@@ -1,31 +1,36 @@
 <style>
 .nav-item {
-    padding-right: 1rem;
+    padding-right: 4rem;
     padding-left: 5rem;
-}
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-a {
-    color: white;
-}
+nav {
+  border-bottom: 1px solid black;
+
+  }
 
 </style>
-
-
-<nav class="navbar navbar-expand-md fixed-top" style="background-color: #059577;">
-<div class="nav-item" href="{{ url_for('main.homepage') }}">
-  <img src="static/images/python-logo.png" style="width:40px;height:40px;">
+<div class="fixed-top" style="position: absolute; display: flex; justify-content: center; margin-top: 2%;">
+<img src="static/images/flask.png" width="50" height="75" alt="logo">
 </div>
-<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-Menu
+
+
+<nav class="navbar navbar-expand-md sticky-top" style="background-color: white;">
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 20px;">
+MENU
 <i class="fa fa-bars"></i>
 </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mr-auto">
-          
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main.homepage') }}">Home</a>
+              <a class="nav-link" href="{{ url_for('main.homepage') }}"><i class="fa fa-home mr-3"></i></a>
             </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
               {% if current_user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('main.profile') }}">{{ current_user.username }}</a>
@@ -48,6 +53,6 @@ Menu
               <a class="nav-link" href="{{ url_for('admin.index') }}">Admin</a>
             </li>
             {% endif %}
-            </ul>
+          </ul>
         </div>
 </nav>

@@ -13,7 +13,8 @@ main = Blueprint('main', __name__)
 def homepage():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.paginate(page=page, per_page=5)
-    return render_template('main/homepage.html', posts=posts, slugify=slugify)
+    tags = Tag.query.all()
+    return render_template('main/homepage.html', posts=posts, slugify=slugify, tags=tags)
 
 @main.route('/my_projects')
 def my_projects():
