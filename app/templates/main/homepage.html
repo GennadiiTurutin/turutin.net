@@ -5,6 +5,12 @@ body {
 .navbar-collapse.collapse.in {
   display: block!important;
 }
+
+.container_img {
+    display: block;
+    width:300px;
+}
+
 </style>
 {% extends "bootstrap/base.html" %}
 {% block styles %}
@@ -37,55 +43,65 @@ $( "#flash" ).fadeOut(3000);
 {% block navbar %}
 {% endblock %}
 
-<!-- Jumbotron --> 
-{% include "partials/jumbotron.html" %}
-{% block jumbotron %}
-{% endblock %}
-
 <!-- Flash messages --> 
 {% include "partials/flash.html" %}
 {% block flash %}
 {% endblock %}
 
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      {% for post in posts.items %}
-      <div class="post-preview">
-          <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-          <h2 class="post-title">{{ post.title }}</h2>
-          <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-          </a>
-          <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
-      </div>
-      {% endfor %}
 
-      {% for page_num in posts.iter_pages() %}
-      {% if page_num %}
-      <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
-      {% else %}
-      ...
-      {% endif %}
-      {% endfor %}
-      <hr>
+<div class="row">
+
+  <div class="col-lg-6 col-md-7 mx-auto">
+
+    <div class="container">
+    {% include "partials/jumbotron.html" %}
+    {% block jumbotron %}
+    {% endblock %}
     </div>
-      
-    <div class="col-lg-4 col-md-4 mx-auto">
+<hr>
+
+    <div class="container">
+    {% for post in posts.items %}
+    <div class="post-preview">
+    <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+    </a>
+    <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
+    </div>
+    {% endfor %}
+
+
+    {% for page_num in posts.iter_pages() %}
+    {% if page_num %}
+    <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
+    {% else %}
+    ...
+    {% endif %}
+    {% endfor %}
+    <hr>
+    </div>
+    </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" >
+    <div class="container_img" style="background-color: #efeff5;margin-left: 3%">  
+
       {% include "partials/about_me.html" %}
       {% block about_me %}
       {% endblock %}
-      <div class="container">
+
+      
       {% include "partials/donate.html" %}
       {% block donate %}
       {% endblock %}
-      </div>
-    </div>    
-   </div>
-  </div>
+    
+      <hr>
+      {% include "partials/categories.html" %}
+      {% block categories %}
+      {% endblock %}
+    
+</div> 
 </div>
-
- 
 
 <!-- Footer -->
 {% include "partials/footer.html" %}
