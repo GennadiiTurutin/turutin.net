@@ -11,7 +11,12 @@ body {
     width:300px;
 }
 
+.container img { 
+  width: 100%;
+}
+
 </style>
+
 {% extends "bootstrap/base.html" %}
 {% block styles %}
 {{ super() }}
@@ -64,6 +69,9 @@ $( "#flash" ).fadeOut(3000);
     {% for post in posts.items %}
     <div class="post-preview">
     <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+    <div style="overflow: hidden; height:300px; ">
+    <img src="{{ post.post_image_url }}" alt="Card image cap" height="300">
+    </div>
     <h2 class="post-title">{{ post.title }}</h2>
     <h3 class="post-subtitle">{{ post.subtitle }}</h3>
     </a>
@@ -83,8 +91,9 @@ $( "#flash" ).fadeOut(3000);
     </div>
     </div>
 
+
   <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" >
-    <div class="container_img" style="background-color: #efeff5;margin-left: 3%">  
+    <div class="container_img" style="background-color: #efeff5;margin-left: 5%;">  
 
       {% include "partials/about_me.html" %}
       {% block about_me %}
@@ -99,7 +108,7 @@ $( "#flash" ).fadeOut(3000);
       {% include "partials/categories.html" %}
       {% block categories %}
       {% endblock %}
-    
+    </div>
 </div> 
 </div>
 
