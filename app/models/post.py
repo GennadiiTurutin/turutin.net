@@ -19,6 +19,7 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')
     tags = db.relationship('Tag', backref='post', lazy='dynamic')
+    post_image_url= db.Column(db.String)
 
     def __init__(self, *args, **kwargs):
         super(Post, self).__init__(*args, **kwargs)
