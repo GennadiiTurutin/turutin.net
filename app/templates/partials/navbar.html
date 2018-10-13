@@ -2,26 +2,32 @@
 .nav-item {
     padding-right: 4rem;
     padding-left: 5rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
   }
 
-nav {
-  border-bottom: 1px solid black;
+.fixed-top {
+  position: absolute;
+  display: flex; 
+  justify-content: center; 
+  margin-top: 3%; 
+  font-size: 5rem;
+  font-weight: bold;
+}
 
-  }
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #d6d6d6;
+}
 
 </style>
-<div class="fixed-top" style="position: absolute; display: flex; justify-content: center; margin-top: 2%;">
-<img src="static/images/flask.png" width="50" height="75" alt="logo">
-</div>
+
+<div class="fixed-top">turutin.net</div>
 
 
-<nav class="navbar navbar-expand-md sticky-top" style="background-color: white;  border-bottom: 0.5px solid #333333;">
-<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 20px;">
-MENU
-<i class="fa fa-bars"></i>
-</button>
+<nav class="navbar navbar-expand-md sticky-top">
+
+<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 20px;">MENU<i class="fa fa-bars"></i></button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mr-auto">
