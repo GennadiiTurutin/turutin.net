@@ -1,27 +1,9 @@
-<style>
-body {
-    padding-top: 150px;
-}
-.navbar-collapse.collapse.in {
-  display: block!important;
-}
-
-.container_img {
-    display: block;
-    width:300px;
-}
-
-.container img { 
-  width: 100%;
-}
-
-</style>
-
 {% extends "bootstrap/base.html" %}
 {% block styles %}
 {{ super() }}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="{{url_for('static', filename='clean-blog.min.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='custom.css')}}">
 <link href="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
 <link rel="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 
@@ -29,6 +11,7 @@ body {
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
 {% endblock %}
 
 {% block scripts %}
@@ -40,15 +23,15 @@ $( "#flash" ).fadeOut(3000);
 </script>
 {% endblock %}
 
-<!-- Introduction of content --> 
+<!-- Introduction of content -->
 {% block content %}
 
-<!-- Navigation --> 
+<!-- Navigation -->
 {% include "partials/navbar.html" %}
 {% block navbar %}
 {% endblock %}
 
-<!-- Flash messages --> 
+<!-- Flash messages -->
 {% include "partials/flash.html" %}
 {% block flash %}
 {% endblock %}
@@ -57,26 +40,27 @@ $( "#flash" ).fadeOut(3000);
 <div class="row">
 
   <div class="col-lg-6 col-md-7 mx-auto">
-
     <div class="container">
     {% include "partials/jumbotron.html" %}
     {% block jumbotron %}
     {% endblock %}
     </div>
-<hr>
+
+    <hr>
 
     <div class="container">
     {% for post in posts.items %}
     <div class="post-preview">
     <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-    <div style="overflow: hidden; height:300px; ">
-    <img src="{{ post.post_image_url }}" alt="Card image cap" height="300">
+    <div>
+    <img src="{{ post.post_image_url }}" alt="Card image cap">
     </div>
-    <h2 class="post-title">{{ post.title }}</h2>
-    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
+    <p class="title">{{ post.title }}</p>
+    <p class="subtitle">{{ post.subtitle }}</p>
     </a>
     <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
     </div>
+    <hr>
     {% endfor %}
 
 
@@ -91,25 +75,29 @@ $( "#flash" ).fadeOut(3000);
     </div>
     </div>
 
-
   <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" >
-    <div class="container_img" style="background-color: #efeff5;margin-left: 5%;">  
+    <div class="container_img">
 
       {% include "partials/about_me.html" %}
       {% block about_me %}
       {% endblock %}
 
-      
+
       {% include "partials/donate.html" %}
       {% block donate %}
       {% endblock %}
-    
+
       <hr>
       {% include "partials/categories.html" %}
       {% block categories %}
       {% endblock %}
+       <hr>
+      {% include "partials/articles.html" %}
+      {% block articles %}
+      {% endblock %}
+
     </div>
-</div> 
+  </div>
 </div>
 
 <!-- Footer -->

@@ -1,0 +1,62 @@
+/* Show it is fixed to the top */
+
+body {
+    padding-top: 150px;
+
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+
+.container_img {
+    display: block;
+    width:300px;
+    background-color: #efeff5; 
+    margin-left: 5%;
+}
+
+* {
+    font-family: 'Cutive Mono', monospace;
+}
+
+.container img {
+  width: 100%;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 200%;
+  font-weight: bold; 
+}
+
+.subtitle {
+  font-size: 170%;
+  font-weight: normal; 
+}
+
+.note {
+  font-size: 100%;
+  font-weight: bold; 
+}
+
+.nav-item {
+    padding-right: 4rem;
+    padding-left: 5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+.fixed-top {
+  position: absolute;
+  display: flex; 
+  justify-content: center; 
+  margin-top: 3%; 
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #d6d6d6;
+}
