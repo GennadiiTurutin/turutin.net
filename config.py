@@ -1,9 +1,10 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
+from keys import *
 
 
 class Config:
-    SECRET_KEY = 'somesecret'
+    SECRET_KEY = SECRET_KEY
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     MAIL_SERVER = 'smtp.gmail.com'
