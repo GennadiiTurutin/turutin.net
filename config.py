@@ -1,23 +1,22 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-from keys import *
 
 
 class Config:
-    SECRET_KEY = SECRET_KEY
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 299
 
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = os.environ.get('MAIL_PORT')
-    MAIL_USE_SSL=True
+    MAIL_USE_SSL = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     SSL_REDIRECT = False
-  
+
 
     @staticmethod
     def init_app(app):
@@ -34,7 +33,12 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+    username="GennadiiT",
+    password=os.environ.get('database_password'),
+    hostname="GennadiiT.mysql.pythonanywhere-services.com",
+    databasename="GennadiiT$MyBlog",
+    )
 
     @classmethod
     def init_app(cls, app):
