@@ -26,6 +26,7 @@ $( "#flash" ).fadeOut(3000);
 <!-- Introduction of content -->
 {% block content %}
 
+<div class="container">
 <!-- Navigation -->
 {% include "partials/navbar.html" %}
 {% block navbar %}
@@ -37,46 +38,43 @@ $( "#flash" ).fadeOut(3000);
 {% endblock %}
 
 
-<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+  <div class="row">
 
-  <div class="col-lg-6 col-md-7 mx-auto">
-    <div class="container">
-    {% include "partials/jumbotron.html" %}
-    {% block jumbotron %}
-    {% endblock %}
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <div class="container">
+      {% include "partials/jumbotron.html" %}
+      {% block jumbotron %}
+      {% endblock %}
+      <hr>
+
+      
+      {% for post in posts.items %}
+        <div class="post-preview">
+          <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+            <div><img src="{{ post.post_image_url }}" alt="Card image cap"></div>
+            <p class="title">{{ post.title }}</p>
+            <p class="subtitle">{{ post.subtitle }}</p>
+          </a>
+          <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
+        </div>
+        <hr>
+      {% endfor %}
+
+      {% for page_num in posts.iter_pages() %}
+      {% if page_num %}
+        <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
+      {% else %}
+      ...
+      {% endif %}
+      {% endfor %}
+      <hr>
+      </div>
     </div>
 
-    <hr>
-
-    <div class="container">
-    {% for post in posts.items %}
-    <div class="post-preview">
-    <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-    <div>
-    <img src="{{ post.post_image_url }}" alt="Card image cap">
-    </div>
-    <p class="title">{{ post.title }}</p>
-    <p class="subtitle">{{ post.subtitle }}</p>
-    </a>
-    <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
-    </div>
-    <hr>
-    {% endfor %}
-
-
-    {% for page_num in posts.iter_pages() %}
-    {% if page_num %}
-    <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
-    {% else %}
-    ...
-    {% endif %}
-    {% endfor %}
-    <hr>
-    </div>
-    </div>
-
-  <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" >
-    <div class="container_img">
+    <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" style="margin-top: 5%;" >
+      <div class="container_img">
+    
 
       {% include "partials/about_me.html" %}
       {% block about_me %}
@@ -89,9 +87,12 @@ $( "#flash" ).fadeOut(3000);
       {% include "partials/articles.html" %}
       {% block articles %}
       {% endblock %}
+      </div>
 
+      
     </div>
   </div>
+</div>
 </div>
 
 <!-- Footer -->
