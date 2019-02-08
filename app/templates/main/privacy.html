@@ -31,6 +31,8 @@ body {
 <!-- Introduction of content --> 
 {% block content %}
 
+<div class="container">
+
 <!-- Navigation --> 
 {% include "partials/navbar.html" %}
 {% block navbar %}
@@ -110,5 +112,7 @@ We will notify you of any changes by posting the new Privacy Policy on this page
 {% include "partials/footer.html" %}
 {% block footer %}
 {% endblock %}
+
+</div>
 
 {% endblock %}

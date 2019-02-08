@@ -45,7 +45,7 @@ $( "#flash" ).fadeOut(3000);
 <!-- Introduction of content --> 
 {% block content %}
 
-
+<div class="container">
 <!-- Navigation --> 
 {% include "partials/navbar.html" %}
 {% block navbar %}
@@ -110,6 +110,8 @@ $( "#flash" ).fadeOut(3000);
 {% include "partials/footer.html" %}
 {% block footer %}
 {% endblock %}
+
+</div>
 
 {% endblock %}
 

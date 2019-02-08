@@ -6,6 +6,7 @@ from keys import *
 class Config:
     SECRET_KEY = SECRET_KEY
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_POOL_RECYCLE = 299
 
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = os.environ.get('MAIL_PORT')
