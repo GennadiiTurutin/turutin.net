@@ -1,20 +1,28 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+from decouple import config
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = config('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 299
 
+    MAIL_HOST = "smtp.mailgun.org"
+    MAIL_PORT = 587
+    MAIL_HOST_USER = config('MAIL_HOST_USER')
+    MAIL_HOST_PASSWORD = config('MAIL_HOST_PASSWORD')
+
+   #for gmail and google apps
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
+
     MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = os.environ.get('MAIL_PORT')
-    MAIL_USE_SSL = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_PORT = config('MAIL_PORT')
+    MAIL_USERNAME = config('MAIL_USERNAME')
+    MAIL_PASSWORD = config('MAIL_PASSWORD')
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky Admin <flasky@example.com>'
-    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    FLASKY_ADMIN = config('FLASKY_ADMIN')
     SSL_REDIRECT = False
 
 
