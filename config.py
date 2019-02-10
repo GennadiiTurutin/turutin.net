@@ -8,16 +8,14 @@ class Config:
     SQLALCHEMY_POOL_RECYCLE = 299
 
     MAIL_HOST = "smtp.mailgun.org"
-    MAIL_PORT = 587
+    MAIL_PORT = 465
     MAIL_HOST_USER = config('MAIL_HOST_USER')
     MAIL_HOST_PASSWORD = config('MAIL_HOST_PASSWORD')
 
-   #for gmail and google apps
-    MAIL_USE_TLS = True
-    MAIL_USE_SSL = False
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
 
     MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PORT = config('MAIL_PORT')
     MAIL_USERNAME = config('MAIL_USERNAME')
     MAIL_PASSWORD = config('MAIL_PASSWORD')
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
@@ -78,3 +76,4 @@ config = {
     'production': ProductionConfig,
     'default': DevelopmentConfig
 }
+
