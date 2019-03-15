@@ -1,135 +1,160 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="Gennadii Turutin" content="">
+<title>Terms</title>
+<!-- Bootstrap core CSS -->
+<link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+<!-- Custom fonts for this template -->
+<link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<!-- Plugin CSS -->
+<link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+<!-- Custom styles for this template -->
+<link href="{{url_for('static', filename='css/freelancer.min.css')}}" rel="stylesheet" type="text/css">
+</head>
 
-body {
-    padding-top: 150px;
-}
-.navbar-collapse.collapse.in {
-  display: block!important;
-}
-</style>
+<body id="page-top">
+  <!-- Navigation -->
+  {% include "partials/navbar.html" %}
+  {% block navbar %}
+  {% endblock %}
+  <!-- Main Content -->
+  <div class="container" style="margin-top:10%;">
+      <div class="col-lg-8 col-md-10 mx-auto" style="margin-bottom:5%;">
+        <h2 class="text-center text-uppercase text-secondary">
+        Terms and Conditions
+        </h2>
+        <hr>
+        <h2 class="text-center text-uppercase text-secondary">Introduction
+        </h2>
 
-{% extends "bootstrap/base.html" %}
-
-{% block styles %}
-
-{{ super() }}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{{url_for('static', filename='clean-blog.min.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='custom.css')}}">
-<link href="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-<link rel="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-
-<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
-
-{% endblock %}
-
-
-<!-- Introduction of content --> 
-{% block content %}
-<div class="container">
-<!-- Navigation --> 
-{% include "partials/navbar.html" %}
-{% block navbar %}
-{% endblock %}
-
-<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <h1>Terms and Conditions</h1>
-      <hr>
-      <h2>Introduction</h2>
-
-<p> These Website Standard Terms And Conditions (these “Terms” or these “Website Standard Terms And Conditions”) contained herein on this webpage, 
-shall govern your use of this website, including all pages within this website (collectively referred to herein below as this “Website”). 
-These Terms apply in full force and effect to your use of this Website and by using this Website, you expressly accept all terms and conditions contained herein in full. 
-You must not use this Website, if you have any objection to any of these Website Standard Terms And Conditions.</p>
+        <p class="lead text-secondary"> 
+        These Website Standard Terms And Conditions (these “Terms” or these “Website Standard Terms And Conditions”) contained herein on this webpage, shall govern your use of this website, including all pages within this website (collectively referred to herein below as this “Website”). These Terms apply in full force and effect to your use of this Website and by using this Website, you expressly accept all terms and conditions contained herein in full. You must not use this Website, if you have any objection to any of these Website Standard Terms And Conditions.
+        </p>
 
 
-<h2>Intellectual Property Rights</h2>
+        <h2 class="text-center text-uppercase text-secondary">Intellectual Property Rights
+        </h2>
 
-<p>Other than content you own, which you may have opted to include on this Website, under these Terms, 
-gennadiit.pythonanywhere.com own all rights to the intellectual property and material contained in this Website, and all such rights are reserved.
-You are granted a limited license only, subject to the restrictions provided in these Terms, for purposes of viewing the material contained on this Website</p>
+        <p class="lead text-secondary">
+          Other than content you own, which you may have opted to include on this Website, under these Terms, 
+          gennadiit.pythonanywhere.com own all rights to the intellectual property and material contained in this Website, and all such rights are reserved.
+          You are granted a limited license only, subject to the restrictions provided in these Terms, for purposes of viewing the material contained on this Website
+        </p>
 
 
-<h2>Restrictions</h2>
+        <h2 class="text-center text-uppercase text-secondary">Restrictions
+        </h2>
 
-<p> You are expressly and emphatically restricted from all of the following:</p>
-<p> selling, sublicensing and/or otherwise commercializing any Website material;</p>
-<p> using this Website in any way that is, or may be, damaging to this Website;</p>
-<p> using this Website in any way that impacts user access to this Website;</p>
-<p> using this Website contrary to applicable laws and regulations, or in a way that causes, or may cause, harm to the Website, or to any person or business entity;</p>
-<p> engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Website, or while using this Website;</p>
+        <p class="lead text-secondary">
+        You are expressly and emphatically restricted from all of the following:
+        </p>
+        <p class="lead text-secondary"> 
+        selling, sublicensing and/or otherwise commercializing any Website material;
+        </p>
+        <p class="lead text-secondary"> 
+        using this Website in any way that is, or may be, damaging to this Website;
+        </p>
+        <p class="lead text-secondary">
+         using this Website in any way that impacts user access to this Website; 
+        </p>
+        <p class="lead text-secondary"> 
+        using this Website contrary to applicable laws and regulations, or in a way that causes, or may cause, harm to the Website, or to any person or business entity;
+        </p>
+        <p class="lead text-secondary"> 
+        engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Website, or while using this Website;
+        </p>
 
-<p> Certain areas of this Website are restricted from access by you and gennadiit.pythonanywhere.com may further restrict access by you to any areas of this Website, 
-at any time, in its sole and absolute discretion.  Any user ID and password you may have for this Website are confidential and you must maintain confidentiality of such information. </p>
+        <p class="lead text-secondary"> 
+        Certain areas of this Website are restricted from access by you and gennadiit.pythonanywhere.com may further restrict access by you to any areas of this Website, at any time, in its sole and absolute discretion.  Any user ID and password you may have for this Website are confidential and you must maintain confidentiality of such information. 
+        </p>
 
-<h2>Your Content</h2>
+        <h2 class="text-center text-uppercase text-secondary">
+        Your Content
+        </h2>
 
-<p>In these Website Standard Terms And Conditions, “Your Content” shall mean any audio, video, text, images or other material you choose to display on this Website. 
-With respect to Your Content, by displaying it, you grant gennadiit.pythonanywhere.com a non-exclusive, worldwide, irrevocable, royalty-free, sublicensable license to use, 
-reproduce, adapt, publish, translate and distribute it in any and all media.</p>
+        <p class="lead text-secondary">
+          In these Website Standard Terms And Conditions, “Your Content” shall mean any audio, video, text, images or other material you choose to display on this Website. 
+          With respect to Your Content, by displaying it, you grant gennadiit.pythonanywhere.com a non-exclusive, worldwide, irrevocable, royalty-free, sublicensable license to use, 
+          reproduce, adapt, publish, translate and distribute it in any and all media.
+        </p>
 
-<p>Your Content must be your own and must not be infringing on any third party’s rights. 
-gennadiit.pythonanywhere.com reserves the right to remove any of Your Content from this Website at any time, and for any reason, without notice.</p>
+        <p class="lead text-secondary">
+          Your Content must be your own and must not be infringing on any third party’s rights. 
+          gennadiit.pythonanywhere.com reserves the right to remove any of Your Content from this Website at any time, and for any reason, without notice.
+        </p>
 
-<h2>No warranties</h2>
+        <h2 class="text-center text-uppercase text-secondary">
+        No warranties
+        </h2>
 
-<p>This Website is provided “as is,” with all faults, and gennadiit.pythonanywhere.com makes no express or implied representations or warranties, 
-of any kind related to this Website or the materials contained on this Website. 
-Additionally, nothing contained on this Website shall be construed as providing consult or advice to you.</p>
+        <p  class="lead text-secondary">
+          This Website is provided “as is,” with all faults, and gennadiit.pythonanywhere.com makes no express or implied representations or warranties, 
+          of any kind related to this Website or the materials contained on this Website. 
+          Additionally, nothing contained on this Website shall be construed as providing consult or advice to you.
+        </p>
 
-<h2>Limitation of liability</h2>
+        <h2 class="text-center text-uppercase text-secondary">Limitation of liability
+        </h2>
 
-<p>In no event shall gennadiit.pythonanywhere.com, nor any of its officers, directors and employees, 
-be liable to you for anything arising out of or in any way connected with your use of this Website, 
-whether such liability is under contract, tort or otherwise, and gennadiit.pythonanywhere.com, including its officers, 
-directors and employees shall not be liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
+        <p class="lead text-secondary">
+          In no event shall gennadiit.pythonanywhere.com, nor any of its officers, directors and employees, 
+          be liable to you for anything arising out of or in any way connected with your use of this Website, 
+          whether such liability is under contract, tort or otherwise, and gennadiit.pythonanywhere.com, including its officers, 
+          directors and employees shall not be liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.
+        </p>
 
-<h2>Indemnification</h2>
+        <h2 class="text-center text-uppercase text-secondary">Indemnification
+        </h2>
 
-<p>You hereby indemnify to the fullest extent gennadiit.pythonanywhere.com from and against any and all liabilities, costs, demands, causes of action, 
-damages and expenses (including reasonable attorney’s fees) arising out of or in any way related to your breach of any of the provisions of these Terms.</p>
+        <p class="lead text-secondary">
+          You hereby indemnify to the fullest extent gennadiit.pythonanywhere.com from and against any and all liabilities, costs, demands, causes of action, 
+          damages and expenses (including reasonable attorney’s fees) arising out of or in any way related to your breach of any of the provisions of these Terms.
+        </p>
 
-<h2>Severability</h2>
+        <h2 class="text-center text-uppercase text-secondary">Severability
+        </h2>
 
-<p>If any provision of these Terms is found to be unenforceable or invalid under any applicable law, such unenforceability or invalidity shall not render 
-these Terms unenforceable or invalid as a whole, and such provisions shall be deleted without affecting the remaining provisions herein.</p>
+        <p  class="lead text-secondary">
+          If any provision of these Terms is found to be unenforceable or invalid under any applicable law, such unenforceability or invalidity shall not render 
+          these Terms unenforceable or invalid as a whole, and such provisions shall be deleted without affecting the remaining provisions herein.
+        </p>
 
-<h2>Variation of Terms</h2>
+        <h2 class="text-center text-uppercase text-secondary">Variation of Terms</h2>
 
-<p>gennadiit.pythonanywhere.com is permitted to revise these Terms at any time as it sees fit, and by using this Website you are expected to review such Terms on a regular basis 
-to ensure you understand all terms and conditions governing use of this Website.</p>
+        <p  class="lead text-secondary">
+          gennadiit.pythonanywhere.com is permitted to revise these Terms at any time as it sees fit, and by using this Website you are expected to review such Terms on a regular basis 
+          to ensure you understand all terms and conditions governing use of this Website.
+        </p>
 
-<h2>Assignment</h2>
+        <h2  class="text-center text-uppercase text-secondary">Assignment</h2>
 
-<p>gennadiit.pythonanywhere.com shall be permitted to assign, transfer, and subcontract its rights and/or obligations under these Terms without any notification or consent required. 
-However, .you shall not be permitted to assign, transfer, or subcontract any of your rights and/or obligations under these Terms.</p>
+        <p  class="lead text-secondary">gennadiit.pythonanywhere.com shall be permitted to assign, transfer, and subcontract its rights and/or obligations under these Terms without any notification or consent required. 
+        However, .you shall not be permitted to assign, transfer, or subcontract any of your rights and/or obligations under these Terms.</p>
 
-<h2>Entire Agreement</h2>
+        <h2  class="text-center text-uppercase text-secondary">Entire Agreement</h2>
 
-<p>These Terms, including any legal notices and disclaimers contained on this Website, constitute the entire agreement between gennadiit.pythonanywhere.com and 
-you in relation to your use of this Website, and supersede all prior agreements and understandings with respect to the same.</p>
+        <p  class="lead text-secondary">These Terms, including any legal notices and disclaimers contained on this Website, constitute the entire agreement between gennadiit.pythonanywhere.com and 
+        you in relation to your use of this Website, and supersede all prior agreements and understandings with respect to the same.</p>
 
-<h2>Governing Law & Jurisdiction</h2>
+        <h2  class="text-center text-uppercase text-secondary">Governing Law & Jurisdiction</h2>
 
-<p>These Terms will be governed by and construed in accordance with the laws of the State of New York, and you submit to the non-exclusive jurisdiction of the state and federal courts located in New York for the resolution of any disputes.</p>
+        <p  class="lead text-secondary">These Terms will be governed by and construed in accordance with the laws of the State of New York, and you submit to the non-exclusive jurisdiction of the state and federal courts located in New York for the resolution of any disputes.</p>
 
-    </div>    
-   </div>
+      </div>    
+
+      <!-- Footer -->
+        <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-0">
+            {% include "partials/footer.html" %}
+            {% block footer %}
+            {% endblock %}
+        </div>
   </div>
-</div>
 
- 
-
-<!-- Footer -->
-{% include "partials/footer.html" %}
-{% block footer %}
-{% endblock %}
-</div>
-{% endblock %}
+</body>
+</html>

@@ -1,103 +1,419 @@
-{% extends "bootstrap/base.html" %}
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{{url_for('static', filename='clean-blog.min.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='custom.css')}}">
-<link href="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-<link rel="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en">
 
-<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' type='text/css'>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
-{% endblock %}
+<head>
 
-{% block scripts %}
-{{super()}}
-<script type="text/javascript">
-$( "#flash" ).ready(function() {
-$( "#flash" ).fadeOut(3000);
-});
-</script>
-{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="Gennadii Turutin" content="">
 
-<!-- Introduction of content -->
-{% block content %}
+  <title>Gennadii Turutin</title>
 
-<div class="container">
-<!-- Navigation -->
-{% include "partials/navbar.html" %}
-{% block navbar %}
-{% endblock %}
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-<!-- Flash messages -->
-{% include "partials/flash.html" %}
-{% block flash %}
-{% endblock %}
+  <!-- Plugin CSS -->
+  <link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename='css/freelancer.min.css')}}" rel="stylesheet" type="text/css">
 
 
-<div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-  <div class="row">
+</head>
 
-    <div class="col-lg-8 col-md-8 mx-auto">
-      <div class="container">
-      {% include "partials/jumbotron.html" %}
-      {% block jumbotron %}
-      {% endblock %}
-      <hr>
+<body id="page-top">
+    {% include "partials/flash.html" %}
+    {% block flash %}
+    {% endblock %}
 
-      
-      {% for post in posts.items %}
-        <div class="post-preview">
-          <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-            <div><img src="{{ post.post_image_url }}" alt="Card image cap"></div>
-            <p class="title">{{ post.title }}</p>
-            <p class="subtitle">{{ post.subtitle }}</p>
-          </a>
-          <p class="post-meta">Posted by {{ post.user.username }} on {{ post.date }}</p>
-        </div>
-        <hr>
-      {% endfor %}
-
-      {% for page_num in posts.iter_pages() %}
-      {% if page_num %}
-        <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }} </a>
-      {% else %}
-      ...
-      {% endif %}
-      {% endfor %}
-      <hr>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Gennadii Turutin</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#blog">Blog</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+          </li>
+        </ul>
       </div>
     </div>
+  </nav>
 
-    <div class="col-lg-4 col-md-4 col-sm-6 mx-auto" style="margin-top: 5%;" >
-      <div class="container_img">
-    
+  <!-- Header -->
+  <header class="masthead bg-secondary text-white text-right">
+    <div class="container">
+      <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
+      <h1 class="text-uppercase mb-0">Full Stack</h1>
+      <h1 class="text-uppercase mb-0">Web Developer</h1>
+      <br><br>
+      <h1 class="text-uppercase mb-0">Self-starter</h1>
+      <br><br>
+      <h1 class="text-uppercase mb-0">Python</h1>
+      <h1 class="text-uppercase mb-0">JavaScript</h1>
+    </div>
+  </header>
 
-      {% include "partials/about_me.html" %}
-      {% block about_me %}
-      {% endblock %}
-
-      {% include "partials/categories.html" %}
-      {% block categories %}
-      {% endblock %}
-
-      {% include "partials/articles.html" %}
-      {% block articles %}
-      {% endblock %}
+  <!-- About Section -->
+  <section class="bg-dark text-white mb-0" id="about">
+    <div class="container">
+      <h2 class="text-center text-uppercase text-white">What I can do for you</h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-4 ml-auto">
+          <p class="lead">
+            I can build a wonderful application for you!
+            <br>
+            My tools are diverse and powerful! I can work with Django, Django REST framework, and Flask.            
+         </p>
+         
+        </div>
+        <div class="col-lg-4 mr-auto">
+          <p class="lead"> 
+            If you're like JavaScript, I can offer MEAN stack (Mongo, Express, Angular, Node.js).
+            <br>
+            Whether you need a simple landing page or an e-commerce platform, I know how to do it well, fast, and efficiently!
+          </p>
+        </div>
       </div>
+      <div class="text-center mt-4">
+        <ul class="list-inline dev-icons">
+          <li class="list-inline-item">
+            <i class="fab fa-python"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-node-js"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-html5"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-angular"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-node"></i>
+          </li>
+        </ul>
+      </div>
+      <div class="text-center mt-4">
+        <a class="btn btn-xl btn-outline-light" href="#">
+          <i class="fas fa-download mr-2"></i>
+          Download CV
+        </a>
+      </div>
+    </div>
+  </section>
 
-      
+
+  <!-- Portfolio Grid Section -->
+  <section class="bg-secondary portfolio" id="portfolio">
+    <div class="container">
+      <h2 class="text-center text-uppercase text-white mb-0">Portfolio</h2>
+      <br>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                <i class="fas fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/noyardstick.png')}}">
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                <i class="fas fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/nadiakoch.jpg')}}">
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                <i class="fas fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/fpy.png')}}">
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                <i class="fas fa-search-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/turutin.net.png')}}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="bg-dark text-white mb-0" id="blog">
+    <div class="container">
+      <h2 class="text-center text-uppercase text-white">Blog</h2>
+      <br>
+      <div class="text-center mt-4">
+      <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+      </div>
+      <div class="text-center mt-4">
+        <a class="btn btn-xl btn-outline-light" href="/blog">
+          <i class="fas fa-download mr-2"></i>
+          Visit my blog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+      <br>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+          <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+         <form method="POST" action="">
+        {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label(class="form-control-label col-lg-10 input-lg") }}
+                {{ form.username(class="form-control col-lg-6", style="font-size: 2rem; height: 4rem;") }}
+                {{ form.email.label(class="form-control-label col-lg-10 input-lg") }}
+                {{ form.email(class="form-control col-lg-10", style="font-size: 2rem; height: 4rem;") }}
+                {{ form.message.label(class="form-control-label col-lg-10 input-lg") }}
+                {{ form.message(class="form-control", style="padding: 0 0 100px 10px; cols='5'; wrap='soft'; font-size: 2rem;" ) }}
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
+            </div>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Social networks</h4>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                <i class="fab fa-fw fa-facebook-f"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                <i class="fab fa-fw fa-linkedin-in"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                <i class="fab fa-fw fa-github"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <h4 class="text-uppercase mb-4">Contact</h4>
+          <p class="lead mb-0">New York, NY, 10028</p>
+          <p class="lead mb-0">gennadii.turutin@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; turutin.net 2019</small>
     </div>
   </div>
-</div>
-</div>
 
-<!-- Footer -->
-{% include "partials/footer.html" %}
-{% block footer %}
-{% endblock %}
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
 
-{% endblock %}
+  <!-- Portfolio Modals -->
+
+  <!-- Portfolio Modal 1 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/cabin.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 2 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 3 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 4 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/game.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 5 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/safe.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Modal 6 -->
+  <div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
+    <div class="portfolio-modal-dialog bg-white">
+      <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+        <i class="fa fa-3x fa-times"></i>
+      </a>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+            <hr class="star-dark mb-5">
+            <img class="img-fluid mb-5" src="img/portfolio/submarine.png" alt="">
+            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+              <i class="fa fa-close"></i>
+              Close Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+  <!-- Contact Form JavaScript -->
+  <script src="static/js/jqBootstrapValidation.js"></script>
+  <script src="static/js/contact_me.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="static/js/freelancer.min.js"></script>
+
+</body>
+
+</html>

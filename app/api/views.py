@@ -8,7 +8,7 @@ from app import db
 api = Blueprint('api', __name__)
 
 
-@api.route('/users/<string:username>/')
+@api.route('/blog/users/<string:username>/')
 def get_user(username):
     user = User.query.filter_by(username=username).first()
 
@@ -22,7 +22,7 @@ def get_user(username):
 
     return jsonify({'user' : user_data})
 
-@api.route('/users/')
+@api.route('/blog/users/')
 def get_users():
 
     users = User.query.all()
@@ -39,7 +39,7 @@ def get_users():
     return jsonify({'users' : output})
 
 
-@api.route('/posts/<int:id>/')
+@api.route('/blog/posts/<int:id>/')
 def get_post(id):
     post = Post.query.filter_by(id=id).first()
 
@@ -54,7 +54,7 @@ def get_post(id):
     return jsonify({'post' : post_data})
 
 
-@api.route('/posts/')
+@api.route('/blog/posts/')
 def get_posts():
     posts = Post.query.all()
 

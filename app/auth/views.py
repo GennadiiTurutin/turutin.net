@@ -9,35 +9,35 @@ from app import mail
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/login', methods=['GET', 'POST'])
+@auth.route('/blog/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if current_user.is_authenticated:
-        return redirect(url_for('main.homepage'))
+        return redirect(url_for('main.blog'))
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             flash("You've been logged in", 'success')
-            return redirect(url_for('main.homepage'))
+            return redirect(url_for('main.blog'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'warning')
             return redirect(url_for('auth.login'))
     return render_template('auth/login.html', title='Login', form=form)
 
 
-@auth.route('/logout')
+@auth.route('/blog/logout')
 @decorators.login_required
 def logout():
     if current_user.is_authenticated:
         flash('You have been logged out.', 'success')
         logout_user()
-        return redirect(url_for('main.homepage'))
+        return redirect(url_for('main.blog'))
     flash("You cannot log out, as you are not logged in", 'warning')
-    return redirect(url_for('main.homepage'))
+    return redirect(url_for('main.blog'))
 
 
-@auth.route("/register", methods=['GET', 'POST'])
+@auth.route("/blog/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if current_user.is_authenticated:
@@ -58,7 +58,7 @@ def register():
     return render_template('auth/register.html', title='Register', form=form)
 
 
-@auth.route('/forgot_password', methods=['GET', 'POST'])
+@auth.route('/blog/forgot_password', methods=['GET', 'POST'])
 def forgot_password():
     form = RequestForm()
     if form.validate_on_submit():
@@ -71,20 +71,20 @@ def forgot_password():
             msg.html = render_template('email/reset_password.html', user=user, token=token)
             mail.send(msg)
             flash("We've sent you an email with the link to reset your password", 'info')
-            return redirect(url_for('main.homepage'))
+            return redirect(url_for('main.blog'))
         else: 
             flash("Please check your email", 'info')
     return render_template('auth/request_password.html', form=form)
 
 
-@auth.route('/forgot_password/<token>', methods=['GET', 'POST'])
+@auth.route('/blog/forgot_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     form = ForgotPasswordForm()
     user = User.verify_reset_password_token(token)
     if request.method == 'POST':
         if not user:
             flash('You are not authorized', 'info')
-            return redirect(url_for('main.homepage'))
+            return redirect(url_for('main.blog'))
         else:
             if form.validate_on_submit():
                 user.set_password(form.newpassword.data)
@@ -96,7 +96,7 @@ def reset_password(token):
     return render_template('auth/forgot_password.html', form=form, token=token)
 
 
-@auth.route('/change_password', methods=['GET', 'POST'])
+@auth.route('/blog/change_password', methods=['GET', 'POST'])
 @decorators.login_required
 def change_password():
     form = ChangePasswordForm()
@@ -105,7 +105,7 @@ def change_password():
                 current_user.set_password(form.newpassword.data)
                 db.session.commit()
                 flash('Your password has been updated.', 'success')
-                return redirect(url_for('main.homepage'))
+                return redirect(url_for('main.blog'))
             else: 
                 flash('Please check your password', 'warning')
     return render_template("auth/change_password.html", form=form)

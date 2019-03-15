@@ -1,5 +1,4 @@
 <style>
-
 .user_name{
     font-size:14px;
     font-weight: bold;
@@ -17,43 +16,47 @@
   font-size: 2rem;
   height: 10rem;
 }
-
 </style>
 
 
-<div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                  <div class="page-header">
-                    <h1> Comments </h1>
-                  </div>
-                  {% if current_user.is_authenticated %}
-                  <form method="POST" action="">
-                  {{ form.hidden_tag() }}
-                  <div class="form-group">
-                    {{ form.content.label(class="form-control-label") }}
-                    {{ form.content(class="form-control form-control-lg", style="padding: 0 0 100px 0; cols='5'; wrap='soft'") }}
-                   </div>
-                   <div class="form-group">
-                   {{ form.submit(class="btn btn-outline-info") }}
-                   </div>
-                   </form>
-                   {% endif %}
-                    {% for comment in comments %}
-                       <div class="media">
-                           <p class="pull-right"><small></small></p>
-                            <a class="media-left">
-                              <img src="{{ comment.user.gravatar() }}">
-                            </a>
-                            <div class="media-body">
-                              <h4 class="media-heading user_name">{{ comment.user.username }} on {{ comment.date }}</h4>
-                              {{ comment.content }}
-                            </div>
-                          </div>
-                       {% endfor %}
-                   </div> 
-
-                </div>
+<div class="container" style="margin-top: 10%; margin-bottom: 10%;">
+  
+    <div class="page-header">
+      <h2 class="text-left text-uppercase text-secondary">
+      Comments
+      </h2>
+    </div>
+    {% if current_user.is_authenticated %}
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+          <div class="form-group">
+            {{ form.content.label(class="form-control-label") }}
+            {{ form.content(class="form-control form-control-lg", style="padding: 0 0 100px 0; cols='5'; wrap='soft'") }}
+          </div>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+      </form>
+    {% endif %}
+    {% if comments.count() > 0 %}
+        {% for comment in comments %}
+          <div class="media">
+            <a class="media-left">
+              <img src="{{ comment.user.gravatar() }}">
+            </a>
+            <div class="container">
+              <h4 class="text-left text-uppercase text-secondary">
+                {{ comment.user.username }} on {{ comment.date }}
+              </h4>
+              <p class="text-left text-secondary">
+                {{ comment.content }}
+              </p>
             </div>
+          </div>
+        {% endfor %}
+    {% else %}
+    <h4 class="text-left text-uppercase text-secondary">No comments yet. Be the first!</h4>
+    {% endif %}
+ 
 </div>
    

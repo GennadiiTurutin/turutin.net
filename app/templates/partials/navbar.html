@@ -1,54 +1,41 @@
-<style>
-.nav-item {
-    padding-right: 4rem;
-    padding-left: 5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-
-.navbar {
-  background-color: white;
-  border-bottom: 1px solid #d6d6d6;
-  margin: 1%;
-}
-
-</style>
-
-<div class="fixed-top">turutin.net</div>
-<nav class="navbar navbar-expand-md sticky-top">
-
-<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 20px;">MENU<i class="fa fa-bars"></i></button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main.homepage') }}"><i class="fa fa-home mr-3"></i></a>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-              {% if current_user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('main.profile') }}">{{ current_user.username }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
-            </li>
-             {% else %}
-
-            </li>
-             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
-            </li>
-            {% endif %}
-            {% if current_user.email == 'gennadii.turutin@gmail.com' %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('admin.index') }}">Admin</a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-</nav>
+ <!-- Navigation -->
+  <nav class="navbar navbar-expand-md bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="{{ url_for('main.homepage') }}">
+      Gennadii Turutin</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.blog') }}">Blog</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.contact') }}">Contact</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.profile') }}">{{ current_user.username }}</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.logout') }}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.login') }}">Login</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.register') }}">Register</a>
+          </li>
+          {% endif %}
+          {% if current_user.email == 'gennadii.turutin@gmail.com' %}
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('admin.index') }}">Admin</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
