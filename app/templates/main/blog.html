@@ -1,0 +1,146 @@
+<style>
+.container img {
+  width: 100%;
+  overflow: hidden;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="Gennadii Turutin" content="">
+<title>Blog</title>
+<!-- Bootstrap core CSS -->
+<link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+<!-- Custom fonts for this template -->
+<link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<!-- Plugin CSS -->
+<link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+<!-- Custom styles for this template -->
+<link href="{{url_for('static', filename='css/freelancer.min.css')}}" rel="stylesheet" type="text/css">
+</head>
+
+<body id="page-top">
+  <!-- Navigation -->
+  {% include "partials/navbar.html" %}
+  {% block navbar %}
+  {% endblock %}
+  <div class="container" style="margin-top:10%;">
+    <!-- Flash messages -->
+    {% include "partials/flash.html" %}
+    {% block flash %}
+    {% endblock %}
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-auto" style=" margin-bottom:5%;">
+      <div class="jumbotron bg-light  mb-0">
+        <h2 class="text-center text-uppercase text-secondary">
+        What is this blog for?
+        </h2>
+        <p class="lead">
+        I started this blog with the sole purpose of learning Flask in practice.It's for your consideration whether to look upon the blog as a good source for starting learning Flask.As I would love to share my experience with others, I'm going to publish posts on Flask and Python and would be elated to receive any critique. Feel free to copy any material published here or in my GitHub repository. My intention is to further this blog and make it more mature and thought-out.
+        </p>
+        <button class="btn btn-dark btn-xl" href="https://github.com/GennadiiTurutin/MyBlog" role="button">Check the blog on Github
+        </button>
+      </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 mx-auto">
+          <hr>
+          {% for post in posts.items %}
+          <section class="jumbotron bg-light text-secondary mb-0" >
+            <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+              <div><img src="{{ post.post_image_url }}"></div>
+              <h2 class="text-center text-uppercase text-secondary">{{ post.title }}</h2>
+              <h4 class="text-center text-uppercase text-secondary">{{ post.subtitle }}</h4>
+              <p class="lead text-secondary">Posted by {{ post.user.username }} on {{ post.date }}</p>
+            </a>  
+          </section>
+          <hr>
+          {% endfor %}
+
+          {% for page_num in posts.iter_pages() %}
+              {% if page_num %}
+              <a class="btn btn-outline-info mb-4" href="{{ url_for('main.homepage', page=page_num) }}">{{ page_num }}</a>
+              {% else %}
+              ...
+              {% endif %}
+          {% endfor %}
+          <hr>
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 mx-auto" style="margin-bottom: 1%;">
+          <hr>
+          <section class="bg-light text-secondary mb-1">
+            <div class="container ">
+
+              <h4 class="text-left text-uppercase text-secondary">
+                <u>Categories</u>
+              </h4>
+              <br><br>
+
+              <div class="container" style="margin-top: 10%; margin-bottom: 10%;">
+                {% for tag in tags %}
+                  <h4 class="text-left text-uppercase text-secondary">
+                    {{ tag.tag }}
+                    <br><br>
+                  </h4>
+                {% endfor %}
+              </div>
+
+            </div> 
+
+            <div class="container">
+              <h4 class="text-left text-uppercase text-secondary">
+                <u>Articles</u>
+              </h4>
+              <br><br>
+              <div class="container">
+              {% for post in posts.items %}
+                
+                  <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+                    <div class="container" style="margin-top: 10%;">
+                    <h4 class="text-left text-uppercase text-secondary">{{ post.title }}<br><br> </h4>
+                    </div>
+                  </a>
+               
+              {% endfor %}
+              </div>
+            </div> 
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-0">
+    {% include "partials/footer.html" %}
+    {% block footer %}
+    {% endblock %}
+    </div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      $( "#flash" ).ready(function() {
+      $( "#flash" ).fadeOut(3000);
+      });
+    </script>
+    <!-- Plugin JavaScript -->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="static/js/jqBootstrapValidation.js"></script>
+    <script src="static/js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/freelancer.min.js"></script>
+  </div>
+</body>
+</html>
+
