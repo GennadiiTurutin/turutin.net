@@ -405,3 +405,16 @@ a:focus, a:hover, a:active {
 #title>h1:hover {
   color:black;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+header { 
+  min-height: 100% !important;
+ }
+
+section { 
+  min-height: 100% !important;
+ }
