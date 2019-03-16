@@ -185,7 +185,8 @@
       <h2 class="text-center text-uppercase text-white">And Check My Blog</h2>
       <br>
       <div class="text-center mt-4">
-      <h2 class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</h2>
+      <h2 class="lead">I started this blog with the sole purpose of learning Flask in practice. <br><br>
+        It's for your consideration whether to look upon the blog as a good source for starting learning Flask.<br>As I would love to share my experience with others, I'm going to publish posts on Flask and Python and would be elated to receive any critique.<br><br> Feel free to copy any material published here or in my GitHub repository. <br>My intention is to further this blog and make it more mature and thought-out.</h2>
       </div>
       <div class="text-center mt-4">
         <a class="btn btn-xl btn-outline-light" href="https://www.turutin.net/blog">
@@ -366,12 +367,12 @@
   $(window).scroll(function(){
       $("header").css("opacity", 1.7 - $(window).scrollTop() / 500);
     });
- // $(window).scroll(function(){
- //     $("#blog").css("opacity", 3.7 - $(window).scrollTop() / 1000);
- //   });
- // $(window).scroll(function(){
- //     $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
- //   });
+  $(window).scroll(function(){
+      $("#blog").css("opacity", 3.7 - $(window).scrollTop() / 1000);
+    });
+  $(window).scroll(function(){
+      $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
+    });
   $('#socicons').animate({opacity: 0.1}, 10000, function() {
     // Animation complete.
    });
