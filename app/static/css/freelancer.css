@@ -400,3 +400,8 @@ a:focus, a:hover, a:active {
 #bloglink:hover {
   background-color: #AA7365;
 }
+
+
+#title>h1:hover {
+  color:black;
+}

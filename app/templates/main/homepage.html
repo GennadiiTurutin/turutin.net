@@ -22,8 +22,6 @@
 
   <!-- Custom styles for this template -->
   <link href="{{url_for('static', filename='css/freelancer.css')}}" rel="stylesheet" type="text/css">
-
-
 </head>
 
 <body id="page-top">
@@ -59,17 +57,36 @@
   </nav>
 
   <!-- Header -->
-  <header class="masthead bg-secondary text-white text-right">
-    <div class="container" style="margin-bottom:10%;">
-      <br><br><br><br>
-      <h1 class="text-uppercase mb-4">Full Stack</h1>
-      <h1 class="text-uppercase mb-4">Web Developer</h1>
-      <br><br>
-      <h1 class="text-uppercase mb-4">Self-starter</h1>
-      <br><br>
-      <h1 class="text-uppercase mb-4">Python /</h1>
-      <h1 class="text-uppercase mb-4">JavaScript</h1>
-    </div>
+  <header class="masthead bg-secondary text-white text-right mt-0">
+      <div class="container">
+        <div id="socicons">
+        <ul class="list-inline mb-0 mt-0">
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/">
+              <i class="fab fa-fw fa-facebook-f"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.linkedin.com/in/gennadii-turutin/">
+              <i class="fab fa-fw fa-linkedin-in"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://github.com/GennadiiTurutin">
+                <i class="fab fa-fw fa-github"></i>
+            </a>
+          </li>
+        </ul> 
+        </div>  
+          <h1 class="text-uppercase mb-4">Full Stack</h1>
+          <h1 class="text-uppercase mb-4">Web Developer</h1>
+          <div class="col-lg-7 ml-auto" id="title">
+          <h1 class="text-uppercase mb-4">Self-starter</h1>
+          <h1 class="text-uppercase mb-4">Python /</h1>
+          <h1 class="text-uppercase mb-4">JavaScript</h1>
+          </div>
+        
+ 
   </header>
 
   <!-- About Section -->
@@ -114,7 +131,7 @@
         </ul>
       </div>
       <div class="text-center mt-4">
-        <a class="btn btn-xl btn-outline-light" href="#">
+        <a class="btn btn-xl btn-outline-light" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
           <i class="fas fa-download mr-2"></i>
           Download CV
         </a>
@@ -127,7 +144,7 @@
   <div id="portfolio">
   <section class="bg-secondary portfolio" >
     <div class="container">
-      <h2 class="text-center text-uppercase text-white mb-5">Portfolio</h2>
+      <h2 class="text-center text-uppercase text-white mb-5">Look at my Portfolio</h2>
       <br><br>
       <div class="row">
         <div class="col-md-6 col-lg-4">
@@ -163,10 +180,11 @@
       </div>
     </div>
   </section>
-
-    <section class="bg-secondary text-white mb-4" style="margin-bottom:10%;">
+  </div>
+  <div id="blog">
+  <section class="bg-secondary text-white mb-4" style="margin-bottom:10%;">
     <div class="container">
-      <h2 class="text-center text-uppercase text-white">Check My Blog</h2>
+      <h2 class="text-center text-uppercase text-white">And Check My Blog</h2>
       <br>
       <div class="text-center mt-4">
       <h2 class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</h2>
@@ -179,7 +197,7 @@
       </div>
     </div>
   </section>
-</div>
+  </div>
 
   
   <!-- Contact Section -->
@@ -212,10 +230,17 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  {% include "partials/footer.html" %}
-  {% block footer %}
-  {% endblock %}
+  <div class="copyright py-4 text-center text-white bg-success">
+    <div class="container">
+      <small class="text-uppercase text-white"><b>
+      Python can save the world!</b></small>
+    </div>
+  </div>
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; turutin.net 2019</small>
+    </div>
+  </div>
 
   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-to-top d-lg-none position-fixed ">
@@ -238,7 +263,7 @@
             <h2 class="text-secondary text-uppercase mb-0">
             noyardstick.org</h2>
             <img class="img-fluid mb-5" src="img/portfolio/noyardstick.png" alt="">
-            <h4 class="text-secondary mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br>
+            <h4 class="text-secondary mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br><br>
             The website has a subscription system, comments, flash
             messages, search system, and many useful plugins, such
             as Disqus, Toaster, etc.<br><br>
@@ -246,19 +271,19 @@
             Django REST Framework, on the front-end Angular 6.
             The interaction between front-end and back-end happens
             through module service.ts that is imported into all
-            other components.<br>
+            other components.<br><br>
             To improve the performance I went for Ahead-of-Time
-            compilations.<br>
+            compilations.<br><br>
             The material is stored with PostgreSQL.
             In the beginning I developed my own Custom User
             Model with Django, but eventually chose Disqus plugin,
             as it allows for easy authorisation with Facebook and
             Twitter.</h4><hr>
             <h4 class="text-secondary mb-0">Tools: Django, Django REST Framework, Angular,PostgreSQL</h4><br>
-            <a class="btn btn-dark btn-lg rounded-pill portfolio-modal-dismiss" href="">
+            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
               <i class="fa fa-close"></i>
-              Close Project</a> OR
-            <a class="btn btn-dark btn-lg rounded-pill portfolio-modal-dismiss" href="https://www.noyardstick.org/">
+              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <a class="btn btn-dark btn-lg" href="https://www.noyardstick.org/">
               <i class="fa fa-close"></i>
               Visit the website</a>
           </div>
@@ -281,15 +306,17 @@
             <h4 class="text-secondary mb-0">
               The client wanted to have a simple and responsive website, that will look stunning both
               on PC, and mobile devices with an embedded Instagram feed.
-              <br>
+              <br><br>
               For integration of Instagram
               I chose Lightwidget. There are fading effects on the website, that were achieved
-              with JQuery. <br>
+              with JQuery. <br><br>
             Later on, there will be an online store of furniture added to the website.</h4>
+            <hr>
+            <h4 class="text-secondary mb-0">Tools: Django, Bootstrap</h4><br>
             <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
               <i class="fa fa-close"></i>
-              Close Project</a> OR
-            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="https://www.noyardstick.org/">
+              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <a class="btn btn-dark btn-lg" href="http://www.nadiakoch.com/">
               <i class="fa fa-close"></i>
               Visit the website</a>
           </div>
@@ -310,15 +337,15 @@
             <h2 class="text-secondary text-uppercase mb-0">turutin.net/blog</h2>
             <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
             <h4 class="text-secondary mb-0">
-              I needed my personal website where I can publish posts. In this case my main focus was
-              on back-end, that’s why I didn’t employ any JavaScript framework. I chose Flask as it
-              gave me a great degree of freedom and allowed for experiments. I developed everything
-              from the ground up. It has comments, login/register system, email service, etc.</h4>
-            <h4 class="text-secondary mb-0">Tools:Flask, MySQL</h4><br>
+              I needed my personal website where I can publish posts.<br><br> In this case my main focus was
+              on back-end, that’s why I didn’t employ any JavaScript framework. <br><br> 
+              I chose Flask as it gave me a great degree of freedom and allowed for experiments. I developed everything
+              from the ground up. <br><br>It has comments, login/register system, email service, etc.</h4><hr>
+            <h4 class="text-secondary mb-0">Tools:Flask, MySQL, Bootstrap</h4><br>
            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
               <i class="fa fa-close"></i>
-              Close Project</a> OR
-            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="https://www.noyardstick.org/">
+              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <a class="btn btn-dark btn-lg" href="https://www.turutin.net/blog/">
               <i class="fa fa-close"></i>
               Visit the website</a>
           </div>
@@ -336,20 +363,26 @@
   <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-  <!-- Contact Form JavaScript -->
-  <script src="static/js/jqBootstrapValidation.js"></script>
-  <script src="static/js/contact_me.js"></script>
-
   <!-- Custom scripts for this template -->
   <script src="static/js/freelancer.min.js"></script>
   <script type="text/javascript"> 
   $(window).scroll(function(){
-      $("header").css("opacity", 1 - $(window).scrollTop() / 1500);
+      $("header").css("opacity", 1.7 - $(window).scrollTop() / 500);
     });
   $(window).scroll(function(){
-      $("#portfolio").css("opacity", 3.5 - $(window).scrollTop() / 1000);
+      $("#blog").css("opacity", 3.7 - $(window).scrollTop() / 1000);
     });
+  $(window).scroll(function(){
+      $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
+    });
+  $('#socicons').animate({opacity: 0.1}, 10000, function() {
+    // Animation complete.
+   });
+  $('#title').animate({opacity: 0.1}, 5000, function() {
+    // Animation complete.
+   });
   </script>
+
 
 </body>
 
