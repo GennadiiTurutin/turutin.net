@@ -385,8 +385,8 @@ a:focus, a:hover, a:active {
 }
 
 .list-inline-item {
-   font-size: 100px;
-   margin:5%;
+   font-size: 80px;
+   margin:2%;
 }
 
 .list-inline-item:hover {
@@ -415,9 +415,11 @@ header {
   height: 100% !important;
  }
 
-section { 
+@media only screen and (min-width: 960px) {
+.division { 
   height: 100% !important;
  }
+}
 
 html {
   scroll-behavior: smooth;
