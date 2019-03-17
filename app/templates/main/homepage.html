@@ -189,9 +189,9 @@
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
-      <h2 class="text-center text-uppercase text-secondary mb-5">
+      <h2 class="text-center text-uppercase text-secondary mb-0">
       Give me a shout</h2>
-      <br>
+      <br><br><br><br>
       <div class="row">
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
@@ -201,8 +201,10 @@
             <div class="form-group">
                 {{ form.username.label(class="form-control-label col-lg-10 input-lg") }}
                 {{ form.username(class="form-control col-lg-6", style="font-size: 2rem; height: 4rem;") }}
+                <br>
                 {{ form.email.label(class="form-control-label col-lg-10 input-lg") }}
                 {{ form.email(class="form-control col-lg-10", style="font-size: 2rem; height: 4rem;") }}
+                <br>
                 {{ form.message.label(class="form-control-label col-lg-10 input-lg") }}
                 {{ form.message(class="form-control", style="padding: 0 0 100px 10px; cols='5'; wrap='soft'; font-size: 2rem;" ) }}
             </div>
@@ -214,17 +216,6 @@
         </div>
       </div>
     </div>
-  <div class="copyright py-4 text-center text-white bg-success mb-0" style="margin-top: 5%;">
-    <div class="container">
-      <small class="text-uppercase text-white"><b>
-      Python can save the world!</b></small>
-    </div>
-  </div>
-  <div class="copyright py-4 text-center text-white mb-0">
-    <div class="container">
-      <small>Copyright &copy; turutin.net 2019</small>
-    </div>
-  </div>
   </section>
 
 
