@@ -1,6 +1,7 @@
 <div class="container">
+	<p class="lead text-secondary">
     {% for tag in tags %}
-    <span class="label label-primary"><p class="lead text-secondary">{{ tag.tag }}</p></span>
+    <span class="btn btn-info btn-lg">{{ tag.tag }}</span>
     {% endfor %}
+    </p>
 </div>
-
