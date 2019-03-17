@@ -412,10 +412,13 @@ html, body {
 }
 
 header { 
-  min-height: 100% !important;
+  height: 100% !important;
  }
 
 section { 
-  min-height: 100% !important;
+  height: 100% !important;
  }
- 
+
+html {
+  scroll-behavior: smooth;
+}

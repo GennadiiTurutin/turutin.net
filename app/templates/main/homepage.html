@@ -57,7 +57,7 @@
   </nav>
 
   <!-- Header -->
-  <header class="masthead bg-secondary text-white text-right mt-0">
+  <header class="masthead bg-secondary text-white text-right mt-0" id="intro">
       <div class="container">
         <div id="socicons">
         <ul class="list-inline mb-0 mt-0">
@@ -85,8 +85,6 @@
           <h1 class="text-uppercase mb-4">Python /</h1>
           <h1 class="text-uppercase mb-4">JavaScript</h1>
           </div>
-        
- 
   </header>
 
   <!-- About Section -->
@@ -111,7 +109,7 @@
           </h2>
         </div>
       </div>
-      <div class="text-center mt-4">
+      <div class="text-center mt-2">
         <ul class="list-inline dev-icons">
           <li class="list-inline-item">
             <i class="fab fa-python"></i>
@@ -130,7 +128,7 @@
           </li>
         </ul>
       </div>
-      <div class="text-center mt-4">
+      <div class="text-center mt-1">
         <a class="btn btn-xl btn-outline-light" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
           <i class="fas fa-download mr-2"></i>
           Download CV
@@ -139,9 +137,8 @@
     </div>
   </section>
 
-
   <!-- Portfolio Grid Section -->
-  <section class="bg-secondary portfolio" id="portfolio">
+  <section class="bg-secondary portfolio mb-0" id="portfolio">
     <div class="container">
       <h2 class="text-center text-uppercase text-white mb-5">Look at my Portfolio</h2>
       <br><br>
@@ -177,22 +174,13 @@
           </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="bg-secondary text-white mb-4" id="blog">
-    <div class="container">
-      <h2 class="text-center text-uppercase text-white">And Check My Blog</h2>
-      <br>
-      <div class="text-center mt-4">
-      <h2 class="lead">I started this blog with the sole purpose of learning Flask in practice. <br><br>
-        It's for your consideration whether to look upon the blog as a good source for starting learning Flask.<br>As I would love to share my experience with others, I'm going to publish posts on Flask and Python and would be elated to receive any critique.<br><br> Feel free to copy any material published here or in my GitHub repository. <br>My intention is to further this blog and make it more mature and thought-out.</h2>
-      </div>
-      <div class="text-center mt-4">
-        <a class="btn btn-xl btn-outline-light" href="https://www.turutin.net/blog">
-          <i class="fas fa-eye mr-2"></i>
-          Visit my blog
-        </a>
+            <br>
+      <div class="bg-secondary text-white text-center mt-4">
+      <h2 class="lead">I'll be happy to get any critical review.<br>
+        You may find the source code for each of my projects on GitHub.
+        <br>
+        Feel free to copy any material published there.<br>
+      </h2>
       </div>
     </div>
   </section>
@@ -202,7 +190,7 @@
   <section id="contact">
     <div class="container">
       <h2 class="text-center text-uppercase text-secondary mb-5">
-      Contact Me</h2>
+      Give me a shout</h2>
       <br>
       <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -226,19 +214,20 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <div class="copyright py-4 text-center text-white bg-success">
+  <div class="copyright py-4 text-center text-white bg-success mb-0" style="margin-top: 5%;">
     <div class="container">
       <small class="text-uppercase text-white"><b>
       Python can save the world!</b></small>
     </div>
   </div>
-  <div class="copyright py-4 text-center text-white">
+  <div class="copyright py-4 text-center text-white mb-0">
     <div class="container">
       <small>Copyright &copy; turutin.net 2019</small>
     </div>
   </div>
+  </section>
+
+
 
   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-to-top d-lg-none position-fixed ">
@@ -376,8 +365,17 @@
   $('#title').animate({opacity: 0.1}, 5000, function() {
     // Animation complete.
    });
-  </script>
+  
+  $(window).on('wheel', function(event){
+    var x = event.originalEvent.deltaY / 125
+    window.scrollBy({
+        top: $(window).height() * x, // could be negative value
+        left: $(window).height() * x,
+        behavior: 'smooth' 
+    });
 
+  });
+  </script>
 
 </body>
 
