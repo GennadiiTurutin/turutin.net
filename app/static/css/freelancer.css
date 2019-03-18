@@ -412,7 +412,7 @@ html, body {
 }
 
 header { 
-  height: 100% !important;
+  min-height: 100% !important;
  }
 
 @media only screen and (min-width: 960px) {
