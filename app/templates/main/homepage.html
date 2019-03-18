@@ -367,7 +367,7 @@
    });
 
   $(window).on('wheel', function(event){
-    var x = event.originalEvent.deltaY / 125
+    var x = (event.originalEvent.deltaY / 125).toFixed(0)
     if ($(window).width() > 960) {
       window.scrollBy({
         top: $(window).height() * x, // could be negative value
