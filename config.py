@@ -7,10 +7,10 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_RECYCLE = 299
 
-    MAIL_HOST = "smtp.mailgun.org"
+    #MAIL_HOST = "smtp.mailgun.org"
     MAIL_PORT = 465
-    MAIL_HOST_USER = config('MAIL_HOST_USER')
-    MAIL_HOST_PASSWORD = config('MAIL_HOST_PASSWORD')
+    #MAIL_HOST_USER = config('MAIL_HOST_USER')
+    #MAIL_HOST_PASSWORD = config('MAIL_HOST_PASSWORD')
 
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
