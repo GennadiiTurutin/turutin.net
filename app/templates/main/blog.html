@@ -52,12 +52,13 @@
         <div class="col-lg-8 col-md-12 mx-auto">
           <hr>
           {% for post in posts.items %}
-          <div class="jumbotron bg-light text-secondary mb-0" >
+          <div class="bg-light text-secondary mb-2">
             <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
               <div><img src="{{ post.post_image_url }}"></div>
-              <h2 class="text-center text-uppercase text-secondary">{{ post.title }}</h2>
-              <h4 class="text-center text-uppercase text-secondary">{{ post.subtitle }}</h4>
-              <p class="lead text-secondary">Posted by {{ post.user.username }} on {{ post.date }}</p>
+              <br>
+              <h2 class="text-center text-uppercase text-secondary mb-2">{{ post.title }}</h2>
+              <h4 class="text-center text-uppercase text-secondary mb-2">{{ post.subtitle }}</h4>
+              <h6 class="lead text-center text-secondary mb-4">Posted by {{ post.user.username }} on {{ post.date }}</h6>
             </a>  
           </div>
           <hr>
