@@ -4,7 +4,7 @@
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="{{ url_for('main.homepage') }}">
       Gennadii Turutin</a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-light text-secondary rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -17,17 +17,17 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.contact') }}">Contact</a>
           </li>
           {% if current_user.is_authenticated %}
-          <li class="nav-item mx-0 mx-lg-1">
+          <li class="nav-item mx-1 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('main.profile') }}">{{ current_user.username }}</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
+          <li class="nav-item mx-1 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.logout') }}">Logout</a>
           </li>
           {% else %}
-          <li class="nav-item mx-0 mx-lg-1">
+          <li class="nav-item mx-1 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.login') }}">Login</a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
+          <li class="nav-item mx-1 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url_for('auth.register') }}">Register</a>
           </li>
           {% endif %}

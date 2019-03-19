@@ -35,10 +35,10 @@
     {% block flash %}
     {% endblock %}
 
-    <!-- Content Description-->
+        <!-- Content Description-->
         <div class="col-lg-8 col-md-10 mx-auto" style="margin-bottom:5%;">
           <div style="overflow: hidden;">
-          <img src="{{ post.post_image_url }}" alt="Card image cap">
+            <img src="{{ post.post_image_url }}" alt="Card image cap">
           </div>
           <div class="post-preview" >
               <h2 class="text-center text-uppercase text-secondary">
@@ -47,7 +47,7 @@
               <h4 class="text-center text-uppercase text-secondary">
                 {{ post.subtitle }}
               </h4>
-            <p class="lead text-secondary">Posted by {{ post.user.username }} on {{ post.date }} </p>
+              <p class="lead text-secondary">Posted by {{ post.user.username }} on {{ post.date }} </p>
           </div>
           <hr>
            <!-- Tags -->
@@ -57,8 +57,8 @@
           <hr>
         </div>
 
-    <!-- Post Content -->
-    <article>
+        <!-- Post Content -->
+        <article>
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-body">
               <p class="lead text-secondary"> 
@@ -66,21 +66,36 @@
               </p>
             </div>
           </div>
-    </article>
+        </article>
 
-    <!-- Comments -->
-    {% include "partials/comment.html" %}
-    {% block comment %}
-    {% endblock %}
+        <!-- Comments -->
+        {% include "partials/comment.html" %}
+        {% block comment %}
+        {% endblock %}
   
-    <!-- Footer -->
-    <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-0">
-      {% include "partials/footer.html" %}
-      {% block footer %}
-      {% endblock %}
-    </div>
+        <!-- Footer -->
+        <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-0">
+          {% include "partials/footer.html" %}
+          {% block footer %}
+          {% endblock %}
+        </div>
 
   </div>
 </body>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="/static/vendor/jquery/jquery.min.js"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript">
+          $( "#flash" ).ready(function() {
+          $( "#flash" ).fadeOut(3000);
+          });
+        </script>
+        <!-- Plugin JavaScript -->
+        <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="/static/js/freelancer.min.js"></script>
 </html>
 
