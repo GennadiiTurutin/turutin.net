@@ -345,12 +345,11 @@ form .row:first-child .floating-label-form-group {
 }
 
 a {
-  /*color: #AA7365;*/
   opacity: 0.7;
+  text-decoration: none;
 }
 
 a:focus, a:hover, a:active {
-  /*color: #128f76;*/
   opacity: 1;
 }
 
@@ -404,22 +403,40 @@ a:focus, a:hover, a:active {
    opacity: 0.2;
 }
 
+.post-container {
+  opacity: 0.3
+}
+
+.post-container a:hover {
+   text-decoration: none;
+}
+
+.post-container:hover {
+  opacity: 0.7
+}
+
+footer a:hover {
+   text-decoration: none;
+}
 
 html, body {
   height: 100%;
   margin: 0;
+  background-color: #102840;
 }
+
 
 header { 
   min-height: 100% !important;
  }
 
+/*
 @media only screen and (min-width: 960px) {
 .division { 
   height: 100% !important;
  }
 }
-
+*/
 html {
   scroll-behavior: smooth;
 }
