@@ -13,11 +13,12 @@
   <!-- Custom fonts for this template -->
   <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- Plugin CSS -->
   <link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template -->
-  <link href="{{url_for('static', filename='css/freelancer.css')}}" rel="stylesheet" type="text/css">
+  <link href="{{url_for('static', filename='css/freelancer_modified.css')}}" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top">
@@ -25,33 +26,32 @@
   {% block flash %}
   {% endblock %}
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+  <nav class="navbar navbar-expand-sm fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Gennadii Turutin
+      <a class="navbar-brand js-scroll-trigger text-grey" href="#page-top">Gennadii Turutin
       </a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-light text-secondary rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-dark text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin:1%;">
       <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">
+          <li class="nav-item mx-1 my-1 mx-lg-1">
+            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#about">
             About
             </a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">
+          <li class="nav-item mx-1 my-1 mx-lg-1">
+            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#portfolio">
             Portfolio
             </a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">
+          <li class="nav-item mx-1 my-1 mx-lg-1">
+            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#contact">
             Contact
             </a>
           </li>
-          <li class="nav-item mx-0 mx-lg-1" id="bloglink">
-            <a class="text-secondary nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/blog">
+          <li class="nav-item mx-1 my-1 mx-lg-1">
+            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="/blog">
             Go to Blog
             </a>
           </li>
@@ -61,171 +61,245 @@
   </nav>
 
   <!-- Header -->
-  <header class="masthead bg-secondary text-white text-right mt-0">
+  <header class="masthead bg-secondary text-white mt-0">
     <div class="container">
-      <div id="socicons">
-        <ul class="list-inline mb-0 mt-0">
-          <li class="list-inline-item">
-            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/gennady.turutin">
-              <i class="fab fa-fw fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.linkedin.com/in/gennadii-turutin/">
-              <i class="fab fa-fw fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://github.com/GennadiiTurutin">
-                <i class="fab fa-fw fa-github"></i>
-            </a>
-          </li>
-        </ul> 
-      </div>  
-      <h1 class="text-uppercase mb-4">Full Stack</h1>
-      <h1 class="text-uppercase mb-4">Web Developer</h1>
-      <div class="col-lg-7 ml-auto" id="title">
-        <h1 class="text-uppercase mb-4">Self-starter</h1>
-        <h1 class="text-uppercase mb-4">Python /</h1>
-        <h1 class="text-uppercase mb-4">JavaScript</h1>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center mt-2">
+          <div id="socicons">
+            <ul class="list-inline mb-5 mt-5">
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://www.facebook.com/gennady.turutin">
+                  <i class="fab fa-fw fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://www.linkedin.com/in/gennadii-turutin/">
+                  <i class="fab fa-fw fa-linkedin-in"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://github.com/GennadiiTurutin">
+                    <i class="fab fa-fw fa-github"></i>
+                </a>
+              </li>
+            </ul> 
+          </div>  
+          <h1 class="text-uppercase mb-4 mt-2 text-grey">Full Stack</h1>
+          <h1 class="text-uppercase mb-4 mt-2 text-grey">Web Developer</h1>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-5" id="skills">
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-right mt-5">
+              <ul class="list-group list-group-flush">
+                <li class="list-inline-item text-uppercase text-grey"><h4>Languages</h4></li>
+                <li class="list-inline-item text-uppercase text-grey"><h4>Frameworks</h4></li>
+                <li class="list-inline-item text-uppercase text-grey"><h4>js Libraries</h4></li>
+                <li class="list-inline-item text-uppercase text-grey"><h4>Databases</h4></li>
+                <li class="list-inline-item text-uppercase text-grey"><h4>Servers</h4></li>
+                <li class="list-inline-item text-uppercase text-grey"><h4>API</h4></li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-left mt-5">
+              <ul class="list-group list-group-flush">
+                <li class="list-inline-item text-grey"><h4>Python / JavaScript</h4></li>
+                <li class="list-inline-item text-grey"><h4>Django / Flask / Angular</h4></li>
+                <li class="list-inline-item text-grey"><h4>React</h4></li>
+                <li class="list-inline-item text-grey"><h4>PostgreSQL, MySQL, Redis</h4></li>
+                <li class="list-inline-item text-grey"><h4>Heroku / AWS</h4></li>
+                <li class="list-inline-item text-grey"><h4>REST</h4></li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center mt-2">
+            <ul class="list-inline dev-icons">
+              <li class="list-inline-item">
+                <i class="fab fa-python"></i>
+              </li>
+              <li class="list-inline-item">
+                <i class="fab fa-node-js"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- About Section -->
-  <div class="division bg-dark text-white portfolio mb-0" id="about">
-  <section>
-    <div class="container mb-0">
-      <h2 class="text-center text-uppercase text-white">
-      What I can do for you
-      </h2>
-      <br><br>
-        <div class="col-lg-12 col-md-12 ml-auto">
-          <h2 class="lead text-center">
-            I can build a wonderful application for you!
-            <br>
-            My tools are diverse and powerful! I can work with Django, Django REST framework, and Flask.            
-          </h2>
-           <h2 class="lead text-center"> 
-            If you're like JavaScript, I can offer MEAN stack (Mongo, Express, Angular, Node.js).
-            <br>
-            Whether you need a simple landing page or an e-commerce platform, I know how to do it well, fast, and efficiently!
-          </h2>
-        </div>
-      <br>
-      <div class="text-center mt-2">
-        <ul class="list-inline dev-icons">
-          <li class="list-inline-item">
-            <i class="fab fa-python"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-node-js"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-html5"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-angular"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-node"></i>
-          </li>
-        </ul>
-      </div>
-      <br>
-      <div class="text-center mt-1">
-        <a class="btn btn-xl btn-outline-light" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
-          <i class="fas fa-download mr-2"></i>
-          Download CV
-        </a>
-      </div>
-    </div>
-  </section>
-</div>
 
-  <!-- Portfolio Grid Section -->
-  <div class="division bg-secondary portfolio mb-0" id="portfolio">
-  <section>
-    <div class="container">
-      <h2 class="text-center text-uppercase text-white mb-5">
-      Look at my Portfolio
-      </h2>
-      <br><br>
-      <div class="row">
-        <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
+  <div class="division bg-secondary text-white portfolio mb-0" id="about">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+            <h1 class="text-uppercase mb-4 text-grey">About me</h1>
+            <p class="lead text-right text-grey">
+            I’m proficient in Python, JavaScript, HTML5, CSS 
+            and have extensively worked with web-frameworks 
+            such as Django, Flask, Angular and React.</p> 
+            <p class="lead text-right text-grey">
+            I have a bachelor in engineering, what gives necessary 
+            skills to design and deliver projects that are reliable, 
+            maintainable and highly functional. 
+            Besides that in NYU Web Development courses 
+            I learned the best programming practices. 
+            My professional technical experience taught 
+            me that the attention to every detail is absolutely 
+            crucial for the quality of the product.</p>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0" id="title">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-right mt-1">
+                <ul class="list-group list-group-flush">
+                  <li class="list-inline-item text-uppercase text-grey"><h4>Education</h4></li>
+                </ul>
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-8 text-left mt-0">
+                <ul class="list-group list-group-flush">
+                  <li class="list-inline-item text-grey"><h4>Mechanical Engineering, Bachelor</h4></li>
+                  <li class="list-inline-item text-grey"><h4>Python Advanced Programming, NYU</h4></li>
+                  <li class="list-inline-item text-grey"><h4>Data mining, predictive analytics, and Big Data, NYU</h4></li>
+                </ul>
               </div>
             </div>
-            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/noyardstick.PNG')}}">
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
-              </div>
+
+            <br>
+            <div class="text-center mt-1">
+              <a class="btn btn-lg btn-outline-secondary" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
+                <i class="fas fa-download mr-2"></i>
+                Download CV
+              </a>
             </div>
-            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/nadiakoch.jpg')}}">
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-            <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-              <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                <i class="fas fa-search-plus fa-3x"></i>
-              </div>
-            </div>
-            <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/turutin.net.PNG')}}">
-          </a>
+          </div>
         </div>
       </div>
-      <br>
     </section>
   </div>
-  <div class="bg-light text-secondary portfolio mb-0">
-  <section>
-        <h2 class="lead text-center text-bold">
-          I'll be happy to get any critical review.<br>
-          You may find the source code for each of my projects on GitHub.<br>
-          Feel free to copy any material published there.<br>
-        </h2>
-  </section>
+
+  <div class="division bg-secondary text-white portfolio mb-0" id="portfolio">
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-sm-1 text-left mt-0 mb-5">
+            <h1 class="text-uppercase mb-4 text-grey">Portfolio</h1>
+            <p class="lead text-left text-grey">
+            I’ve developed several freelance projects from the ground up aiming at Responsive Design and REST standards.  
+            To be more specific I can set up RESTful API employing Flask, Django REST Framework, or Node.js, 
+            in combination with the Front-end empowered by jQuery, AJAX or Bootstrap.
+            Moreover, I’m always excited to master new technologies, languages, and development approaches.</p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 order-lg-1 order-sm-2 mt-0">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
+                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
+                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                        <i class="fas fa-search-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/noyardstick.PNG')}}">
+                  </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1"> 
+                  <div class="container">
+                    <h2 class="text-uppercase mb-0 text-grey spec-item">
+                    noyardstick.org</h2>
+                    <p class="lead text-left text-grey spec-item">
+                    Tools: Django, Django REST Framework, Angular,PostgreSQL
+                    </p> 
+                  </div>  
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
+                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
+                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                        <i class="fas fa-search-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/nadiakoch.jpg')}}">
+                  </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1">    
+                  <div class="container">
+                    <h2 class="text-uppercase mb-0 text-grey spec-item">
+                    nadiakoch.com</h2>
+                    <p class="lead text-left text-grey spec-item">
+                    Tools: Django, Django REST Framework, Angular,PostgreSQL
+                    </p> 
+                  </div>    
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
+                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
+                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
+                        <i class="fas fa-search-plus fa-3x"></i>
+                      </div>
+                    </div>
+                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/turutin.net.PNG')}}">
+                  </a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1"> 
+                  <div class="container">
+                    <h2 class="text-uppercase mb-0 text-grey spec-item">
+                    turutin.net/blog</h2>
+                    <p class="lead text-left text-grey spec-item">
+                    Tools:Flask, MySQL, Bootstrap
+                    </p> 
+                  </div>      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  
-  <!-- Contact Section -->
-  <div class="division bg-white portfolio mb-0" id="contact">
-  <section>
-    <div class="container">
-      <h2 class="text-center text-uppercase text-secondary mb-0">
-      Give me a shout
-      </h2>
-      <br><br><br><br>
-      <div class="col-lg-8 mx-auto">
-        <form method="POST" action="">
-          {{ form.hidden_tag() }}
-          <div class="form-group">
-                {{ form.username.label(class="form-control-label col-lg-10 input-lg") }}
-                {{ form.username(class="form-control col-lg-6", style="font-size: 2rem; height: 4rem;") }}
-                <br>
-                {{ form.email.label(class="form-control-label col-lg-10 input-lg") }}
-                {{ form.email(class="form-control col-lg-10", style="font-size: 2rem; height: 4rem;") }}
-                <br>
-                {{ form.message.label(class="form-control-label col-lg-10 input-lg") }}
-                {{ form.message(class="form-control", style="padding: 0 0 100px 10px; cols='5'; wrap='soft'; font-size: 2rem;" ) }}
+
+  <div class="division bg-secondary text-white portfolio mb-0" id="contact">
+    <section style="padding-bottom: 0%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+            <h1 class="text-uppercase mb-4 text-grey">Contact</h1>
+            <p class="lead text-left text-grey">Feel free to contact me! I'll respond as soon as possible.</p> 
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn btn-secondary btn-xl" id="sendMessageButton">Send</button>
+
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0">
+            <form method="POST" action="">
+              {{ form.hidden_tag() }}
+              <div class="form-group">
+                    {{ form.username.label(class="form-control-label col-lg-10 input-lg text-grey") }}
+                    {{ form.username(class="form-control col-lg-6", style="font-size: 1rem; height: 2rem;") }}
+                    <br>
+                    {{ form.email.label(class="form-control-label col-lg-10 input-lg text-grey") }}
+                    {{ form.email(class="form-control col-lg-10", style="font-size: 1rem; height: 2rem;") }}
+                    <br>
+                    {{ form.message.label(class="form-control-label col-lg-10 input-lg text-grey") }}
+                    {{ form.message(class="form-control", style="padding: 0 0 100px 10px; cols='5'; wrap='soft'; font-size: 1rem;" ) }}
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-secondary btn-xl" id="sendMessageButton">Send</button>
+              </div>
+            </form>
+
           </div>
-        </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </div>
+  
 
   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-to-top d-lg-none position-fixed ">
@@ -238,17 +312,17 @@
 
   <!-- Portfolio Modal 1 -->
   <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
-    <div class="portfolio-modal-dialog bg-white">
+    <div class="portfolio-modal-dialog">
       <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
         <i class="fa fa-3x fa-times"></i>
       </a>
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">
+            <h2 class="text-grey text-uppercase mb-0">
             noyardstick.org</h2>
             <img class="img-fluid mb-5" src="img/portfolio/noyardstick.png" alt="">
-            <h4 class="text-secondary mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br><br>
+            <h4 class="text-grey mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br><br>
             The website has a subscription system, comments, flash
             messages, search system, and many useful plugins, such
             as Disqus, Toaster, etc.<br><br>
@@ -264,10 +338,7 @@
             Model with Django, but eventually chose Disqus plugin,
             as it allows for easy authorisation with Facebook and
             Twitter.</h4><hr>
-            <h4 class="text-secondary mb-0">Tools: Django, Django REST Framework, Angular,PostgreSQL</h4><br>
-            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
-              <i class="fa fa-close"></i>
-              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <h4 class="text-grey mb-0">Tools: Django, Django REST Framework, Angular,PostgreSQL</h4><br>
             <a class="btn btn-dark btn-lg" href="https://www.noyardstick.org/">
               <i class="fa fa-close"></i>
               Visit the website</a>
@@ -279,16 +350,16 @@
 
   <!-- Portfolio Modal 2 -->
   <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
-    <div class="portfolio-modal-dialog bg-white">
+    <div class="portfolio-modal-dialog">
       <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
         <i class="fa fa-3x fa-times"></i>
       </a>
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">nadiakoch.com</h2>
+            <h2 class="text-grey y text-uppercase mb-0">nadiakoch.com</h2>
             <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
-            <h4 class="text-secondary mb-0">
+            <h4 class="text-grey  mb-0">
               The client wanted to have a simple and responsive website, that will look stunning both
               on PC, and mobile devices with an embedded Instagram feed.
               <br><br>
@@ -297,10 +368,7 @@
               with JQuery. <br><br>
             Later on, there will be an online store of furniture added to the website.</h4>
             <hr>
-            <h4 class="text-secondary mb-0">Tools: Django, Bootstrap</h4><br>
-            <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
-              <i class="fa fa-close"></i>
-              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <h4 class="text-grey mb-0">Tools: Django, Bootstrap</h4><br>
             <a class="btn btn-dark btn-lg" href="http://www.nadiakoch.com/">
               <i class="fa fa-close"></i>
               Visit the website</a>
@@ -312,24 +380,21 @@
 
   <!-- Portfolio Modal 3 -->
   <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
-    <div class="portfolio-modal-dialog bg-white">
+    <div class="portfolio-modal-dialog">
       <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
         <i class="fa fa-3x fa-times"></i>
       </a>
       <div class="container text-center">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-            <h2 class="text-secondary text-uppercase mb-0">turutin.net/blog</h2>
+            <h2 class="text-grey text-uppercase mb-0">turutin.net/blog</h2>
             <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
-            <h4 class="text-secondary mb-0">
+            <h4 class="text-grey mb-0">
               I needed my personal website where I can publish posts.<br><br> In this case my main focus was
               on back-end, that’s why I didn’t employ any JavaScript framework. <br><br> 
               I chose Flask as it gave me a great degree of freedom and allowed for experiments. I developed everything
               from the ground up. <br><br>It has comments, login/register system, email service, etc.</h4><hr>
-            <h4 class="text-secondary mb-0">Tools:Flask, MySQL, Bootstrap</h4><br>
-           <a class="btn btn-dark btn-lg portfolio-modal-dismiss" href="">
-              <i class="fa fa-close"></i>
-              Close Project</a><h4 class="text-secondary mb-0">OR</h4>
+            <h4 class="text-grey mb-0">Tools:Flask, MySQL, Bootstrap</h4><br>
             <a class="btn btn-dark btn-lg" href="https://www.turutin.net/blog/">
               <i class="fa fa-close"></i>
               Visit the website</a>
@@ -351,16 +416,16 @@
   <!-- Custom scripts for this template -->
   <script src="static/js/freelancer.min.js"></script>
   <script type="text/javascript"> 
-  $(window).scroll(function(){
-      $("header").css("opacity", 1.7 - $(window).scrollTop() / 500);
-    });
-  $(window).scroll(function(){
-      $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
-    });
-  $('#socicons').animate({opacity: 0.1}, 10000, function() {
+  //$(window).scroll(function(){
+  //    $("header").css("opacity", 1.7 - $(window).scrollTop() / 500);
+  //  });
+ // $(window).scroll(function(){
+ //     $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
+ //   });
+  $('#skills').animate({opacity: 0.25}, 10000, function() {
     // Animation complete.
    });
-  $('#title').animate({opacity: 0.1}, 5000, function() {
+  $('#title').animate({opacity: 0.25}, 5000, function() {
     // Animation complete.
    });
   // Easy scrolling
