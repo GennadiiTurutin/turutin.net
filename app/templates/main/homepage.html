@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,9 +11,7 @@
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <!-- Custom fonts for this template -->
   <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <!-- Plugin CSS -->
   <link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template -->
@@ -30,7 +27,7 @@
     <div class="container">
       <a class="navbar-brand js-scroll-trigger text-grey" href="#page-top">Gennadii Turutin
       </a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-dark text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin:1%;">
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-secondary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="margin:1%;">
       <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -132,7 +129,7 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+          <div class="col-lg-5 col-md-5 col-sm-12 text-right">
             <h1 class="text-uppercase mb-4 text-grey">About me</h1>
             <p class="lead text-right text-grey">
             I’m proficient in Python, JavaScript, HTML5, CSS 
@@ -149,7 +146,7 @@
             crucial for the quality of the product.</p>
           </div>
 
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0" id="title">
+          <div class="col-lg-7 col-md-7 col-sm-12 col-12 mt-0">
             <div class="row">
               <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-right mt-1">
                 <ul class="list-group list-group-flush">
@@ -158,21 +155,30 @@
               </div>
               <div class="col-lg-8 col-md-8 col-sm-8 col-8 text-left mt-0">
                 <ul class="list-group list-group-flush">
-                  <li class="list-inline-item text-grey"><h4>Mechanical Engineering, Bachelor</h4></li>
+                  <li class="list-inline-item text-grey"><h4>Mechanical Engineering, Bachelor, Russia</h4></li>
                   <li class="list-inline-item text-grey"><h4>Python Advanced Programming, NYU</h4></li>
                   <li class="list-inline-item text-grey"><h4>Data mining, predictive analytics, and Big Data, NYU</h4></li>
+                  <li class="list-inline-item text-grey text-center">
+                    <a class="btn btn-lg btn-outline-secondary" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
+                      <i class="fas fa-download mr-2"></i>Download CV
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
-
-            <br>
-            <div class="text-center mt-1">
-              <a class="btn btn-lg btn-outline-secondary" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
-                <i class="fas fa-download mr-2"></i>
-                Download CV
-              </a>
-            </div>
           </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
+            <p class="lead text-left text-grey">
+            I'm a big fan of Python and a strong advocate of Django, as I believe these are perfect tools to build pretty much everything. In my GitHub repositories you may find Unit Tests, Web Scraping, Machine Learning, Web Development, E-commerce, and Algorithms! Most of it in Python. 
+            </p>
+            <p class="lead text-left text-grey">
+            Nevertheless often I employ JavaScript for Front-End for different purposes. Visual effect, generation of tokens, 
+            DOM manipulation, asynchronous requests, etc. Here is where JavaScript knowledge is crucial.
+            And, of course, wonderful frameworks and libraries (no, React is not a framework!), such as Angular and React!
+            </p> 
+          </div>
+
         </div>
       </div>
     </section>
@@ -216,7 +222,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2 mb-2">       
                   <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
                     <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                       <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
@@ -226,9 +232,9 @@
                     <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/nadiakoch.jpg')}}">
                   </a>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1">    
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1 mb-2">    
                   <div class="container">
-                    <h2 class="text-uppercase mb-0 text-grey spec-item">
+                    <h2 class="text-uppercase text-grey spec-item">
                     nadiakoch.com</h2>
                     <p class="lead text-left text-grey spec-item">
                     Tools: Django, Django REST Framework, Angular,PostgreSQL
@@ -239,8 +245,8 @@
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
-                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
+                <div class="col-lg-6 col-md-6 col-sm-6 order-2 mb-2">       
+                  <a class="portfolio-item d-block" href="#portfolio-modal-3">
                     <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
                       <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
                         <i class="fas fa-search-plus fa-3x"></i>
@@ -249,7 +255,7 @@
                     <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/turutin.net.PNG')}}">
                   </a>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1"> 
+                <div class="col-lg-6 col-md-6 col-sm-6 order-1 mb-2"> 
                   <div class="container">
                     <h2 class="text-uppercase mb-0 text-grey spec-item">
                     turutin.net/blog</h2>
@@ -267,13 +273,15 @@
   </div>
 
 
-  <div class="division bg-secondary text-white portfolio mb-0" id="contact">
-    <section style="padding-bottom: 0%;">
+  <div class="division bg-secondary portfolio mb-0" id="contact">
+    <section>
       <div class="container">
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-            <h1 class="text-uppercase mb-4 text-grey">Contact</h1>
-            <p class="lead text-left text-grey">Feel free to contact me! I'll respond as soon as possible.</p> 
+            <h1 class="text-uppercase mb-4 text-grey text-left">Contact</h1>
+            <p class="lead text-left text-grey">I'm currently located in New York</p> 
+            <p class="lead text-left text-grey">If you have questions, feel free to contact me using this form or at gennadii.turutin@gmail.com</p>
+            <p class="lead text-left text-grey">I'll respond as soon as possible.</p> 
           </div>
 
           <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0">
@@ -293,13 +301,15 @@
                 <button type="submit" class="btn btn-secondary btn-xl" id="sendMessageButton">Send</button>
               </div>
             </form>
-
           </div>
         </div>
       </div>
     </section>
   </div>
-  
+
+    {% include "partials/footer.html" %}
+    {% block footer %}
+    {% endblock %}
 
   <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
   <div class="scroll-to-top d-lg-none position-fixed ">
