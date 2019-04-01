@@ -108,8 +108,8 @@ section h2 {
   padding-bottom: 0rem;
   font-weight: 700;
   font-family: 'Oswald', sans-serif; /*'Montserrat';*/
-  background-color: transparent;
-  opacity: 0.6;
+  background-color: #102840;
+  opacity: 0.8;
 }
 
 #mainNav .navbar-brand {
@@ -169,15 +169,8 @@ section h2 {
     color: black; /*#fff;*/
     background: white; /*#AA7365;*/
   }
-
-  /* #mainNav.navbar-shrink {
-     padding-top: 0.5rem;
-     padding-bottom: 0.5rem;
-   } */
-  /*#mainNav.navbar-shrink .navbar-brand {
-    font-size: 1.5em;
-  }*/
 }
+
 
 header.masthead {
   padding-top: calc(1rem + 72px);
@@ -345,7 +338,6 @@ form .row:first-child .floating-label-form-group {
 }
 
 a {
-  opacity: 0.7;
   text-decoration: none;
 }
 
@@ -396,7 +388,7 @@ a:focus, a:hover, a:active {
 .list-inline-item {
    font-size: 40px;
    margin:2%;
-   opacity: 0.9;
+   opacity: 1;
 }
 
 .spec-item {
@@ -430,13 +422,6 @@ header {
   min-height: 100% !important;
  }
 
-/*
-@media only screen and (min-width: 960px) {
-.division { 
-  height: 100% !important;
- }
-}
-*/
 html {
   scroll-behavior: smooth;
 }
