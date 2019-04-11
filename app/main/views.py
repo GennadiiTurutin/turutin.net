@@ -25,6 +25,7 @@ def homepage():
         return redirect(url_for('main.homepage'))
     return render_template('main/homepage.html', form=form)
 
+
 @main.route('/blog')
 def blog():
     page = request.args.get('page', 1, type=int)
