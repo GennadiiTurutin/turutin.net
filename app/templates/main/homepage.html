@@ -6,6 +6,7 @@
   <meta name="description" content="">
   <meta name="Gennadii Turutin" content="">
   <title>Gennadii Turutin</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
   <!-- Bootstrap core CSS -->
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
   <!-- Custom fonts for this template -->
@@ -15,6 +16,9 @@
   <link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template -->
   <link href="{{url_for('static', filename='css/freelancer_modified.css')}}" rel="stylesheet" type="text/css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet" type="text/css">
+
   <!-- Bootstrap core JavaScript -->
   <script src="static/vendor/jquery/jquery.min.js"></script>
   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -22,8 +26,12 @@
   <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
   <!-- Custom scripts for this template -->
-  <script src="static/js/freelancer.min.js"></script>
-
+  <script src="static/js/freelancer.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js'></script>
+  <script src="static/chartjs/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
+  
+ 
 </head>
 
 <body id="page-top">
@@ -67,6 +75,7 @@
 
   <!-- Header -->
   <header class="masthead bg-secondary text-white mt-0">
+    <canvas id="myBubbleChart" width="100" height="70"></canvas>
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-0">
           <div id="socicons">
@@ -87,7 +96,8 @@
                 </a>
               </li>
             </ul> 
-          </div>  
+          </div>
+          
           <h1 class="text-uppercase mb-4 mt-0 text-grey">Full Stack</h1>
           <h1 class="text-uppercase mb-4 mt-0 text-grey">Web Developer</h1>
           <ul class="list-group list-group-flush" id="skills">
@@ -96,6 +106,7 @@
             <li class="list-inline-item text-uppercase text-grey"><h4>Angular / React</h4></li>
             <li class="list-inline-item text-uppercase text-grey"><h4>Heroku / AWS</h4></li>
           </ul>
+          
           <div class="text-center mb-5" id="icons">
             <ul class="list-inline dev-icons">
               <li class="list-inline-item">
@@ -109,8 +120,8 @@
         </div>
       </div>
     </div>
+    
   </header>
-
 
   <div class="division bg-secondary text-white portfolio mb-0" id="about">
     <section>
@@ -271,7 +282,7 @@
             <p class="lead text-left text-grey">I'll respond as soon as possible.</p> 
           </div>
 
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0" id="contact-form">
             <form method="POST" action="">
               {{ form.hidden_tag() }}
               <div class="form-group">
@@ -318,7 +329,7 @@
           <div class="col-lg-8 mx-auto">
             <h2 class="text-grey text-uppercase mb-0 mt-5">
             noyardstick.org</h2>
-            <img class="img-fluid mb-5" src="img/portfolio/noyardstick.png" alt="">
+            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/noyardstick.png')}}" alt="">
             <h4 class="text-grey mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br><br>
             The website has a subscription system, comments, flash
             messages, search system, and many useful plugins, such
@@ -355,7 +366,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2 class="text-grey y text-uppercase mb-0 mt-5">nadiakoch.com</h2>
-            <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
+            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/nadiakoch.jpg')}}" alt="">
             <h4 class="text-grey  mb-0">
               The client wanted to have a simple and responsive website, that will look stunning both
               on PC, and mobile devices with an embedded Instagram feed.
@@ -385,7 +396,7 @@
         <div class="row">
           <div class="col-lg-8 mx-auto">
             <h2 class="text-grey text-uppercase mb-0 mt-5">turutin.net/blog</h2>
-            <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
+            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/turutin.net.png')}}" alt="">
             <h4 class="text-grey mb-0">
               I needed my personal website where I can publish posts.<br><br> In this case my main focus was
               on back-end, that’s why I didn’t employ any JavaScript framework. <br><br> 
@@ -400,15 +411,148 @@
       </div>
     </div>
   </div>
+
+ <script>
+
+  Chart.plugins.unregister(ChartDataLabels);
+
+ </script>
+
+  <script>
+  // For a bubble chart
+  var utils = Samples.utils;
+  function generateData() {
+    var data = [];
+    data.push({
+      x: utils.rand(0, 2),
+      y: utils.rand(0, 2),
+      r: utils.rand(5, 10)
+    });
+    return data;
+  }
+
+  var data = {
+    datasets: [
+    {
+      label: 'Python',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    }, 
+    {
+      label: 'JavaScript',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'Flask',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'Django',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'Angular',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'ChartJS',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'React',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'Pandas',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'AWS',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    }
+    ]
+  };
+
+
+  Chart.defaults.global.defaultFontColor = 'white';
+  Chart.defaults.global.defaultFontFamily = "'Oswald', sans-serif;'";
+  Chart.defaults.global.defaultFontSize = 14;
+
+
+  var ctx = document.getElementById('myBubbleChart').getContext('2d');
+
+  var chart = new Chart(ctx, {
+    type: 'bubble',
+    plugins: [ChartDataLabels],
+    data: data, 
+    options:  {
+      responsive: true,
+      scales: {
+          xAxes: [{
+              ticks: {
+                display: false
+              },
+              gridLines: {
+                  drawBorder: false,
+                  drawOnChartArea: false
+              }
+          }],
+          yAxes: [{
+              ticks: {
+                display: false
+              },
+              gridLines: {
+                  drawBorder: false,
+                  drawOnChartArea: false
+              }
+          }]
+      },
+
+      legend: {
+        display: false
+      },
+
+      onClick: function() {
+        chart.data.datasets.forEach(function(dataset) {
+          dataset.data = generateData();
+        });
+        chart.update();
+      },
+
+      tooltips: {
+         enabled: false
+      },
+      plugins: {
+          datalabels: {
+              formatter: function(value, context) {
+                  return context.chart.data.datasets[context.datasetIndex]["label"];
+              }
+          }
+      }
+   }
+  });
+
+
+  // eslint-disable-next-line no-unused-vars
+  function randomize() {
+    chart.data.datasets.forEach(function(dataset) {
+      dataset.data = generateData();
+    });
+    chart.update();
+  }
   
+  </script>
+
 
   <script type="text/javascript"> 
-  //$(window).scroll(function(){
-  //    $("header").css("opacity", 1.7 - $(window).scrollTop() / 500);
-  //  });
- // $(window).scroll(function(){
- //     $("#portfolio").css("opacity", -2 + $(window).scrollTop() / 500);
- //   });
   $('#skills').animate({opacity: 0.25}, 10000, function() {
     // Animation complete.
    });
@@ -418,21 +562,8 @@
   $('#title').animate({opacity: 0.25}, 5000, function() {
     // Animation complete.
    });
-  // Easy scrolling
-  /*
-
-  $(window).on('wheel', function(event){
-    var x = (event.originalEvent.deltaY / 125).toFixed(0)
-    if ($(window).width() > 960) {
-      window.scrollBy({
-        top: $(window).height() * x, // could be negative value
-        left: $(window).height() * x,
-        behavior: 'smooth' 
-      });
-    }
-  });
-  */
   </script>
+
   <script type="text/javascript"> 
   // Modal popup$(function () {
   $('.portfolio-item').magnificPopup({

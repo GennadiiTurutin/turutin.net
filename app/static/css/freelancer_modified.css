@@ -111,6 +111,7 @@ section h2 {
   font-family: 'Oswald', sans-serif; /*'Montserrat';*/
   background-color: #102840;
   opacity: 0.8;
+  z-index: 3;
 }
 
 #mainNav .navbar-brand {
@@ -242,7 +243,7 @@ header.masthead h2 {
   min-height: calc(100vh - 2rem);
   margin: 1rem calc(1rem - 8px);
   position: relative;
-  z-index: 2;
+  z-index: 4;
   -webkit-box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 3rem 1rem rgba(0, 0, 0, 0.5);
   background-color: transparent;
@@ -283,7 +284,7 @@ header.masthead h2 {
 .floating-label-form-group textarea {
   font-size: 1.5em;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   padding-right: 0;
   padding-left: 0;
   resize: none;
@@ -466,6 +467,7 @@ html {
     font-size: 4.75em;
     line-height: 4rem;
     opacity: 0.1;
+
   }
   #portfolio h2 {
     font-size: 1.75em;
@@ -502,4 +504,25 @@ html {
 
 .form-group textarea {
     opacity: 0.3;
+}
+
+canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+
+@media (max-width: 600px) {
+  canvas{
+    display: none !important;
+  }
+}
+
+#socicons {
+  position: relative;
+  z-index: 2;
 }
