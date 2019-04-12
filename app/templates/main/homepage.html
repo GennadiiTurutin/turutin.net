@@ -75,7 +75,7 @@
 
   <!-- Header -->
   <header class="masthead bg-secondary text-white mt-0">
-    <canvas id="myBubbleChart" width="100" height="70"></canvas>
+    <canvas id="myBubbleChart" width="100" height="200"></canvas>
     <div class="container">
         <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-0">
           <div id="socicons">
@@ -156,7 +156,7 @@
                   <li class="list-inline-item text-grey"><h4>Mechanical Engineering, Bachelor, Russia</h4></li>
                   <li class="list-inline-item text-grey"><h4>Python Advanced Programming, NYU</h4></li>
                   <li class="list-inline-item text-grey"><h4>Data mining, predictive analytics, and Big Data, NYU</h4></li>
-                  <li class="list-inline-item text-grey text-center">
+                  <li class="list-inline-item text-grey text-center" id="button_cv">
                     <a class="btn btn-lg btn-outline-secondary" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
                       <i class="fas fa-download mr-2"></i>Download CV
                     </a>
@@ -194,7 +194,7 @@
             in combination with the Front-end empowered by jQuery, AJAX or Bootstrap.
             Moreover, I’m always excited to master new technologies, languages, and development approaches.</p>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 order-lg-1 order-sm-2 mt-0">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-12 order-lg-1 order-sm-2 mt-0" id="samples">
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
@@ -283,7 +283,7 @@
           </div>
 
           <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0" id="contact-form">
-            <form method="POST" action="">
+            <form method="POST" action="POST">
               {{ form.hidden_tag() }}
               <div class="form-group">
                     {{ form.username.label(class="form-control-label col-lg-10 input-lg text-grey") }}
@@ -431,6 +431,7 @@
     return data;
   }
 
+
   var data = {
     datasets: [
     {
@@ -469,7 +470,22 @@
       data: generateData()
     },
     {
+      label: 'Redux',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
       label: 'Pandas',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'ML',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+    {
+      label: 'REST',
       backgroundColor: 'rgba(0, 119, 290, 0.6)',
       data: generateData()
     },
@@ -477,7 +493,13 @@
       label: 'AWS',
       backgroundColor: 'rgba(0, 119, 290, 0.6)',
       data: generateData()
-    }
+    },
+    {
+      label: 'Heroku',
+      backgroundColor: 'rgba(0, 119, 290, 0.6)',
+      data: generateData()
+    },
+
     ]
   };
 
@@ -548,7 +570,8 @@
     });
     chart.update();
   }
-  
+    
+
   </script>
 
 

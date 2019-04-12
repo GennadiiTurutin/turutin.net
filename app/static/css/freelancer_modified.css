@@ -526,3 +526,27 @@ canvas {
   position: relative;
   z-index: 2;
 }
+
+#samples {
+  position: relative;
+  z-index: 2;
+}
+
+#button_cv {
+  position: relative;
+    z-index: 2;
+}
+
+#contact-form {
+  position: relative;
+  z-index: 2;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+footer a>h5:hover {
+  opacity: 0.5;
+}
