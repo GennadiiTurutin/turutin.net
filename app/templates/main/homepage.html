@@ -1,605 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="Gennadii Turutin" content="">
+  <meta name="author" content="">
+
   <title>Gennadii Turutin</title>
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
   <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
   <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
-  <!-- Plugin CSS -->
-  <link href="{{url_for('static', filename='vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+
   <!-- Custom styles for this template -->
-  <link href="{{url_for('static', filename='css/freelancer_modified.css')}}" rel="stylesheet" type="text/css">
+  <link href="css/resume.min.css" rel="stylesheet">
+  <link href="{{url_for('static', filename='css/resume.css')}}" rel="stylesheet" type="text/css">
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet" type="text/css">
-
-  <!-- Bootstrap core JavaScript -->
-  <script src="static/vendor/jquery/jquery.min.js"></script>
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Plugin JavaScript -->
-  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-  <!-- Custom scripts for this template -->
-  <script src="static/js/freelancer.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js'></script>
-  <script src="static/chartjs/utils.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.5.0"></script>
-  
+   <!-- Bootstrap core JavaScript -->
+   <script src="static/vendor/jquery/jquery.min.js"></script>
+   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  
+   <!-- Plugin JavaScript -->
+   <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+ 
+   <!-- Custom scripts for this template -->
+   <script src="static/js/resume.min.js"></script>
+
 </head>
 
 <body id="page-top">
-  {% include "partials/flash.html" %}
-  {% block flash %}
+  {% include "partials/navbar.html" %}
+  {% block navbar %}
   {% endblock %}
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-sm fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger text-grey" href="#page-top">Gennadii Turutin
-      </a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-secondary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-1 my-1 mx-lg-1">
-            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#about">
-            About
+
+  <div class="container-fluid p-3">
+    <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="about">
+      <div class="w-100">
+        <h2 class="mb-2">Gennadii Turutin</h2>
+        <a class="navbar-brand">
+            <span class="d-lg-block">
+              <img class="img-fluid img-profile mx-auto mb-2" src="{{ url_for('static', filename='img/0.jpg') }}" alt="">
+            </span>
+        </a>
+        <div class="subheading mb-2 text-dark">Contact</div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            <h2 class="lead mb-0">gennadii.turutin@gmail.com</h2>
+            </li>
+            <li>
+              <i class="fa-li fa fa-angle-right"></i>
+              <h2 class="lead mb-0">NY, New York</h2>
+            </li>
+          </ul>
+        </div>
+        <div class="social-icons">
+            <a href="#">
+              <i class="fab fa-linkedin"></i>
             </a>
+            <a href="#">
+              <i class="fab fa-github-square"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+          </div>
+
+        <div class="subheading mb-2 text-dark">About me</div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-child"></i>
+            <h2 class="lead mb-0">
+            I'm a software engineer with the focus on data.<br>
+            I leverage Python and JavaScript in combination with cloud services 
+            to build reliable and efficient applications that will retrieve, store, 
+            and manipulate data. <br>
+            My belief is that programming skills are secondary.
+            Planning and the ability to break problems up into a set of trivial problems are primary. 
+            </h2>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
+      <div class="w-100">
+        <h2 class="mb-1">Experience</h2>
+
+        <div class="subheading mb-2 text-dark">Data Acquisition Developer</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">October 2019 - Present (New York, USA)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Prescriptive Data
+            </li>
+          </ul>
+        </div>
+
+        <div class="subheading mb-2 text-dark">Data Engineer</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">May 2019 - October 2019 (New York, USA)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            ThinkEmpire.io
+            </li>
+          </ul>
+        </div>
+
+        <div class="subheading mb-2 text-dark">Full-Stack Developer</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">Jan 2019 - May 2019 (New York, USA)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Freelance
+            </li>
+          </ul>
+        </div>
+
+        <div class="subheading mb-2 text-dark">Architectural Planner</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">Sep 2017 - Jan 2019 (New York, USA)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            RISE Architecture
+            </li>
+          </ul>
+        </div>
+
+        <div class="subheading mb-2 text-dark">Technical Specialist</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">Feb 2013 - Sep 2016 (Moscow, Russia)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+            <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Schmitz Cargobull Russland
+            </li>
+          </ul>
+        </div>
+
+        <div class="subheading mb-2 text-dark">Technical intern</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">Aug 2011 - Feb 2013 (Moscow, Russia)</span>
+        </div>
+        <div class="resume-date mb-1 text-md-left">
+          <ul class="fa-ul mb-2">
+          <li>
+          <i class="fa-li fa fa-angle-right"></i>
+            Robert Bosch
           </li>
-          <li class="nav-item mx-1 my-1 mx-lg-1">
-            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#portfolio">
-            Portfolio
-            </a>
+          </ul>
+        </div>
+    </section>
+
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
+      <div class="w-100">
+        <h2 class="mb-1">Education</h2>
+        <div class="subheading mb-1 text-dark">New York University</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">2017 (New York, USA)</span>
+        </div>
+        <ul class="fa-ul mb-2">
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Advanced Python Programming
           </li>
-          <li class="nav-item mx-1 my-1 mx-lg-1">
-            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="#contact">
-            Contact
-            </a>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Data mining, predictive analytics, and Big Data
           </li>
-          <li class="nav-item mx-1 my-1 mx-lg-1">
-            <a class="nav-link py-3 px-1 px-lg-3 rounded js-scroll-trigger text-grey" href="/blog">
-            Go to Blog
-            </a>
+        </ul>
+
+        <div class="subheading mb-2 text-dark">Higher School of Economics</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">2015-2016 (Moscow, Russia)</span>
+        </div>
+        <ul class="fa-ul mb-2">
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Financial Management
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Statistics
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Economics
+          </li>
+        </ul>
+
+        <div class="subheading mb-2 text-dark"> Peoples' Friendship University of Russia</div>
+        <div class="resume-date mb-1 text-md-left">
+          <span class="text-primary">2008 - 2014 (Moscow, Russia)</span>
+        </div>
+        <ul class="fa-ul mb-0">
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Bachelor degree in Mechanical Engineering
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Courses of German language
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- Header -->
-  <header class="masthead bg-secondary text-white mt-0">
-    <canvas id="myBubbleChart" width="100" height="170"></canvas>
-    <div class="container">
-        <div class="col-lg-12 col-md-12 col-sm-12 text-center mt-0">
-          <div id="socicons">
-            <ul class="list-inline mb-2 mt-0">
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://www.facebook.com/gennady.turutin">
-                  <i class="fab fa-fw fa-facebook-f"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://www.linkedin.com/in/gennadii-turutin/">
-                  <i class="fab fa-fw fa-linkedin-in"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle text-grey" href="https://github.com/GennadiiTurutin">
-                    <i class="fab fa-fw fa-github"></i>
-                </a>
-              </li>
-            </ul> 
-          </div>
-          
-          <h1 class="text-uppercase mb-4 mt-0 text-grey">Full Stack</h1>
-          <h1 class="text-uppercase mb-4 mt-0 text-grey">Web Developer</h1>
-          <ul class="list-group list-group-flush" id="skills">
-            <li class="list-inline-item text-uppercase text-grey"><h4>Python / JavaScript</h4></li>
-            <li class="list-inline-item text-uppercase text-grey"><h4>Django / Flask </h4></li>
-            <li class="list-inline-item text-uppercase text-grey"><h4>Angular / React</h4></li>
-            <li class="list-inline-item text-uppercase text-grey"><h4>Heroku / AWS</h4></li>
-          </ul>
-          
-          <div class="text-center mb-5" id="icons">
-            <ul class="list-inline dev-icons">
-              <li class="list-inline-item">
-                <i class="fab fa-python"></i>
-              </li>
-              <li class="list-inline-item">
-                <i class="fab fa-node-js"></i>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </header>
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
+      <div class="w-100">
+        <h2 class="mb-3">Skills</h2>
 
-  <div class="division bg-secondary text-white portfolio mb-0" id="about">
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-5 col-sm-12 text-right">
-            <h1 class="text-uppercase mb-4 text-grey">About me</h1>
-            <p class="lead text-right text-grey">
-            I’m proficient in Python, JavaScript, HTML5, CSS 
-            and have extensively worked with web-frameworks 
-            such as Django, Flask, Angular and React.</p> 
-            <p class="lead text-right text-grey">
-            I have a bachelor in engineering, what gives necessary 
-            skills to design and deliver projects that are reliable, 
-            maintainable and highly functional. 
-            Besides that in NYU Web Development courses 
-            I learned the best programming practices. 
-            My professional technical experience taught 
-            me that the attention to every detail is absolutely 
-            crucial for the quality of the product.</p>
-          </div>
+        <div class="subheading mb-3 text-dark">Programming Languages &amp; Tools</div>
+        <ul class="list-inline dev-icons">
+          <li class="list-inline-item">
+            <i class="fab fa-python"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-linux"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-aws"></i>
+          </li>
+          <li class="list-inline-item">
+              <i class="fab fa-google"></i>
+            </li>
+          <li class="list-inline-item">
+            <i class="fab fa-docker"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-jenkins"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-js-square"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-angular"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-react"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-node-js"></i>
+          </li>
+          <li class="list-inline-item">
+            <i class="fab fa-npm"></i>
+          </li>
+        </ul>
 
-          <div class="col-lg-7 col-md-7 col-sm-12 col-12 mt-0">
-            <div class="row">
-              <div class="col-lg-4 col-md-4 col-sm-4 col-4 text-right mt-1">
-                <ul class="list-group list-group-flush">
-                  <li class="list-inline-item text-uppercase text-grey"><h4>Education</h4></li>
-                </ul>
-              </div>
-              <div class="col-lg-8 col-md-8 col-sm-8 col-8 text-left mt-0">
-                <ul class="list-group list-group-flush">
-                  <li class="list-inline-item text-grey"><h4>Mechanical Engineering, Bachelor, Russia</h4></li>
-                  <li class="list-inline-item text-grey"><h4>Python Advanced Programming, NYU</h4></li>
-                  <li class="list-inline-item text-grey"><h4>Data mining, predictive analytics, and Big Data, NYU</h4></li>
-                  <li class="list-inline-item text-grey text-center" id="button_cv">
-                    <a class="btn btn-lg btn-outline-secondary" href="/static/docs/GennadiiTurutin.pdf" target="_blank">
-                      <i class="fas fa-download mr-2"></i>Download CV
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="subheading mb-3 text-dark">Web Frameworks &amp; Libraries</div>
+        <ul class="fa-ul mb-0">
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Django, Flask, pandas, numpy, pandas, etc.
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            React, Angular, Express
+          </li>
+        </ul>
 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12 mt-5">
-            <p class="lead text-left text-grey">
-            I'm a big fan of Python and a strong advocate of Django, as I believe these are perfect tools to build pretty much everything. In my GitHub repositories you may find Unit Tests, Web Scraping, Machine Learning, Web Development, E-commerce, and Algorithms! Most of it in Python. 
-            </p>
-            <p class="lead text-left text-grey">
-            Nevertheless often I employ JavaScript for Front-End for different purposes. Visual effect, generation of tokens, 
-            DOM manipulation, asynchronous requests, etc. Here is where JavaScript knowledge is crucial.
-            And, of course, wonderful frameworks and libraries (no, React is not a framework!), such as Angular and React!
-            </p> 
-          </div>
-
-        </div>
+        <div class="subheading mt-3 mb-3 text-dark">Areas of Proficiency</div>
+        <ul class="fa-ul mb-0">
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Cross Functional Teams
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Agile Development &amp; Scrum
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Data Engineering &amp; Data Acquisition
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Data Analysis &amp; ETL
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Data Visualization
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Machine Learning
+          </li> 
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Full-Stack
+          </li>
+          <li>
+            <i class="fa-li fa fa-angle-right"></i>
+            Continious Integration &amp; Development
+          </li>
+        </ul>
       </div>
     </section>
+
+    <hr class="m-0">
+
   </div>
-
-  <div class="division bg-secondary text-white portfolio mb-0" id="portfolio">
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 order-lg-2 order-sm-1 text-left mt-0 mb-5">
-            <h1 class="text-uppercase mb-4 text-grey">Portfolio</h1>
-            <p class="lead text-left text-grey">
-            I’ve developed several freelance projects from the ground up aiming at Responsive Design and REST standards.  
-            To be more specific I can set up RESTful API employing Flask, Django REST Framework, or Node.js, 
-            in combination with the Front-end empowered by jQuery, AJAX or Bootstrap.
-            Moreover, I’m always excited to master new technologies, languages, and development approaches.</p>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 order-lg-1 order-sm-2 mt-0" id="samples">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2">       
-                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <i class="fas fa-search-plus fa-3x"></i>
-                      </div>
-                    </div>
-                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/noyardstick.PNG')}}">
-                  </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1"> 
-                  <div class="container">
-                    <h4 class="text-uppercase mb-0 text-grey spec-item">
-                    noyardstick.org</h2>
-                    <p class="lead text-left text-grey spec-item">
-                    Tools: Django, Django REST Framework, Angular,PostgreSQL
-                    </p> 
-                  </div>  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2 mb-2">       
-                  <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <i class="fas fa-search-plus fa-3x"></i>
-                      </div>
-                    </div>
-                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/nadiakoch.jpg')}}">
-                  </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1 mb-2">    
-                  <div class="container">
-                    <h4 class="text-uppercase text-grey spec-item">
-                    nadiakoch.com</h2>
-                    <p class="lead text-left text-grey spec-item">
-                    Tools: Django, Django REST Framework, Angular,PostgreSQL
-                    </p> 
-                  </div>    
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 order-2 mb-2">       
-                  <a class="portfolio-item d-block" href="#portfolio-modal-3">
-                    <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                      <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                        <i class="fas fa-search-plus fa-3x"></i>
-                      </div>
-                    </div>
-                    <img class="img-fluid" src="{{url_for('static', filename='img/portfolio/turutin.net.PNG')}}">
-                  </a>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 order-1 mb-2"> 
-                  <div class="container">
-                    <h4 class="text-uppercase mb-0 text-grey spec-item">
-                    turutin.net/blog</h2>
-                    <p class="lead text-left text-grey spec-item">
-                    Tools:Flask, MySQL, Bootstrap
-                    </p> 
-                  </div>      
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-
-  <div class="division bg-secondary portfolio mb-0" id="contact">
-    <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-            <h1 class="text-uppercase mb-4 text-grey text-left">Contact</h1>
-            <p class="lead text-left text-grey">I'm currently located in New York</p> 
-            <p class="lead text-left text-grey">If you have questions, feel free to contact me using this form or at gennadii.turutin@gmail.com</p>
-            <p class="lead text-left text-grey">I'll respond as soon as possible.</p> 
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0" id="contact-form">
-            <form method="POST" action="POST">
-              {{ form.hidden_tag() }}
-              <div class="form-group">
-                    {{ form.username.label(class="form-control-label col-lg-10 input-lg text-grey") }}
-                    {{ form.username(class="form-control col-lg-6", style="font-size: 1rem; height: 2rem;") }}
-                    <br>
-                    {{ form.email.label(class="form-control-label col-lg-10 input-lg text-grey") }}
-                    {{ form.email(class="form-control col-lg-10", style="font-size: 1rem; height: 2rem;") }}
-                    <br>
-                    {{ form.message.label(class="form-control-label col-lg-10 input-lg text-grey") }}
-                    {{ form.message(class="form-control", style="padding: 0 0 100px 10px; cols='5'; wrap='soft'; font-size: 1rem;" ) }}
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-secondary btn-xl" id="sendMessageButton">Send</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-    {% include "partials/footer.html" %}
-    {% block footer %}
-    {% endblock %}
-
-  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-  <div class="scroll-to-top d-lg-none position-fixed ">
-    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-      <i class="fa fa-chevron-up"></i>
-    </a>
-  </div>
-
-  <!-- Portfolio Modals -->
-
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
-    <div class="portfolio-modal-dialog">
-      <a class="close-button d-md-block portfolio-modal-dismiss" href="#">
-        <i class="fa fa-3x fa-times"></i>
-      </a>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="text-grey text-uppercase mb-0 mt-5">
-            noyardstick.org</h2>
-            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/noyardstick.png')}}" alt="">
-            <h4 class="text-grey mb-0">The goal of this project was to build a responsive website, using the old WordPress website and its database.<br><br>
-            The website has a subscription system, comments, flash
-            messages, search system, and many useful plugins, such
-            as Disqus, Toaster, etc.<br><br>
-            On the back-end the website has RESTful API based on
-            Django REST Framework, on the front-end Angular 6.
-            The interaction between front-end and back-end happens
-            through module service.ts that is imported into all
-            other components.<br><br>
-            To improve the performance I went for Ahead-of-Time
-            compilations.<br><br>
-            The material is stored with PostgreSQL.
-            In the beginning I developed my own Custom User
-            Model with Django, but eventually chose Disqus plugin,
-            as it allows for easy authorisation with Facebook and
-            Twitter.</h4><hr>
-            <h4 class="text-grey mb-0">Tools: Django, Django REST Framework, Angular,PostgreSQL</h4><br>
-            <a class="btn btn-dark btn-lg" href="https://www.noyardstick.org/">
-              <i class="fa fa-close"></i>
-              Visit the website</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 2 -->
-  <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
-    <div class="portfolio-modal-dialog">
-      <a class="close-button d-md-block portfolio-modal-dismiss" href="#">
-        <i class="fa fa-3x fa-times"></i>
-      </a>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="text-grey y text-uppercase mb-0 mt-5">nadiakoch.com</h2>
-            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/nadiakoch.jpg')}}" alt="">
-            <h4 class="text-grey  mb-0">
-              The client wanted to have a simple and responsive website, that will look stunning both
-              on PC, and mobile devices with an embedded Instagram feed.
-              <br><br>
-              For integration of Instagram
-              I chose Lightwidget. There are fading effects on the website, that were achieved
-              with JQuery. <br><br>
-            Later on, there will be an online store of furniture added to the website.</h4>
-            <hr>
-            <h4 class="text-grey mb-0">Tools: Django, Bootstrap</h4><br>
-            <a class="btn btn-dark btn-lg" href="http://www.nadiakoch.com/">
-              <i class="fa fa-close"></i>
-              Visit the website</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Portfolio Modal 3 -->
-  <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
-    <div class="portfolio-modal-dialog">
-      <a class="close-button d-md-block portfolio-modal-dismiss" href="#">
-        <i class="fa fa-3x fa-times"></i>
-      </a>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="text-grey text-uppercase mb-0 mt-5">turutin.net/blog</h2>
-            <img class="img-fluid mb-5" src="{{ url_for('static', filename='img/portfolio/turutin.net.png')}}" alt="">
-            <h4 class="text-grey mb-0">
-              I needed my personal website where I can publish posts.<br><br> In this case my main focus was
-              on back-end, that’s why I didn’t employ any JavaScript framework. <br><br> 
-              I chose Flask as it gave me a great degree of freedom and allowed for experiments. I developed everything
-              from the ground up. <br><br>It has comments, login/register system, email service, etc.</h4><hr>
-            <h4 class="text-grey mb-0">Tools:Flask, MySQL, Bootstrap</h4><br>
-            <a class="btn btn-dark btn-lg" href="https://www.turutin.net/blog/">
-              <i class="fa fa-close"></i>
-              Visit the website</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
- <script>
-
-  Chart.plugins.unregister(ChartDataLabels);
-
- </script>
-
-  <script>
-  // For a bubble chart
-  var utils = Samples.utils;
-  function generateData() {
-    var data = [];
-    data.push({
-      x: utils.rand(0, 2),
-      y: utils.rand(0, 2),
-      r: utils.rand(5, 10)
-    });
-    return data;
-  }
-
-
-  var data = {
-    datasets: [
-    {
-      label: 'Python',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    }, 
-    {
-      label: 'JavaScript',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Flask',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Django',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Angular',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'ChartJS',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'React',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Redux',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Pandas',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'ML',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'REST',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'AWS',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-    {
-      label: 'Heroku',
-      backgroundColor: 'rgba(0, 119, 290, 0.6)',
-      data: generateData()
-    },
-
-    ]
-  };
-
-
-  Chart.defaults.global.defaultFontColor = 'white';
-  Chart.defaults.global.defaultFontFamily = "'Oswald', sans-serif;'";
-  Chart.defaults.global.defaultFontSize = 14;
-
-
-  var ctx = document.getElementById('myBubbleChart').getContext('2d');
-
-  var chart = new Chart(ctx, {
-    type: 'bubble',
-    plugins: [ChartDataLabels],
-    data: data, 
-    options:  {
-      responsive: true,
-      scales: {
-          xAxes: [{
-              ticks: {
-                display: false
-              },
-              gridLines: {
-                  drawBorder: false,
-                  drawOnChartArea: false
-              }
-          }],
-          yAxes: [{
-              ticks: {
-                display: false
-              },
-              gridLines: {
-                  drawBorder: false,
-                  drawOnChartArea: false
-              }
-          }]
-      },
-
-      legend: {
-        display: false
-      },
-
-      onClick: function() {
-        chart.data.datasets.forEach(function(dataset) {
-          dataset.data = generateData();
-        });
-        chart.update();
-      },
-
-      tooltips: {
-         enabled: false
-      },
-      plugins: {
-          datalabels: {
-              formatter: function(value, context) {
-                  return context.chart.data.datasets[context.datasetIndex]["label"];
-              }
-          }
-      }
-   }
-  });
-
-
-  // eslint-disable-next-line no-unused-vars
-  function randomize() {
-    chart.data.datasets.forEach(function(dataset) {
-      dataset.data = generateData();
-    });
-    chart.update();
-  }
-    
-
-  </script>
-
-
-  <script type="text/javascript"> 
-  $('#skills').animate({opacity: 0.25}, 10000, function() {
-    // Animation complete.
-   });
-  $('#icons').animate({opacity: 0.25}, 10000, function() {
-    // Animation complete.
-   });
-  $('#title').animate({opacity: 0.25}, 5000, function() {
-    // Animation complete.
-   });
-  </script>
-
-  <script type="text/javascript"> 
-  // Modal popup$(function () {
-  $('.portfolio-item').magnificPopup({
-    type: 'inline',
-    preloader: false,
-    focus: '#username',
-    modal: true
-  });
-  $(document).on('click', '.portfolio-modal-dismiss', function(e) {
-    e.preventDefault();
-    $.magnificPopup.close();
-  });
-  </script>
 
 </body>
 
