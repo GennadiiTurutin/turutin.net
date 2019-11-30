@@ -33,31 +33,9 @@ def blog():
     tags = Tag.query.all()
     return render_template('main/blog.html', posts=posts, slugify=slugify, tags=tags)
 
-
-@main.route('/blog/contact', methods=['GET', 'POST'])
-def contact():
-    form = ContactForm()
-    if form.validate_on_submit():
-        msg = Message("Request from a client",
-                          sender="gennadii.turutin@gmail.com",
-                          recipients=["gennadii.turutin@gmail.com"])
-        msg.html = render_template('email/request.html', form=form)
-        mail.send(msg)
-        flash('Your message has been sent.', 'success')
-        return redirect(url_for('main.blog'))
-    return render_template('main/contact_me.html', form=form)
-
-@main.route('/blog/terms')
-def terms():
-    return render_template('main/terms.html')
-
-@main.route('/blog/privacy')
-def privacy():
-    return render_template('main/privacy.html')
-
-@main.route('/blog/api')
-def api_view():
-    return render_template('main/api.html')
+@main.route('/courses')
+def courses():
+    return render_template('main/courses.html')
 
 
 @main.route('/blog/post/<int:post_id>/<string:post_url>', methods=['GET', 'POST'])

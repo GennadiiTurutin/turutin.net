@@ -37,64 +37,17 @@
 </head>
 
 <body id="page-top">
-  <!-- Navigation -->
   {% include "partials/navbar.html" %}
   {% block navbar %}
   {% endblock %}
-  <div class="container" style="margin-top:7%;">
-    <!-- Flash messages --> 
-    {% include "partials/flash.html" %}
-    {% block flash %}
-    {% endblock %}
-
-    <!-- Content Description-->
-    <div class="col-lg-8 col-md-10 mx-auto" style="margin-bottom:5%;">
-      <div class="post-preview" >
-        <h1 class="text-center text-uppercase text-grey">
-          {{ post.title }}
-        </h1>
-        <h2 class="text-center text-uppercase text-grey">
-          {{ post.subtitle }}
-        </h2>
-        <p class="lead text-grey">Posted by {{ post.user.username }} on {{ post.date }} </p>
-      </div>
-     <!-- Tags -->
-     {% include "partials/tag.html" %}
-     {% block tag %}
-     {% endblock %}
-    </div>
-
-    <!-- Post Content -->
-    <article>
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-body">
-          <p class="lead text-grey"> 
-          {{ post.content|safe }}
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <!-- Comments -->
-    {% include "partials/comment.html" %}
-    {% block comment %}
-    {% endblock %}
-
-  </div>
-  <!-- Bootstrap core JavaScript -->
-  <script src="/static/vendor/jquery/jquery.min.js"></script>
-  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript">
-    $( "#flash" ).ready(function() {
-    $( "#flash" ).fadeOut(3000);
-    });
-  </script>
-  <!-- Plugin JavaScript -->
-  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="/static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-  <!-- Custom scripts for this template -->
-  <script src="/static/js/freelancer.min.js"></script>
 </body>
-</html>
 
+<div class="container-fluid p-3">
+    <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="about">
+        <div class="w-100">
+        <h2 class="mb-2">Sorry, under construction <i class="fa fa-wrench"></i></h2>
+        </div>
+    </section>
+</div>
+
+</html>
