@@ -7,6 +7,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView
 from config import config
+from flask_session import Session
 from flask_bootstrap import Bootstrap
 
 
@@ -15,6 +16,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 db = SQLAlchemy()
 login = LoginManager()
 mail = Mail()
+sess = Session()
 
 # Admin View: available only for admin
 class MyAdminIndexView(AdminIndexView):
@@ -36,7 +38,7 @@ def create_app(config_name):
     mail.init_app(app)
     bootstrap = Bootstrap(app)
     admin = Admin(app, template_mode='bootstrap3', index_view=MyAdminIndexView())
-    
+    sess.init_app(app)
    
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Gennadii Turutin</title>
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
+  <meta name="description" content="Personal website of Gennadii Turutin">
+  <meta name="author" content="Gennadii Turutin">
+  <title>Blog</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/square.png') }}">
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-
   <!-- Custom styles for this template -->
-  <link href="css/resume.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='css/resume.css')}}" rel="stylesheet" type="text/css">
-
-   <!-- Bootstrap core JavaScript -->
-   <script src="static/vendor/jquery/jquery.min.js"></script>
-   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- 
-   <!-- Plugin JavaScript -->
-   <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
- 
-   <!-- Custom scripts for this template -->
-   <script src="static/js/resume.min.js"></script>
-
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="static/js/resume.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -41,59 +29,36 @@
   {% include "partials/navbar.html" %}
   {% block navbar %}
   {% endblock %}
-  <div class="container mt-5">
-    <!-- Flash messages -->
-    {% include "partials/flash.html" %}
-    {% block flash %}
-    {% endblock %}
-    <div class="container-fluid p-3">
-      <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="about">
-        <div class="w-100">
-    
-          <div class="col-lg-12 col-md-12 col-sm-12 mx-auto">
-            <div class="row">
-              <div class="col-lg-10 col-md-12 mr-5">
-                {% for post in posts.items %}
-                  <div class="mb-5 mt-5 mr-5">
-                    <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
-                      <h2 class="text-left text-uppercase mb-2">{{ post.title }}</h2>
-                      <h4 class="text-left text-uppercase mb-2">{{ post.subtitle }}</h4>
-                      <h6 class="lead text-left mb-4">Posted by {{ post.user.username }} on {{ post.date }}</h6>
-                    </a>  
-                  </div>
-                {% endfor %}
 
-                {% for page_num in posts.iter_pages() %}
-                  {% if page_num %}
-                    <a class="btn btn-outline-secondary mb-4" href="{{ url_for('main.blog', page=page_num) }}">{{ page_num }}</a>
-                    {% else %}
-                    ...
-                  {% endif %}
-                {% endfor %}
-              </div>
+  <!-- Flash messages -->
+  {% include "partials/flash.html" %}
+  {% block flash %}
+  {% endblock %}
 
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+  <div class="container-fluid p-3" id="soderzhanie">
+    <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="blog">
+      <div class="w-100">
+        <h2 class="mb-2">Posts</h2>
+              {% for post in posts.items %}
+                <div class="subheading mt-5 mb-2 p-2 text-dark" id="post">
+                  <a href="{{ url_for('main.post', post_id = post.id, post_url=slugify(post.title)) }}">
+                    <h3 class="text-left mb-2">{{ post.title }}</h3>
+                    <h4 class="text-left mb-2">{{ post.subtitle }}</h4>
+                    <h6 class="lead text-left mb-4">Posted by {{ post.user.username }} on {{ post.date }}</h6>
+                  </a>  
+                </div>
+              {% endfor %}
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="static/vendor/jquery/jquery.min.js"></script>
-    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
-      $( "#flash" ).ready(function() {
-      $( "#flash" ).fadeOut(3000);
-      });
-    </script>
-    <!-- Plugin JavaScript -->
-    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="static/js/freelancer.min.js"></script>
+              {% for page_num in posts.iter_pages() %}
+                {% if page_num %}
+                  <a class="btn btn-outline-secondary mb-4" href="{{ url_for('main.blog', page=page_num) }}">{{ page_num }}</a>
+                  {% else %}
+                  ...
+                {% endif %}
+              {% endfor %}
+      </div>
+    </section>
   </div>
-
 </body>
 </html>
 

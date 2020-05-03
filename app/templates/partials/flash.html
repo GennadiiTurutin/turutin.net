@@ -8,6 +8,12 @@
           {{ message }} 
       </div>
     </div>
+
+    <script type="text/javascript">
+      $( "#flash" ).ready(function() {
+      $( "#flash" ).fadeOut(8000);
+      });
+    </script>
     {% endfor %}
   {% endif %}
 {% endwith %}
