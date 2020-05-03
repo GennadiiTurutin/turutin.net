@@ -1,10 +1,54 @@
-{% extends "bootstrap/base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-    <h1> Ooops! {{error}} </h1>
-    <br>
-    <a href="/"><button type="button" class="btn btn-lg btn-secondary" aria-label="Left Align">Back!</button></a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Personal website of Gennadii Turutin">
+  <meta name="author" content="Gennadii Turutin">
+  <title>Error</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/square.png') }}">
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
+  <link href="{{url_for('static', filename='css/resume.css')}}" rel="stylesheet" type="text/css">
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="/static/js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="/static/js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="/static/js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="/static/js/jquery.waypoints.min.js"></script>
+  <!-- Stellar Parallax -->
+  <script src="/static/js/jquery.stellar.min.js"></script>
+  <!-- CountTo  -->
+  <script src="/static/js/jquery.countTo.js"></script>
+  <!-- Main JS (Do not remove) -->
+  <script src="/static/js/main.js"></script>
+</head>
+
+<body id="page-top">
+  <div class="container-fluid p-3" id="soderzhanie">
+    <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="about">
+      <div class="w-100">
+        <h2 class="mb-2"><i class="far fa-times-circle"></i></h2>
+        <h2 class="mb-2"> Sorry! Something is wrong! </h2>
+        <h3>
+         <a class="ml-2" href="{{ url_for('auth.back') }}"><i class="fas fa-door-open"></i>
+         Back</a>
+         </h3>
+      </div>
+    </section>
+  </div>
 </body>
-
-{% endblock %}
+</html>

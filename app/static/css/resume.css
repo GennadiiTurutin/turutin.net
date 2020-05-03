@@ -174,3 +174,19 @@ a {
 a:hover, a:focus, a:active {
   color: #868e96;
 }
+
+.fab:hover {
+  color: #ECECEC;
+}
+
+.nav-link:hover {
+  opacity: 0.5;
+}
+
+#post:hover {
+  opacity: 0.5;
+}
+
+#post a:hover {
+  text-decoration: none;
+}

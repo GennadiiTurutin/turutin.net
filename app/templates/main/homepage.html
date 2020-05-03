@@ -1,331 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
+  <meta name="description" content="Personal website of Gennadii Turutin">
+  <meta name="author" content="Gennadii Turutin">
   <title>Gennadii Turutin</title>
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/square.png') }}">
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-
+  <link rel="stylesheet" href="{{url_for('static', filename='css/animate.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
   <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:600&display=swap" rel="stylesheet">
   <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-
-  <!-- Custom styles for this template -->
-  <link href="css/resume.min.css" rel="stylesheet">
-  <link href="{{url_for('static', filename='css/resume.css')}}" rel="stylesheet" type="text/css">
-
-   <!-- Bootstrap core JavaScript -->
-   <script src="static/vendor/jquery/jquery.min.js"></script>
-   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- 
-   <!-- Plugin JavaScript -->
-   <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
- 
-   <!-- Custom scripts for this template -->
-   <script src="static/js/resume.min.js"></script>
-
+  <!-- jQuery -->
+  <script src="static/js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="static/js/jquery.easing.1.3.js"></script>
+  <!-- Bootstrap -->
+  <script src="static/js/bootstrap.min.js"></script>
+  <!-- Waypoints -->
+  <script src="static/js/jquery.waypoints.min.js"></script>
+  <!-- Stellar Parallax -->
+  <script src="static/js/jquery.stellar.min.js"></script>
+  <!-- CountTo  -->
+  <script src="static/js/jquery.countTo.js"></script>
+  <!-- Main JS (Do not remove) -->
+  <script src="static/js/main.js"></script>
 </head>
-
-<body id="page-top">
-  {% include "partials/navbar.html" %}
-  {% block navbar %}
-  {% endblock %}
-
-  <div class="container-fluid p-3">
-    <section class="resume-section p-0 p-lg-5 d-flex align-items-center" id="about">
-      <div class="w-100">
-        <h2 class="mb-2">Gennadii Turutin</h2>
-        <a class="navbar-brand">
-            <span class="d-lg-block">
-              <img class="img-fluid img-profile mx-auto mb-2" src="{{ url_for('static', filename='img/0.jpg') }}" alt="">
-            </span>
-        </a>
-        <div class="subheading mb-2 text-dark">Contact</div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            <h2 class="lead mb-0">gennadii.turutin@gmail.com</h2>
-            </li>
-            <li>
-              <i class="fa-li fa fa-angle-right"></i>
-              <h2 class="lead mb-0">NY, New York</h2>
-            </li>
-          </ul>
-        </div>
-        <div class="social-icons">
-            <a href="#">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-github-square"></i>
-            </a>
-            <a href="#">
-                <i class="fab fa-facebook-square"></i>
-            </a>
+<body>
+  <section id="fh5co-home" data-section="home" style="background-color: black">
+    <div class="container">
+      <div class="text-wrap">
+        <div class="text-inner">
+          <div class="row">
+            <div class="col-12 text-center mt-4 mb-4">
+              <div id="socicons mb-4">
+                <ul class="list-inline mb-2 mt-0">
+                  <li class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center text-grey" href="https://www.linkedin.com/in/gennadii-turutin/">
+                      <i class="fab fa-fw fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn btn-outline-light btn-social text-center text-grey" href="https://github.com/GennadiiTurutin">
+                        <i class="fab fa-fw fa-github"></i>
+                    </a>
+                  </li>
+                </ul> 
+              </div>
+            </div>
+            <div class="col-12 text-center mt-4 mb-4">
+              <h1 class="text-white" style="font-family: 'Saira Semi Condensed', sans-serif;" id="name">Gennadii Turutin</h1>
+              <h2 class="to-animate" style="font-family: 'Saira Semi Condensed', sans-serif;" id="title">Software Engineer</h2>
+              <ul class="list-inline mb-2 mt-0">
+                  <li class="list-inline-item">
+                    <h5 class="to-animate" style="font-family: 'Saira Semi Condensed', sans-serif;"><a class="btn btn-outline-light btn-social text-center text-grey" href="/about">About me</a></h5>
+                  </li>
+                  <li class="list-inline-item">
+                    <h5 class="to-animate" style="font-family: 'Saira Semi Condensed', sans-serif;"><a class="btn btn-outline-light btn-social text-center text-grey" href="/blog">Blog</a></h5>
+                  </li>
+                </ul>
+            </div>
           </div>
-
-        <div class="subheading mb-2 text-dark">About me</div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-child"></i>
-            <h2 class="lead mb-0">
-            I'm a software engineer with the focus on data.<br>
-            I leverage Python and JavaScript in combination with cloud services 
-            to build reliable and efficient applications that will retrieve, store, 
-            and manipulate data. <br>
-            My belief is that programming skills are secondary.
-            Planning and the ability to break problems up into a set of trivial problems are primary. 
-            </h2>
-            </li>
-          </ul>
         </div>
       </div>
-    </section>
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
-      <div class="w-100">
-        <h2 class="mb-1">Experience</h2>
-
-        <div class="subheading mb-2 text-dark">Data Acquisition Developer</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">October 2019 - Present (New York, USA)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Prescriptive Data
-            </li>
-          </ul>
-        </div>
-
-        <div class="subheading mb-2 text-dark">Data Engineer</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">May 2019 - October 2019 (New York, USA)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            ThinkEmpire.io
-            </li>
-          </ul>
-        </div>
-
-        <div class="subheading mb-2 text-dark">Full-Stack Developer</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">Jan 2019 - May 2019 (New York, USA)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Freelance
-            </li>
-          </ul>
-        </div>
-
-        <div class="subheading mb-2 text-dark">Architectural Planner</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">Sep 2017 - Jan 2019 (New York, USA)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            RISE Architecture
-            </li>
-          </ul>
-        </div>
-
-        <div class="subheading mb-2 text-dark">Technical Specialist</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">Feb 2013 - Sep 2016 (Moscow, Russia)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-            <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Schmitz Cargobull Russland
-            </li>
-          </ul>
-        </div>
-
-        <div class="subheading mb-2 text-dark">Technical intern</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">Aug 2011 - Feb 2013 (Moscow, Russia)</span>
-        </div>
-        <div class="resume-date mb-1 text-md-left">
-          <ul class="fa-ul mb-2">
-          <li>
-          <i class="fa-li fa fa-angle-right"></i>
-            Robert Bosch
-          </li>
-          </ul>
-        </div>
-    </section>
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
-      <div class="w-100">
-        <h2 class="mb-1">Education</h2>
-        <div class="subheading mb-1 text-dark">New York University</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">2017 (New York, USA)</span>
-        </div>
-        <ul class="fa-ul mb-2">
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Advanced Python Programming
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Data mining, predictive analytics, and Big Data
-          </li>
-        </ul>
-
-        <div class="subheading mb-2 text-dark">Higher School of Economics</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">2015-2016 (Moscow, Russia)</span>
-        </div>
-        <ul class="fa-ul mb-2">
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Financial Management
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Statistics
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Economics
-          </li>
-        </ul>
-
-        <div class="subheading mb-2 text-dark"> Peoples' Friendship University of Russia</div>
-        <div class="resume-date mb-1 text-md-left">
-          <span class="text-primary">2008 - 2014 (Moscow, Russia)</span>
-        </div>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Bachelor degree in Mechanical Engineering
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Courses of German language
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
-      <div class="w-100">
-        <h2 class="mb-3">Skills</h2>
-
-        <div class="subheading mb-3 text-dark">Programming Languages &amp; Tools</div>
-        <ul class="list-inline dev-icons">
-          <li class="list-inline-item">
-            <i class="fab fa-python"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-linux"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-aws"></i>
-          </li>
-          <li class="list-inline-item">
-              <i class="fab fa-google"></i>
-            </li>
-          <li class="list-inline-item">
-            <i class="fab fa-docker"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-jenkins"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-js-square"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-angular"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-react"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-node-js"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-npm"></i>
-          </li>
-        </ul>
-
-        <div class="subheading mb-3 text-dark">Web Frameworks &amp; Libraries</div>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Django, Flask, pandas, numpy, pandas, etc.
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            React, Angular, Express
-          </li>
-        </ul>
-
-        <div class="subheading mt-3 mb-3 text-dark">Areas of Proficiency</div>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Cross Functional Teams
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Agile Development &amp; Scrum
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Data Engineering &amp; Data Acquisition
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Data Analysis &amp; ETL
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Data Visualization
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Machine Learning
-          </li> 
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Full-Stack
-          </li>
-          <li>
-            <i class="fa-li fa fa-angle-right"></i>
-            Continious Integration &amp; Development
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <hr class="m-0">
-
-  </div>
-
-</body>
-
+    </div>
+  </section>
+  </body>
 </html>

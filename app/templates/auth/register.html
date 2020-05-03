@@ -1,26 +1,36 @@
+<style>
+  .cool {
+    font-family: 'Saira Semi Condensed', sans-serif; 
+  }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../../../favicon.ico">
 
-<title>Register</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
-<!-- Bootstrap core CSS -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Personal website of Gennadii Turutin">
+  <meta name="author" content="Gennadii Turutin">
 
-<!-- Custom styles for this template -->
-<link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
-<link href="{{url_for('static', filename='css/freelancer_modified.css')}}" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
-<link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <title>Registration</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/square.png') }}">
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename='signin.css')}}" rel="stylesheet" type="text/css">
+  <!-- Bootstrap core JavaScript -->
+  <script src="/static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="/static/js/resume.min.js"></script>
 
 </head>
 
@@ -28,76 +38,70 @@
 {% block flash %}
 {% endblock %}
 
-<body class="text-center mt-5">
-<div class="content-section mt-5">
+<body class="text-center" style="background-color: white;">
+<div class="content-section">
     <form method="POST" action="{{ url_for('auth.register') }}">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4 mt-2 text-grey">Register</legend>
+            <legend class="border-bottom mb-4 cool">Register</legend>
 
             <div class="form-group">
-                {{ form.username.label(class="form-control-label text-grey") }}
-                {{ form.username(class="form-control form-control-lg") }}
+                {{ form.username.label(class="form-control-label cool") }}
+                {{ form.username(class="form-control form-control-md cool") }}
             </div>
             <div class="form-group">
-                {{ form.email.label(class="form-control-label text-grey") }}
+                {{ form.email.label(class="form-control-label cool") }}
                 {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                    {{ form.email(class="form-control form-control-md is-invalid cool") }}
                     <div class="invalid-feedback">
                         {% for error in form.email.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.email(class="form-control form-control-lg") }}
+                    {{ form.email(class="form-control form-control-md cool") }}
                 {% endif %}
             </div>
             <div class="form-group">
-                {{ form.password.label(class="form-control-label text-grey") }}
+                {{ form.password.label(class="form-control-label cool") }}
                 {% if form.password.errors %}
-                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    {{ form.password(class="form-control form-control-md is-invalid cool") }}
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.password(class="form-control form-control-lg") }}
+                    {{ form.password(class="form-control form-control-md cool") }}
                 {% endif %}
             </div>
             <div class="form-group">
-                {{ form.confirmation.label(class="form-control-label text-grey") }}
+                {{ form.confirmation.label(class="form-control-label cool") }}
                 {% if form.confirmation.errors %}
-                    {{ form.confirmation(class="form-control form-control-lg is-invalid") }}
+                    {{ form.confirmation(class="form-control form-control-md is-invalid cool") }}
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.confirmation(class="form-control form-control-lg") }}
+                    {{ form.confirmation(class="form-control form-control-md cool") }}
                 {% endif %}
             </div>
         </fieldset>
         <div class="form-group">
-          <button type="submit" class="btn btn-secondary btn-md" id="sendMessageButton">Send</button>
+          <button type="submit" class="btn btn-outline-secondary btn-md cool">Submit</button>
         </div>
         <div class="border-top pt-3">
-         <small class="text-muted">
+         <small class="text-muted cool">
         Have An Account? <a class="ml-2" href="{{ url_for('auth.login') }}">Login Now</a>
          </small>
-         <small class="text-muted">
-         <a class="ml-2" href="{{ url_for('main.blog') }}">
+         <small class="text-muted cool">
+         <a class="ml-2" href="{{ url_for('auth.back') }}">
          Back</a>
          </small>
         </div>
     </form>
   </div>
-<script type="text/javascript">
-
-$( "#flash" ).ready(function() {
-$( "#flash" ).fadeOut(3000);
-});
-</script>
 </body>
 </html>

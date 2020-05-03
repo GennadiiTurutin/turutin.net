@@ -1,64 +1,73 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../../../favicon.ico">
-<title>Profile</title>
-<link rel="shortcut icon" href="{{ url_for('static', filename='img/flask.png') }}">
-<!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet">
+<style>
+  .cool {
+    font-family: 'Saira Semi Condensed', sans-serif; 
+  }
+</style>
 
-<!-- Custom styles for this template -->
-<link href="{{ url_for('static', filename='signin.css') }}" rel="stylesheet">
-<link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Personal website of Gennadii Turutin">
+  <meta name="author" content="Gennadii Turutin">
+  <title>Profile</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/square.png') }}">
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <link href="{{url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename='signin.css')}}" rel="stylesheet" type="text/css">
+  <!-- Bootstrap core JavaScript -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Plugin JavaScript -->
+  <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Custom scripts for this template -->
+  <script src="static/js/resume.min.js"></script>
 </head>
 
 {% include "partials/flash.html" %}
 {% block flash %}
 {% endblock %}
 
-
-  <body class="text-center">
-    <div class="content-section" >
-        <div id="parent_container">
-        <form method="POST" action="{{ url_for('main.profile') }}">
-            {{ form.hidden_tag() }}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Profile</legend>
-                <img src="{{ current_user.gravatar() }}">
-                <br><br>
-                <div class="form-group">
-                {{ form.username.label(class="form-control-label") }}
-                {{ form.username(class="form-control form-control-lg", value=current_user.username) }}
-                </div>
-                <div class="form-group">
-                {{ form.email.label(class="form-control-label") }}
-                {{ form.email(class="form-control form-control-lg", value=current_user.email) }}
-                </div>
-            </fieldset>
-                <br>
-                <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
-                </div>
-        </form>
-                <div class="form-group">
-                <a class="btn btn-outline-info" href="{{ url_for('auth.change_password') }}"> Change password </a>
-                </div>
+<body class="text-center" style="background-color: white;">
+  <div class="content-section" >
+    <div id="parent_container">
+      <form method="POST" action="{{ url_for('main.profile') }}">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4 cool">Profile</legend>
+          <img src="{{ current_user.gravatar() }}">
+          <div class="form-group">
+            {{ form.username.label(class="form-control-label cool") }}
+            {{ form.username(class="form-control form-control-md cool", value=current_user.username) }}
+          </div>
+          <div class="form-group">
+            {{ form.email.label(class="form-control-label cool") }}
+            {{ form.email(class="form-control form-control-md cool", value=current_user.email) }}
+          </div>
+        </fieldset>
+        <div class="form-group cool">
+          {{ form.submit(class="btn btn-outline-secondary btn-md cool") }}
         </div>
+      </form>
+      <div class="form-group">
+        <a class="btn btn-outline-secondary btn-md cool" href="{{ url_for('auth.change_password') }}">Change password</a>
+      </div>
+      <div class="border-top pt-3">
+        <small class="text-muted cool">
+          <a class="ml-2" href="{{ url_for('auth.logout') }}">Logout</a>
+        </small>
+        <small class="text-muted cool">
+          <a class="ml-2" href="{{ url_for('auth.back') }}">Back</a>
+        </small>
+      </div>
     </div>
-  </body>
-
-<script type="text/javascript">
-    $( "#flash" ).ready(function() {
-    $( "#flash" ).fadeOut(3000);
-    });
-</script>
-
+  </div>
+</body>
 </html>

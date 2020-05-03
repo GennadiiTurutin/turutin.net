@@ -1,7 +1,7 @@
-<div class="container">
-	<p class="lead text-grey">
-    {% for tag in tags %}
-    <span class="btn btn-dark btn-lg">{{ tag.tag }}</span>
-    {% endfor %}
-    </p>
-</div>
+
+<h2 class="text-dark">
+  {% for tag in tags %}
+    <span class="btn btn-secondary mb-4">{{ tag.tag }}</span>
+  {% endfor %}
+</h2>
+

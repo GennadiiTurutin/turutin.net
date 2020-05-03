@@ -5,8 +5,8 @@ from app.models import User
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=25)])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
@@ -30,18 +30,18 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('Please use a different email')
 
 class ChangePasswordForm(FlaskForm):
-    oldpassword = PasswordField('Current password', validators=[DataRequired()])
+    oldpassword = PasswordField('Current password', validators=[DataRequired(), Length(min=6, max=25)])
     newpassword = PasswordField('New password', validators=[DataRequired(), Length(min=6, max=25)])
-    confirmation = PasswordField('Confirm new password', validators=[DataRequired()])
+    confirmation = PasswordField('Confirm new password', validators=[DataRequired(), EqualTo('newpassword', message="It must match the new password above")])
     submit = SubmitField('Change password')  
 
 class ForgotPasswordForm(FlaskForm):
-    newpassword = PasswordField('New password', validators=[DataRequired()])
-    confirmation = PasswordField('Confirm new password', validators=[DataRequired(), Length(min=6, max=25)])
+    newpassword = PasswordField('New password', validators=[DataRequired(), Length(min=6, max=25)])
+    confirmation = PasswordField('Confirm new password', validators=[DataRequired(), Length(min=6, max=25),  EqualTo('newpassword', message="It must match the new password above")])
     submit = SubmitField('Change password')  
 
 class RequestForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Request link')
 
 

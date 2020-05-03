@@ -1,44 +1,67 @@
- <!-- Navigation -->
+<style>
+  #soderzhanie
+ {
+  opacity: 0; 
+ }
+ @media (max-width: 992px) {
+  #sideNav {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 
- <nav class="navbar navbar-expand-lg navbar-white fixed-top" id="sideNav">
-    <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mt-5">
-        <li class="nav-item">
-         <a class="nav-link text-right text-dark" href="/"><i class="fa fa-angle-right" id="about"></i>&nbsp;About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-right text-dark" href="/blog"><i class="fa fa-angle-right" id="blog"></i>&nbsp;Blog</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-right text-dark" href="/courses"><i class="fa fa-angle-right" id="courses"></i>&nbsp;Courses</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+ }
+</style>
 
-  <script type="text/javascript">
-    // Get URL
-    var url = window.location.href;
-    // Get DIV
-    var about = document.getElementById('about');
-    var blog = document.getElementById('blog');
-    var courses = document.getElementById('courses');
-    // Check if URL contains the keyword
-    if( url.search( 'blog' ) > 0 ) {
-        // Display the message
-        about.style.display = "none";
-        courses.style.display = "none";
-    }
-    else if( url.search( 'courses' ) > 0 ) {
-        // Display the message
-        about.style.display = "none";
-        blog.style.display = "none";
-    }
-    else {
-        courses.style.display = "none";
-        blog.style.display = "none";
-    }
-  </script>
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-white fixed-top" id="sideNav">
+  <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mt-5">
+      <li class="nav-item text-right">
+       <a class="nav-link" style="display: inline-block;" href="/">
+          <h5><i class="fab fa-houzz"></i></i></h5>
+        </a> 
+      </li>
+      <li class="nav-item">
+       <a class="nav-link text-right" href="/about"><h5><i class="fa fa-angle-right" id="about"></i>&nbsp;About me</h5></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-right" href="/blog"><h5><i class="fa fa-angle-right" id="blog"></i>&nbsp;Blog</h5></a>
+      </li>
+      <li class="nav-item text-right">
+        <a class="nav-link" style="display: inline-block;" href="{{ url_for('auth.reroute') }}">
+          <h5><i class="fas fa-user mx-2"></i></h5>
+        </a> 
+        <a class="nav-link" style="display: inline-block;" href="{{ url_for('auth.logout') }}">
+          <h5><i class="fas fa-times mx-2"></i></h5>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script type="text/javascript">
+  var url = window.location.href;
+  var about = document.getElementById('about');
+  var blog = document.getElementById('blog');
+
+  if( url.search( 'blog' ) > 0 ) {
+      about.style.display = "none";
+  } 
+  if ( url.search( 'about' ) > 0 ) {
+      blog.style.display = "none";  
+  }
+</script>
+
+<script>
+  $(document).ready( function() {
+      var counter = 0;
+      var myInterval = setInterval(function () {
+        counter = counter + 0.25;
+        $("#soderzhanie").css("opacity",  0 + counter );
+      }, 110);
+  });
+</script>
+
