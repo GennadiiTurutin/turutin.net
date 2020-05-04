@@ -6,5 +6,4 @@ keys.py
 bin/
 include/
 lib/
-.vscode/
 migrations/
