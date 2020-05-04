@@ -6,3 +6,6 @@ keys.py
 bin/
 include/
 lib/
+.vscode/
+venv/
+migrations/
