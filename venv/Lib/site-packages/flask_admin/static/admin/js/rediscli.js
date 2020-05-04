@@ -115,7 +115,3 @@ var RedisCli = function(postUrl) {
 
 	sendCommand('ping');
 };
-
-$(function() {
-    var redisCli = new RedisCli(JSON.parse($('#execute-view-data').text()));
-});
