@@ -138,6 +138,8 @@
                         {% set form = list_forms[get_pk_value(row)] %}
                         {% if form.csrf_token %}
                         {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c), csrf=form.csrf_token._value()) }}
+                        {% elif csrf_token %}
+                        {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c), csrf=csrf_token()) }}
                         {% else %}
                         {{ form[c](pk=get_pk_value(row), display_value=get_value(row, c)) }}
                         {% endif %}
@@ -179,26 +181,16 @@
 
 {% block tail %}
     {{ super() }}
+
+    {% if filter_groups %}
+      <div id="filter-groups-data" style="display:none;">{{ filter_groups|tojson|safe }}</div>
+      <div id="active-filters-data" style="display:none;">{{ active_filters|tojson|safe }}</div>
+    {% endif %}
+
     {{ lib.form_js() }}
     <script src="{{ admin_static.url(filename='admin/js/filters.js', v='1.0.0') }}"></script>
 
     {{ actionlib.script(_gettext('Please select at least one record.'),
                         actions,
                         actions_confirmation) }}
-
-    <script language="javascript">
-        (function($) {
-            $('[data-role=tooltip]').tooltip({
-                html: true,
-                placement: 'bottom'
-            });
-            {% if filter_groups %}
-                var filter = new AdminFilters(
-                    '#filter_form', '.field-filters',
-                    {{ filter_groups|tojson|safe }},
-                    {{ active_filters|tojson|safe }}
-                );
-            {% endif %}
-        })(jQuery);
-    </script>
 {% endblock %}

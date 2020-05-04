@@ -7,5 +7,4 @@ bin/
 include/
 lib/
 .vscode/
-venv/
 migrations/

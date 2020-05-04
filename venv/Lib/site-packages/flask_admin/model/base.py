@@ -5,7 +5,7 @@ import mimetypes
 import time
 from math import ceil
 
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 from flask import (current_app, request, redirect, flash, abort, json,
                    Response, get_flashed_messages, stream_with_context)
@@ -18,7 +18,7 @@ from wtforms.fields import HiddenField
 from wtforms.fields.core import UnboundField
 from wtforms.validators import ValidationError, InputRequired
 
-from flask_admin.babel import gettext
+from flask_admin.babel import gettext, ngettext
 
 from flask_admin.base import BaseView, expose
 from flask_admin.form import BaseForm, FormOpts, rules
@@ -382,6 +382,12 @@ class BaseModelView(BaseView, ActionsMixin):
             class MyModelView(BaseModelView):
                 column_sortable_list = ('name', ('user', 'user.username'))
 
+        You can also specify multiple fields to be used while sorting::
+
+            class MyModelView(BaseModelView):
+                column_sortable_list = (
+                    'name', ('user', ('user.first_name', 'user.last_name')))
+
         When using SQLAlchemy models, model attributes can be used instead
         of strings::
 
@@ -403,6 +409,12 @@ class BaseModelView(BaseView, ActionsMixin):
 
             class MyModelView(BaseModelView):
                 column_default_sort = ('user', True)
+
+        If you want to sort by more than one column,
+        you can pass a list of tuples::
+
+            class MyModelView(BaseModelView):
+                column_default_sort = [('name', True), ('last_name', True)]
     """
 
     column_searchable_list = ObsoleteAttr('column_searchable_list',
@@ -665,7 +677,9 @@ class BaseModelView(BaseView, ActionsMixin):
                 form_ajax_refs = {
                     'user': {
                         'fields': ('first_name', 'last_name', 'email'),
-                        'page_size': 10
+                        'placeholder': 'Please select',
+                        'page_size': 10,
+                        'minimum_input_length': 0,
                     }
                 }
 
@@ -769,7 +783,7 @@ class BaseModelView(BaseView, ActionsMixin):
             :param name:
                 View name. If not provided, will use the model class name
             :param category:
-                View category
+                Optional category name, for grouping views in the menu
             :param endpoint:
                 Base endpoint. If not provided, will use the model name.
             :param url:
@@ -1092,6 +1106,12 @@ class BaseModelView(BaseView, ActionsMixin):
             `init_search` will return `False`.
         """
         return False
+
+    def search_placeholder(self):
+        """
+            Return search placeholder text.
+        """
+        return None
 
     # Filter helpers
     def scaffold_filters(self, name):
@@ -1463,10 +1483,12 @@ class BaseModelView(BaseView, ActionsMixin):
             Return default sort order
         """
         if self.column_default_sort:
-            if isinstance(self.column_default_sort, tuple):
+            if isinstance(self.column_default_sort, list):
                 return self.column_default_sort
+            if isinstance(self.column_default_sort, tuple):
+                return [self.column_default_sort]
             else:
-                return self.column_default_sort, False
+                return [(self.column_default_sort, False)]
 
         return None
 
@@ -1547,7 +1569,7 @@ class BaseModelView(BaseView, ActionsMixin):
         try:
             self.on_model_change(form, model, is_created)
         except TypeError as e:
-            if re.match(r'on_model_change\(\) takes .* 3 .* arguments .* 4 .* given .*', e.message):
+            if re.match(r'on_model_change\(\) takes .* 3 .* arguments .* 4 .* given .*', str(e)):
                 msg = ('%s.on_model_change() now accepts third ' +
                        'parameter is_created. Please update your code') % self.model
                 warnings.warn(msg)
@@ -1679,29 +1701,39 @@ class BaseModelView(BaseView, ActionsMixin):
     def get_empty_list_message(self):
         return gettext('There are no items in the table.')
 
+    def get_invalid_value_msg(self, value, filter):
+        """
+        Returns message, which should be printed in case of failed validation.
+        :param value: Invalid value
+        :param filter: Filter
+        :return: string
+        """
+        return gettext('Invalid Filter Value: %(value)s', value=value)
+
     # URL generation helpers
     def _get_list_filter_args(self):
         if self._filters:
             filters = []
 
-            for n in request.args:
-                if not n.startswith('flt'):
+            for arg in request.args:
+                if not arg.startswith('flt'):
                     continue
 
-                if '_' not in n:
+                if '_' not in arg:
                     continue
 
-                pos, key = n[3:].split('_', 1)
+                pos, key = arg[3:].split('_', 1)
 
                 if key in self._filter_args:
                     idx, flt = self._filter_args[key]
 
-                    value = request.args[n]
+                    value = request.args[arg]
 
                     if flt.validate(value):
-                        filters.append((pos, (idx, as_unicode(flt.name), value)))
+                        data = (pos, (idx, as_unicode(flt.name), value))
+                        filters.append(data)
                     else:
-                        flash(gettext('Invalid Filter Value: %(value)s', value=value), 'error')
+                        flash(self.get_invalid_value_msg(value, flt), 'error')
 
             # Sort filters
             return [v[1] for v in sorted(filters, key=lambda n: n[0])]
@@ -1717,7 +1749,12 @@ class BaseModelView(BaseView, ActionsMixin):
                         sort=request.args.get('sort', None, type=int),
                         sort_desc=request.args.get('desc', None, type=int),
                         search=request.args.get('search', None),
-                        filters=self._get_list_filter_args())
+                        filters=self._get_list_filter_args(),
+                        extra_args=dict([
+                            (k, v) for k, v in request.args.items()
+                            if k not in ('page', 'page_size', 'sort', 'desc', 'search', ) and
+                            not k.startswith('flt')
+                        ]))
 
     def _get_filters(self, filters):
         """
@@ -2010,6 +2047,7 @@ class BaseModelView(BaseView, ActionsMixin):
             search_supported=self._search_supported,
             clear_search_url=clear_search_url,
             search=view_args.search,
+            search_placeholder=self.search_placeholder(),
 
             # Filters
             filters=self._filters,
@@ -2026,6 +2064,9 @@ class BaseModelView(BaseView, ActionsMixin):
             get_pk_value=self.get_pk_value,
             get_value=self.get_list_value,
             return_url=self._get_list_url(view_args),
+
+            # Extras
+            extra_args=view_args.extra_args,
         )
 
     @expose('/new/', methods=('GET', 'POST'))
@@ -2181,7 +2222,11 @@ class BaseModelView(BaseView, ActionsMixin):
 
             # message is flashed from within delete_model if it fails
             if self.delete_model(model):
-                flash(gettext('Record was successfully deleted.'), 'success')
+                count = 1
+                flash(
+                    ngettext('Record was successfully deleted.',
+                             '%(count)s records were successfully deleted.',
+                             count, count=count), 'success')
                 return redirect(return_url)
         else:
             flash_errors(form, message='Failed to delete record. %(error)s')
@@ -2298,12 +2343,12 @@ class BaseModelView(BaseView, ActionsMixin):
         if encoding:
             mimetype = '%s; charset=%s' % (mimetype, encoding)
 
-        ds = tablib.Dataset(headers=[c[1] for c in self._export_columns])
+        ds = tablib.Dataset(headers=[csv_encode(c[1]) for c in self._export_columns])
 
         count, data = self._export_data()
 
         for row in data:
-            vals = [self.get_export_value(row, c[0]) for c in self._export_columns]
+            vals = [csv_encode(self.get_export_value(row, c[0])) for c in self._export_columns]
             ds.append(vals)
 
         try:
